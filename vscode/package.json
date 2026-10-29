@@ -1,0 +1,75 @@
+{
+  "name": "host-theme",
+  "displayName": "Høst",
+  "description": "Høstlys and Høstkveld: a light and a dark theme in earth tones (høst is Norwegian for autumn). Covers the whole workbench, LaTeX, Python with Pylance semantic highlighting, Markdown, BibTeX, JSON, YAML, shell and diff. Adds a status bar button that switches between light and dark.",
+  "version": "3.4.0",
+  "publisher": "dagmorten",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dagmortensj/hoest-theme"
+  },
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "keywords": [
+    "theme",
+    "light",
+    "dark",
+    "autumn",
+    "earth tones",
+    "latex",
+    "python"
+  ],
+  "contributes": {
+    "themes": [
+      {
+        "label": "Høstlys",
+        "uiTheme": "vs",
+        "path": "./themes/hostlys-color-theme.json"
+      },
+      {
+        "label": "Høstkveld",
+        "uiTheme": "vs-dark",
+        "path": "./themes/hostkveld-color-theme.json"
+      }
+    ],
+    "grammars": [
+      {
+        "scopeName": "latex.host.injection",
+        "path": "./syntaxes/latex-host.injection.json",
+        "injectTo": [
+          "text.tex.latex"
+        ]
+      },
+      {
+        "scopeName": "latex.host.tikzenv.injection",
+        "path": "./syntaxes/latex-host-tikz-environments.injection.json",
+        "injectTo": [
+          "text.tex.latex"
+        ]
+      },
+      {
+        "scopeName": "latex.host.tikz.injection",
+        "path": "./syntaxes/latex-host-tikz.injection.json",
+        "injectTo": [
+          "text.tex.latex"
+        ]
+      },
+      {
+        "scopeName": "latex.host.options.injection",
+        "path": "./syntaxes/latex-host-options.injection.json",
+        "injectTo": [
+          "text.tex.latex"
+        ]
+      }
+    ]
+  },
+  "main": "./extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ]
+}

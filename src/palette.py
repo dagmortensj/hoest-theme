@@ -1,0 +1,203 @@
+# The Høst palette: the single source of every colour in Høstlys and Høstkveld.
+# build.py generates the VS Code themes and the iTerm presets from this file.
+# Change a colour here, run `python3 src/build.py`, and everything else follows.
+#
+# Six colours with fixed roles (see docs/palette.md):
+#   red     landmarks and references: \section, \ref, \cite, links, errors
+#   rust    structure: \begin, \end, \item, the preamble, keywords
+#   orange  numbers and constants
+#   green   functions and environment names
+#   blue    strings and mathematics
+#   plum    classes, types, Greek letters and symbols
+#
+# Høstlys is built on the colours of a set of LuaLaTeX templates. Høstkveld is derived
+# from Høstlys (see below), so a change to one of the six colours in Høstlys carries
+# over to Høstkveld.
+
+from colorspace import adjust, from_oklch, shift_lightness, to_oklch
+
+COLORS = ["red", "rust", "orange", "green", "blue", "plum"]
+
+HOSTLYS = {
+    "type": "light",
+    # The six colours. Red, orange, green, blue and plum are those of the LuaLaTeX templates.
+    "red": "#781414",             # darkred
+    "rust": "#99380e",            # halfway between red and orange in lightness, chroma and hue
+    "orange": "#b85c00",          # darkorange
+    "green": "#4a6b12",           # darkolive
+    "blue": "#1e608c",            # darkblue
+    "plum": "#6e3278",            # darkplum
+    # Text and neutral tones
+    "text": "#282828",
+    "muted": "#7c6f64",           # brackets, descriptions, inactive tabs
+    "comment": "#928374",
+    "inactive": "#a89984",        # inactive icons and titles, ignored files
+    "tab_inactive": "#7c6f64",
+    "line_number": "#c9a77a",
+    "placeholder": "#a89984",
+    # Surfaces
+    "background": "#fdfcf2",      # editor, panel, terminal
+    "frame": "#f4f1e4",           # side bar, tabs, title and status bar
+    "widget": "#f4f1e4",          # hover, suggestions, find widget in the editor
+    "widget_border": "#e2dcc8",
+    "input": "#fdfcf2",           # text fields and dropdowns
+    "current_line": "#f6f2e2",
+    "selection": "#e2d8bf",
+    "selection_dim": "#efe8d6",   # inactive selection, matching words
+    "find": "#e8cca9",
+    "find_dim": "#f1dfc6",
+    "bracket_match": "#ebdbb2",
+    "guide": "#ebe5d3",           # indent guides, ruler
+    "guide_active": "#d5cdb6",
+    "whitespace": "#ddd5bf",
+    "list_active": "#e2d8bf",
+    "list_inactive": "#efe8d6",
+    "list_hover": "#efe9d6",
+    "command_center": "#ebe6d4",
+    "command_center_active": "#e2dcc8",
+    "scrollbar": "#3c3836",       # used with transparency
+    # Terminal: black, white and their bright variants
+    "ansi_black": "#282828",
+    "ansi_white": "#e2dcc8",
+    "ansi_bright_black": "#7c6f64",
+    "ansi_bright_white": "#fdfcf2",
+    # iTerm: the 16 ANSI colours are computed below; only the rest is listed here
+    "iterm": {
+        "Background Color": "#fdfcf2",
+        "Foreground Color": "#282828",
+        "Bold Color": "#282828",
+        "Cursor Color": "#282828",
+        "Cursor Text Color": "#fdfcf2",
+        "Cursor Guide Color": ("#f4f1e4", 0.6),
+        "Selection Color": "#e2d8bf",
+        "Selected Text Color": "#282828",
+        "Link Color": "#781414",
+        "Badge Color": ("#99380e", 0.5),
+    },
+}
+
+HOSTKVELD = {
+    "type": "dark",
+    # The six colours are derived from Høstlys below.
+    "text": "#ebe2cb",
+    "muted": "#a3978c",
+    "comment": "#928374",
+    "inactive": "#998c76",
+    "tab_inactive": "#aa9d87",
+    "line_number": "#7e7564",
+    "placeholder": "#7e7564",
+    "background": "#211e17",
+    "frame": "#2d271d",
+    "widget": "#29251d",
+    "widget_border": "#38332a",
+    "input": "#363022",
+    "current_line": "#29251d",
+    "selection": "#443d30",
+    "selection_dim": "#38332a",
+    "find": "#5c4220",
+    "find_dim": "#3f2f1a",
+    "bracket_match": "#443d30",
+    "guide": "#38332a",
+    "guide_active": "#544c3e",
+    "whitespace": "#38332a",
+    "list_active": "#3d3426",
+    "list_inactive": "#363022",
+    "list_hover": "#363022",
+    "command_center": "#363022",
+    "command_center_active": "#3d3426",
+    "scrollbar": "#ebe2cb",
+    "ansi_black": "#38332a",
+    "ansi_white": "#ebe2cb",
+    "ansi_bright_black": "#928374",
+    "ansi_bright_white": "#f7f0de",
+    "iterm_black": "#38332a",
+    "iterm_white": "#efe7d2",
+    "iterm_bright_black": "#a39584",
+    "iterm_bright_white": "#fffaf0",
+    # Høstkveld in iTerm is a little lighter and whiter, since the window is semi-transparent
+    "iterm": {
+        "Background Color": "#211e17",
+        "Foreground Color": "#f3ecda",
+        "Bold Color": "#fffaf0",
+        "Cursor Color": "#f3ecda",
+        "Cursor Text Color": "#211e17",
+        "Cursor Guide Color": ("#29251d", 0.6),
+        "Selection Color": "#4d4535",
+        "Selected Text Color": "#fffaf0",
+        "Link Color": "@red",
+        "Badge Color": ("@rust", 0.5),
+    },
+}
+
+
+# ---------- Høstkveld is derived from Høstlys ----------
+#
+# The rule, in OKLCH (lightness L, chroma C, hue H):
+#   L = 0.281 + 0.837 · L in Høstlys   same order and spacing, scaled to a dark background
+#   C = 1.35 · C in Høstlys            every colour glows by the same amount
+#   H = H in Høstlys                   the warm colours move slightly towards red, since
+#                                      light colours otherwise look yellower than dark ones
+LIGHTNESS = (0.281, 0.837)
+CHROMA = 1.35
+HUE_SHIFT = {"red": -2.3, "rust": -4.0, "orange": -4.0}
+
+
+def for_dark(name, color):
+    L, C, H = to_oklch(color)
+    a, b = LIGHTNESS
+    return from_oklch(a + b * L, CHROMA * C, H + HUE_SHIFT.get(name, 0.0))
+
+
+for _name in COLORS:
+    HOSTKVELD[_name] = for_dark(_name, HOSTLYS[_name])
+
+
+# ---------- Roles built on the six colours ----------
+
+def _roles(p, dark):
+    hover_shift = 0.06 if dark else -0.06  # the button gets lighter in the dark theme and darker in the light one on hover
+    p.update({
+        "focus": p["orange"] if dark else p["blue"],
+        "button": p["blue"],
+        "button_hover": shift_lightness(p["blue"], hover_shift),
+        "link": p["red"],
+        "badge": p["rust"],                                   # count badges, e.g. on the source control icon
+        "diff_removed": p["red"] if dark else p["rust"],      # red at low opacity turns pink on a light background
+    })
+    # Terminal: the eight slots get the palette colours. The cyan slot holds rust, so all
+    # six colours exist in the terminal and turquoise never appears. The bright variants
+    # are the same colours, a little lighter.
+    p["ansi"] = ansi(p, 0.0)
+    # iTerm: Høstkveld glows a little more than in VS Code. A terminal is used in short
+    # sessions and the window is semi-transparent, so the colours can be lighter and more saturated.
+    boost = ITERM_BOOST if dark else (0.0, 1.0)
+    p["iterm"]["ansi"] = list(ansi(p, *boost, iterm=True).values())
+    for k, v in list(p["iterm"].items()):
+        if isinstance(v, str) and v.startswith("@"):
+            p["iterm"][k] = adjust(p[v[1:]], *boost)
+        elif isinstance(v, tuple) and v[0].startswith("@"):
+            p["iterm"][k] = (adjust(p[v[0][1:]], *boost), v[1])
+
+
+ITERM_BOOST = (0.04, 1.10)  # lightness + 0.04 and chroma × 1.10 for Høstkveld in iTerm
+
+
+# ANSI order: black, red, green, yellow, blue, magenta, cyan, white, then the bright ones
+ANSI_NAMES = ["Black", "Red", "Green", "Yellow", "Blue", "Magenta", "Cyan", "White"]
+ANSI_COLORS = [None, "red", "green", "orange", "blue", "plum", "rust", None]
+
+
+def ansi(p, dL, kC=1.0, iterm=False):
+    own = iterm and "iterm_black" in p
+    black, white = (p["iterm_black"], p["iterm_white"]) if own else (p["ansi_black"], p["ansi_white"])
+    bright_black, bright_white = (p["iterm_bright_black"], p["iterm_bright_white"]) if own else (p["ansi_bright_black"], p["ansi_bright_white"])
+    out = {}
+    for name, c in zip(ANSI_NAMES, ANSI_COLORS):
+        out[name] = black if name == "Black" else white if name == "White" else adjust(p[c], dL, kC)
+    for name, c in zip(ANSI_NAMES, ANSI_COLORS):
+        out["Bright" + name] = bright_black if name == "Black" else bright_white if name == "White" else adjust(p[c], dL + 0.07, kC)
+    return out
+
+
+_roles(HOSTLYS, dark=False)
+_roles(HOSTKVELD, dark=True)

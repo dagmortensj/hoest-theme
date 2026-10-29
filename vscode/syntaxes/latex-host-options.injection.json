@@ -1,0 +1,52 @@
+{
+  "$comment": "Høst: keys and values in options, such as [width=0.8\\linewidth], [label=\\alph*)], \\hypersetup{colorlinks=true}, and lengths such as 2mm and 11pt. Keys are plum as in JSON and YAML, numbers and lengths orange. Applies outside maths, comments, code and tikz (tikz has its own grammar).",
+  "scopeName": "latex.host.options.injection",
+  "injectionSelector": "L:text.tex.latex -comment -markup.raw -source -meta.embedded -string -meta.math -support.class.math -meta.function.environment.latex.tikz -constant -meta.unit -meta.chemistry",
+  "patterns": [
+    {
+      "comment": "key= right after [ { or ,",
+      "match": "(?:(?<=[\\[{])|(,))(\\s*)([A-Za-z][\\w \\-]*?)(\\s*)(=)",
+      "captures": {
+        "3": {
+          "name": "support.type.property-name.latex"
+        },
+        "5": {
+          "name": "punctuation.separator.key-value.latex"
+        }
+      }
+    },
+    {
+      "comment": "true and false as values",
+      "match": "(?<==)(\\s*)(true|false)\\b",
+      "captures": {
+        "2": {
+          "name": "constant.language.boolean.latex"
+        }
+      }
+    },
+    {
+      "comment": "numbers as values: scale=1.2, width=0.8\\linewidth, ymin=0",
+      "match": "(?<==)(\\s*)(-?(?:\\d+\\.?\\d*|\\.\\d+))(pt|cm|mm|em|ex|in|bp|sp|mu|px)?(?![\\w.])",
+      "captures": {
+        "2": {
+          "name": "constant.numeric.latex"
+        },
+        "3": {
+          "name": "keyword.other.unit.latex"
+        }
+      }
+    },
+    {
+      "comment": "lengths with a unit anywhere: \\vspace{2mm}, [4pt], 11pt",
+      "match": "(?<![\\w.])(-?(?:\\d+\\.?\\d*|\\.\\d+))(pt|cm|mm|em|ex|in|bp|sp|mu|px)(?![A-Za-z])",
+      "captures": {
+        "1": {
+          "name": "constant.numeric.latex"
+        },
+        "2": {
+          "name": "keyword.other.unit.latex"
+        }
+      }
+    }
+  ]
+}
