@@ -1,0 +1,4 @@
+# GitHub labels a repository by its main language. Here that would be Python, from the
+# build script and the examples, but the theme itself is not tied to any language.
+# This keeps every file out of the language statistics.
+* linguist-detectable=false
