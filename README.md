@@ -4,9 +4,9 @@ A light and a dark theme in earth tones for VS Code and iTerm. *Høst* is Norweg
 
 **Høstlys** (autumn light) is the light theme and **Høstkveld** (autumn evening) the dark one. The palette comes from a set of LuaLaTeX templates for teaching notes, so code in the editor and the finished PDF share the same colours. The themes are tuned for LaTeX and Python, and cover the rest of VS Code as well.
 
-![Høstkveld in VS Code](docs/screenshots/hostkveld.png)
+![Høstkveld in VS Code](docs/screenshots/hoestkveld.png)
 
-![Høstlys in VS Code](docs/screenshots/hostlys.png)
+![Høstlys in VS Code](docs/screenshots/hoestlys.png)
 
 ![Høstkveld in iTerm](docs/screenshots/iterm.png)
 
