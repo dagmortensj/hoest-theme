@@ -1,6 +1,6 @@
 {
   "$comment": "Høst: circuitikz and tikzcd are drawn with tikz, but LaTeX Workshop does not recognise them. This rule gives them the same scope as tikzpicture.",
-  "scopeName": "latex.host.tikzenv.injection",
+  "scopeName": "latex.hoest.tikzenv.injection",
   "injectionSelector": "L:text.tex.latex -comment -markup.raw -source -meta.embedded -meta.function.environment.latex.tikz",
   "patterns": [
     {

@@ -1,6 +1,6 @@
 {
   "$comment": "Høst: gives definition and preamble commands their own scopes, so they can be coloured like \\newcommand and \\usepackage. The LaTeX Workshop grammar treats them as ordinary commands. Changes only the colours, not how the rest of the file is parsed.",
-  "scopeName": "latex.host.injection",
+  "scopeName": "latex.hoest.injection",
   "injectionSelector": "L:text.tex.latex -comment -markup.raw -source -meta.embedded -string",
   "patterns": [
     {

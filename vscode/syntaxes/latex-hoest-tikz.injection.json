@@ -1,6 +1,6 @@
 {
   "$comment": "Høst: colours the contents of tikzpicture, which the LaTeX Workshop grammar leaves as plain text. Numbers and units, option keys and the words of a path (node, at, cycle, circle ...) get their own scopes. Applies only inside tikzpicture, outside maths and comments.",
-  "scopeName": "latex.host.tikz.injection",
+  "scopeName": "latex.hoest.tikz.injection",
   "injectionSelector": "L:meta.function.environment.latex.tikz -meta.math -comment -string -support.class.math",
   "patterns": [
     {

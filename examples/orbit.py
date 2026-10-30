@@ -22,7 +22,7 @@ def simuler(r0, v0, dt=DT, slutt=SLUTT):
         v[i + 1] = v[i] + akselerasjon(r[i]) * dt
         r[i + 1] = r[i] + v[i + 1] * dt
         if np.linalg.norm(r[i + 1]) < 0.01:
-            print(f"Kollisjon etter {i * dt:.2f} år")
+            print(f"Kollisjon etter {(i + 1) * dt:.2f} år")
             return r[: i + 2]
     return r
 

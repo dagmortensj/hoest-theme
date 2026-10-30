@@ -1,9 +1,14 @@
 {
-  "name": "host-theme",
+  "name": "hoest-theme",
   "displayName": "Høst",
   "description": "Høstlys and Høstkveld: a light and a dark theme in earth tones (høst is Norwegian for autumn). Covers the whole workbench, LaTeX, Python with Pylance semantic highlighting, Markdown, BibTeX, JSON, YAML, shell and diff. Adds a status bar button that switches between light and dark.",
-  "version": "3.4.0",
+  "version": "3.5.0",
   "publisher": "dagmorten",
+  "icon": "icon.png",
+  "galleryBanner": {
+    "color": "#211e17",
+    "theme": "dark"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -25,43 +30,50 @@
     "python"
   ],
   "contributes": {
+    "commands": [
+      {
+        "command": "hoest.toggle",
+        "title": "Switch between Høstlys and Høstkveld",
+        "category": "Høst"
+      }
+    ],
     "themes": [
       {
         "label": "Høstlys",
         "uiTheme": "vs",
-        "path": "./themes/hostlys-color-theme.json"
+        "path": "./themes/hoestlys-color-theme.json"
       },
       {
         "label": "Høstkveld",
         "uiTheme": "vs-dark",
-        "path": "./themes/hostkveld-color-theme.json"
+        "path": "./themes/hoestkveld-color-theme.json"
       }
     ],
     "grammars": [
       {
-        "scopeName": "latex.host.injection",
-        "path": "./syntaxes/latex-host.injection.json",
+        "scopeName": "latex.hoest.injection",
+        "path": "./syntaxes/latex-hoest.injection.json",
         "injectTo": [
           "text.tex.latex"
         ]
       },
       {
-        "scopeName": "latex.host.tikzenv.injection",
-        "path": "./syntaxes/latex-host-tikz-environments.injection.json",
+        "scopeName": "latex.hoest.tikzenv.injection",
+        "path": "./syntaxes/latex-hoest-tikz-environments.injection.json",
         "injectTo": [
           "text.tex.latex"
         ]
       },
       {
-        "scopeName": "latex.host.tikz.injection",
-        "path": "./syntaxes/latex-host-tikz.injection.json",
+        "scopeName": "latex.hoest.tikz.injection",
+        "path": "./syntaxes/latex-hoest-tikz.injection.json",
         "injectTo": [
           "text.tex.latex"
         ]
       },
       {
-        "scopeName": "latex.host.options.injection",
-        "path": "./syntaxes/latex-host-options.injection.json",
+        "scopeName": "latex.hoest.options.injection",
+        "path": "./syntaxes/latex-hoest-options.injection.json",
         "injectTo": [
           "text.tex.latex"
         ]
@@ -70,6 +82,7 @@
   },
   "main": "./extension.js",
   "activationEvents": [
-    "onStartupFinished"
+    "onStartupFinished",
+    "onCommand:hoest.toggle"
   ]
 }

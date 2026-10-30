@@ -201,7 +201,6 @@
     "tab.unfocusedInactiveModifiedBorder": "#b85c0040",
     "tab.lastPinnedBorder": "#e2dcc8",
     "tab.dragAndDropBorder": "#b85c00",
-    "editorActiveLineNumber.foreground": "#b85c00",
     "editor.hoverHighlightBackground": "#efe8d6",
     "editor.rangeHighlightBackground": "#b85c001a",
     "editor.foldPlaceholderForeground": "#7c6f64",

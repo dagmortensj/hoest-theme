@@ -1,6 +1,6 @@
 {
   "$comment": "Høst: keys and values in options, such as [width=0.8\\linewidth], [label=\\alph*)], \\hypersetup{colorlinks=true}, and lengths such as 2mm and 11pt. Keys are plum as in JSON and YAML, numbers and lengths orange. Applies outside maths, comments, code and tikz (tikz has its own grammar).",
-  "scopeName": "latex.host.options.injection",
+  "scopeName": "latex.hoest.options.injection",
   "injectionSelector": "L:text.tex.latex -comment -markup.raw -source -meta.embedded -string -meta.math -support.class.math -meta.function.environment.latex.tikz -constant -meta.unit -meta.chemistry",
   "patterns": [
     {

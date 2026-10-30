@@ -13,6 +13,8 @@ The palette comes from a set of LuaLaTeX templates: dark red, orange, olive gree
 
 The themes cover the whole workbench and are tuned for LaTeX (with LaTeX Workshop), Python (with Pylance semantic highlighting), Markdown, BibTeX, JSON, YAML, shell and diff. Four small injection grammars colour content that LaTeX Workshop leaves plain: tikz and circuitikz, option keys, siunitx, mhchem and file paths.
 
-A button at the right of the status bar switches between Høstlys and Høstkveld.
+While Høstlys or Høstkveld is active, a button at the right of the status bar switches between them. The same command is in the command palette as **Høst: Switch between Høstlys and Høstkveld**.
+
+The neutral tones come from [Gruvbox](https://github.com/morhetz/gruvbox) by Pavel Pertsev.
 
 Matching iTerm presets, screenshots and the full palette are at [github.com/dagmortensj/hoest-theme](https://github.com/dagmortensj/hoest-theme).

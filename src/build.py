@@ -4,20 +4,22 @@
     python3 src/build.py           writes vscode/themes/*.json, iterm/*.itermcolors and docs/palette.svg
     python3 src/build.py --check   also prints the contrast of the text colours
 
-Afterwards, raise the version in vscode/package.json and package the extension:
-    cd vscode && npx @vscode/vsce package -o host-theme.vsix
+Afterwards, raise the version in vscode/package.json, add a line to vscode/CHANGELOG.md
+and package the extension:
+    cd vscode && npx @vscode/vsce package -o hoest-theme.vsix
 
 Colours in the workbench and in the code are named by their role in the palette
 ("red", "selection" and so on), never by hex code. The hex codes live only in palette.py.
 """
 import json
+import math
 import plistlib
 import sys
 from pathlib import Path
 
 sys.dont_write_bytecode = True  # no __pycache__ in the repo
-from colorspace import contrast
-from palette import COLORS, HOSTKVELD, HOSTLYS
+from colorspace import contrast, to_oklch
+from palette import COLORS, GAMUT_REPORT, HOESTKVELD, HOESTLYS, UNUSED_OUT_OF_GAMUT
 
 ROOT = Path(__file__).resolve().parent.parent
 THEMES = ROOT / "vscode" / "themes"
@@ -291,7 +293,6 @@ def ui_extended(p):
 
     # ----- Editor -----
     u.update({
-        "editorActiveLineNumber.foreground": "orange",
         "editor.hoverHighlightBackground": "selection_dim",
         "editor.rangeHighlightBackground": a("orange", 0.10),
         "editor.foldPlaceholderForeground": "muted",
@@ -960,12 +961,29 @@ def check(name, p):
         print(f"  {role:12s} {p[role]}  {k:4.1f}" + note)
 
 
+def gamut_report():
+    """The colours outside sRGB: what the rule asked for and what the theme got."""
+    print(f"\nOutside sRGB ({len(GAMUT_REPORT)} colours, chosen in OUT_OF_GAMUT in palette.py). ΔE is the distance in OKLab, about 0.02 is just visible.")
+    print(f"  {'':34s} {'target L    C     H':20s}   {'result':7s}  {'L    C     H':17s}   ΔE")
+    for label, (L, C, H), choice, result in GAMUT_REPORT:
+        rL, rC, rH = to_oklch(result)
+        print(f"  {label:34s} {L:.3f} {C:.3f} {H:5.1f}   {result}  {rL:.3f} {rC:.3f} {rH:5.1f}   {_target_distance(L, C, H, result):.3f}  {choice}")
+
+
+def _target_distance(L, C, H, result):
+    """OKLab distance between the target, which lies outside sRGB, and the result."""
+    rL, rC, rH = to_oklch(result)
+    a = (L, C * math.cos(math.radians(H)), C * math.sin(math.radians(H)))
+    b = (rL, rC * math.cos(math.radians(rH)), rC * math.sin(math.radians(rH)))
+    return math.dist(a, b)
+
+
 def make_svg():
     """docs/palette.svg: the templates, Høstlys and Høstkveld, one row each."""
     templates = ["#781414", "#b85c00", "#4a6b12", "#1e608c", "#6e3278"]
     rows = [("LuaLaTeX templates", "#ffffff", "#282828", templates, [None] * 5),
-            ("Høstlys", HOSTLYS["background"], HOSTLYS["text"], [HOSTLYS[n] for n in COLORS], COLORS),
-            ("Høstkveld", HOSTKVELD["background"], HOSTKVELD["text"], [HOSTKVELD[n] for n in COLORS], COLORS)]
+            ("Høstlys", HOESTLYS["background"], HOESTLYS["text"], [HOESTLYS[n] for n in COLORS], COLORS),
+            ("Høstkveld", HOESTKVELD["background"], HOESTKVELD["text"], [HOESTKVELD[n] for n in COLORS], COLORS)]
     b, h, gap, x0 = 96, 96, 12, 222
     width = x0 + 6 * (b + gap) + 8
     y, parts = 12, []
@@ -989,7 +1007,7 @@ def make_svg():
 def main():
     for d in (THEMES, ITERM, DOCS):
         d.mkdir(parents=True, exist_ok=True)
-    for name, file, p in [("Høstlys", "hostlys", HOSTLYS), ("Høstkveld", "hostkveld", HOSTKVELD)]:
+    for name, file, p in [("Høstlys", "hoestlys", HOESTLYS), ("Høstkveld", "hoestkveld", HOESTKVELD)]:
         theme = make_theme(name, p)
         (THEMES / f"{file}-color-theme.json").write_text(json.dumps(theme, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
         with open(ITERM / f"{name}.itermcolors", "wb") as f:
@@ -998,6 +1016,10 @@ def main():
         if "--check" in sys.argv:
             check(name, p)
     make_svg()
+    if "--check" in sys.argv:
+        gamut_report()
+    for label in UNUSED_OUT_OF_GAMUT:
+        print(f"Note: {label} is listed in OUT_OF_GAMUT but now lies inside sRGB, so the entry can go.")
 
 
 if __name__ == "__main__":

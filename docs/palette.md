@@ -9,13 +9,13 @@ How the colours in Høstlys and Høstkveld were chosen, what each one means, and
 Every hex code lives in `src/palette.py` and nowhere else. `src/build.py` generates the two VS Code themes in `vscode/themes/`, the iTerm presets in `iterm/` and `docs/palette.svg` from it. The workflow:
 
 1. Change a colour in `src/palette.py`, or a rule in `src/build.py`.
-2. Run `python3 src/build.py` from the repository root. With `--check` it also prints the contrast of every text colour.
-3. Raise `version` in `vscode/package.json`, then package and install the extension:
+2. Run `python3 src/build.py` from the repository root. With `--check` it also prints the contrast of every text colour and the colours that lie outside sRGB. If a change pushes a colour outside sRGB, the build stops and says what to add to `OUT_OF_GAMUT`.
+3. Raise `version` in `vscode/package.json`, add a line to `vscode/CHANGELOG.md`, then package and install the extension:
 
    ```zsh
    cd vscode
-   npx @vscode/vsce package -o host-theme.vsix
-   code --install-extension host-theme.vsix --force
+   npx @vscode/vsce package -o hoest-theme.vsix
+   code --install-extension hoest-theme.vsix --force
    ```
 
    With a new version number it is easy to see under Extensions that the new package is in place.
@@ -73,7 +73,7 @@ The five colours defined in the style files of the templates:
 | Selection | `#E2D8BF` | |
 | Search match | `#E8CCA9` | |
 
-Red, orange, green, blue and plum are the colours of the templates. Rust sits exactly halfway between red and orange in lightness, chroma and hue, so the step from red through rust to orange is even.
+Red, orange, green, blue and plum are the colours of the templates. Rust sits exactly halfway between red and orange in lightness, chroma and hue, so the step from red through rust to orange is even. The text colour, the greys and the comment colour come from [Gruvbox](https://github.com/morhetz/gruvbox).
 
 Removed lines in diffs have a rust background at low opacity, since red at low opacity turns pink on the light background.
 
@@ -101,7 +101,13 @@ The six colours are derived from Høstlys in the OKLCH colour space, where equal
 - **Chroma**: 1.35 times the chroma in Høstlys, the same for every colour.
 - **Hue**: the same as in Høstlys, except that red, rust and orange move 2 to 4 degrees towards red, since light colours otherwise look yellower than dark ones.
 
-Red has the lowest contrast. It is used mostly for bold headings and short references, where it reads well. Orange reaches the edge of what a standard screen can show, so in practice its chroma rises only 1.24 times. The frame is lighter than the editor, and there are no border lines.
+Red has the lowest contrast. It is used mostly for bold headings and short references, where it reads well. The frame is lighter than the editor, and there are no border lines.
+
+### Colours outside sRGB
+
+A hex code can only describe colours in sRGB, the colour space of a standard screen. For orange the rule asks for a colour that sRGB does not contain: OKLCH (0.762, 0.195, 49.8) would need 116 % red. The colour is therefore clipped, which means that each channel is cut at 255. That gives `#FF851B`, OKLCH (0.740, 0.179, 53.5), slightly darker and less saturated than the target, with the hue close to that of orange in Høstlys. This result was chosen by eye. The alternative, keeping lightness and hue and lowering the chroma until the colour fits, gives `#FF904D`, a paler apricot. A Display P3 screen could show the target itself, but VS Code themes and iTerm presets are written in sRGB.
+
+The bright terminal colours and the stronger iTerm colours meet the same limit for orange, rust, bright red and bright blue. Every colour outside sRGB is listed in `OUT_OF_GAMUT` in `src/palette.py` with the choice made for it, either `clip` or `chroma`. If a change to the palette pushes a new colour outside sRGB, the build stops and names it. `python3 src/build.py --check` lists all of them with the target, the result and the distance between them.
 
 ## Terminal
 
@@ -143,7 +149,7 @@ Background `#211E17`, text `#EBE2CB`, selection `#443D30`.
 
 Background `#211E17`, text `#F3ECDA`, selection `#4D4535`, bold text `#FFFAF0`.
 
-Høstkveld glows a little more in iTerm than in VS Code: lightness is 0.04 higher and chroma 1.10 times larger. A terminal is used in short sessions, and an iTerm window is often semi-transparent, so the colours can be stronger. Orange is already as saturated as a standard screen can show.
+Høstkveld glows a little more in iTerm than in VS Code: lightness is 0.04 higher and chroma 1.10 times larger. A terminal is used in short sessions, and an iTerm window is often semi-transparent, so the colours can be stronger. Orange, rust and the bright red and blue reach the edge of sRGB here, and are clipped as described under [Colours outside sRGB](#colours-outside-srgb).
 
 | Slot | Normal | Bright |
 |---|---|---|
@@ -164,9 +170,9 @@ Code is coloured for LaTeX (with LaTeX Workshop), BibTeX, Python, Markdown with 
 
 The LaTeX Workshop grammar recognises a lot, but leaves some common content as plain text. The extension therefore adds four small injection grammars in `vscode/syntaxes/`. They change only the colours, not how the rest of the file is parsed:
 
-- `latex-host.injection.json`: definitions and the preamble (`\NewDocumentCommand`, `\DeclareMathOperator`, `\newtheorem`, `\definecolor`, `\usetikzlibrary` and similar get the same role as `\newcommand` and `\usepackage`), numbers and units in siunitx (`\qty`, `\num`, `\unit`), chemistry in mhchem (`\ce`) and file paths (`\includegraphics`, `\addbibresource`, `\graphicspath`).
-- `latex-host-options.injection.json`: keys and values in options, such as `[width=0.8\linewidth]`, `[label=\alph*)]` and `\hypersetup{colorlinks=true}`, and lengths such as `2mm` and `11pt`.
-- `latex-host-tikz.injection.json`: the contents of tikzpicture: numbers and units, option keys and the words of a path (`node`, `at`, `cycle`, `circle`, `to`).
-- `latex-host-tikz-environments.injection.json`: makes `circuitikz` and `tikzcd` coloured like tikz.
+- `latex-hoest.injection.json`: definitions and the preamble (`\NewDocumentCommand`, `\DeclareMathOperator`, `\newtheorem`, `\definecolor`, `\usetikzlibrary` and similar get the same role as `\newcommand` and `\usepackage`), numbers and units in siunitx (`\qty`, `\num`, `\unit`), chemistry in mhchem (`\ce`) and file paths (`\includegraphics`, `\addbibresource`, `\graphicspath`).
+- `latex-hoest-options.injection.json`: keys and values in options, such as `[width=0.8\linewidth]`, `[label=\alph*)]` and `\hypersetup{colorlinks=true}`, and lengths such as `2mm` and `11pt`.
+- `latex-hoest-tikz.injection.json`: the contents of tikzpicture: numbers and units, option keys and the words of a path (`node`, `at`, `cycle`, `circle`, `to`).
+- `latex-hoest-tikz-environments.injection.json`: makes `circuitikz` and `tikzcd` coloured like tikz.
 
 In siunitx the number is orange and the unit has the text colour, also in maths, where the unit would otherwise be blue like a variable. Chemical formulas are blue like maths, and file paths are blue like strings.

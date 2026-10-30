@@ -14,18 +14,22 @@ A light and a dark theme in earth tones for VS Code and iTerm. *Høst* is Norweg
 
 ### VS Code
 
-1. Download [`vscode/host-theme.vsix`](vscode/host-theme.vsix).
+1. Download [`vscode/hoest-theme.vsix`](vscode/hoest-theme.vsix).
 2. Drag the file into the Extensions view in VS Code, or choose **Extensions → … → Install from VSIX…**. From a terminal:
 
    ```zsh
-   code --install-extension host-theme.vsix
+   code --install-extension hoest-theme.vsix
    ```
 
 3. Press Cmd+K Cmd+T (Ctrl+K Ctrl+T on Windows and Linux) and pick **Høstlys** or **Høstkveld**.
 
-It also works in VSCodium and Cursor. A new version installs over the old one in the same way.
+It also works in VSCodium and Cursor. A new version installs over the old one in the same way. Before version 3.5 the extension was called `host-theme`, and VS Code sees the new name as a different extension, so remove the old one first:
 
-The extension adds a button at the right of the status bar that switches between the light and the dark theme. It uses VS Code's own setting for this, so set the pair once in your settings:
+```zsh
+code --uninstall-extension dagmorten.host-theme
+```
+
+While Høstlys or Høstkveld is active, a button at the right of the status bar switches between them. The same command is in the command palette as **Høst: Switch between Høstlys and Høstkveld**. It works as it is. If you also want VS Code's own light/dark switching, for example when it follows the system appearance, set the pair in your settings:
 
 ```jsonc
 "workbench.preferredLightColorTheme": "Høstlys",
@@ -61,6 +65,8 @@ Comments, braces and brackets are grey. Variables, prose and ordinary LaTeX comm
 
 Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order and roles in both themes. [`docs/palette.md`](docs/palette.md) has every colour with its contrast, the rule, the terminal colours and the details of what the theme covers.
 
+The neutral tones, the text, greys and comments, come from [Gruvbox](https://github.com/morhetz/gruvbox) by Pavel Pertsev.
+
 ## What it covers
 
 - The whole VS Code workbench, including diff and merge views, debugging, testing, notebooks, the command palette, settings and chat. Nothing falls back on VS Code's default blues.
@@ -74,8 +80,9 @@ Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, 
 |---|---|
 | `src/palette.py` | Every colour, and the rule that derives Høstkveld from Høstlys |
 | `src/build.py` | Turns the palette into the VS Code themes, the iTerm presets and `docs/palette.svg` |
-| `src/colorspace.py` | OKLCH conversion and WCAG contrast |
-| `vscode/` | The VS Code extension: themes, injection grammars, the status bar button and the packaged `.vsix` |
+| `src/colorspace.py` | OKLCH conversion, the sRGB gamut and WCAG contrast |
+| `src/icon.py` | Draws the extension icon from the palette (needs Pillow) |
+| `vscode/` | The VS Code extension: themes, injection grammars, the status bar button, the icon, the changelog and the packaged `.vsix` |
 | `iterm/` | The iTerm presets |
 | `examples/` | One sample file per language, for checking how a change looks |
 | `docs/` | The palette in detail, and screenshots |
@@ -85,10 +92,10 @@ Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, 
 Every hex code lives in `src/palette.py`. After a change:
 
 ```zsh
-python3 src/build.py --check        # rebuild themes and presets, print contrast
-cd vscode                           # then raise "version" in package.json
-npx @vscode/vsce package -o host-theme.vsix
-code --install-extension host-theme.vsix --force
+python3 src/build.py --check        # rebuild themes and presets, print contrast and colours outside sRGB
+cd vscode                           # then raise "version" in package.json and add a line to CHANGELOG.md
+npx @vscode/vsce package -o hoest-theme.vsix
+code --install-extension hoest-theme.vsix --force
 ```
 
 The files in `vscode/themes/` and `iterm/` are generated, so edit the palette rather than those files.
