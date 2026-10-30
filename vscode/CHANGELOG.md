@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.5.1 (2026-10-30)
+
+- A new icon: three leaves in orange, rust and green on the Høstkveld background, drawn from the palette by `src/icon.py`.
+
 ## 3.5.0 (2026-10-30)
 
 - The extension is now called `hoest-theme`, matching the repository. VS Code treats it as a new extension, so uninstall the old one first: `code --uninstall-extension dagmorten.host-theme`.
