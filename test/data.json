@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json.schemastore.org/package.json",
+  "navn": "hoest-prove",
+  "versjon": "1.2.0",
+  "aktiv": true,
+  "slettet": false,
+  "forelder": null,
+  "masse": 2.5,
+  "negativ": -1.6e-19,
+  "heltall": 42,
+  "tekst med escape": "linje\nny linje \"sitat\" æ",
+  "liste": [1, 2, 3, "fire", [5, 6], {"sju": 7}],
+  "objekt": {
+    "nestet": {
+      "dypt": {
+        "verdi": "bunnen"
+      }
+    },
+    "tom liste": [],
+    "tomt objekt": {}
+  },
+  "planeter": [
+    { "navn": "Jorda", "masse": 5.972e24, "måner": 1 },
+    { "navn": "Mars", "masse": 6.417e23, "måner": 2 }
+  ]
+}

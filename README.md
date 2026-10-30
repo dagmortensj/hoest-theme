@@ -1,5 +1,8 @@
 # Høst
 
+<!-- First paragraph: written by Dag-Morten in his own words. Replace the placeholder below before publishing. -->
+*[Placeholder for the first paragraph, in my own words: why I made Høst, and what it is for.]*
+
 A light and a dark theme in earth tones for VS Code and iTerm. *Høst* is Norwegian for autumn.
 
 **Høstlys** (autumn light) is the light theme and **Høstkveld** (autumn evening) the dark one. The palette comes from a set of LuaLaTeX templates for teaching notes, so code in the editor and the finished PDF share the same colours. The themes are tuned for LaTeX and Python, and cover the rest of VS Code as well.
@@ -14,16 +17,15 @@ A light and a dark theme in earth tones for VS Code and iTerm. *Høst* is Norweg
 
 ### VS Code
 
-1. Download [`vscode/hoest-theme.vsix`](vscode/hoest-theme.vsix).
-2. Drag the file into the Extensions view in VS Code, or choose **Extensions → … → Install from VSIX…**. From a terminal:
+1. Open the Extensions view (Cmd+Shift+X, or Ctrl+Shift+X on Windows and Linux), search for **Høst** and choose **Install**. From a terminal:
 
    ```zsh
-   code --install-extension hoest-theme.vsix
+   code --install-extension dagmorten.hoest-theme
    ```
 
-3. Press Cmd+K Cmd+T (Ctrl+K Ctrl+T on Windows and Linux) and pick **Høstlys** or **Høstkveld**.
+2. Press Cmd+K Cmd+T (Ctrl+K Ctrl+T on Windows and Linux) and pick **Høstlys** or **Høstkveld**.
 
-It also works in VSCodium and Cursor. A new version installs over the old one in the same way. Before version 3.5 the extension was called `host-theme`, and VS Code sees the new name as a different extension, so remove the old one first:
+The extension is also in this repository as [`vscode/hoest-theme.vsix`](vscode/hoest-theme.vsix). Drag the file into the Extensions view, or choose **Extensions → … → Install from VSIX…**. That is the way to install it in VSCodium and Cursor, and a new version installs over the old one in the same way. Before version 3.5 the extension was called `host-theme`, and VS Code sees the new name as a different extension, so remove the old one first:
 
 ```zsh
 code --uninstall-extension dagmorten.host-theme
@@ -50,29 +52,28 @@ Høstkveld in iTerm glows a little more than in VS Code, since a terminal is use
 
 ![The Høst palette](docs/palette.svg)
 
-Each colour has one role, in every language and in both themes:
+Each colour has one role, in every language and in both themes. The full rules, with bold, italic and the cases where a grammar sets limits, are in [`docs/rules.md`](docs/rules.md).
 
 | Colour | Role | Examples |
 |---|---|---|
-| Red | Landmarks and references | `\section`, `\ref`, `\cite`, links, errors |
-| Rust | Structure and keywords | `\begin`, `\end`, the preamble, `def`, `if`, `return` |
-| Orange | Numbers and constants | `3.14`, `True`, `None` |
-| Green | Functions and environments | function names, `equation`, `\draw` |
-| Blue | Strings and mathematics | `"text"`, everything inside `$...$` |
-| Plum | Types and symbols | classes, `self`, `\gamma`, keys in JSON and YAML |
+| Rust | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `\begin`, the preamble |
+| Orange | Values and input | `3.14`, `True`, `None`, parameters in italic |
+| Green | Tools that do something | function names, `print`, built-in types such as `int` and `str`, CSS properties, `equation`, `\draw` |
+| Blue | Text and mathematics | `"text"`, everything inside `$...$` |
+| Plum | What you named yourself, and symbols | your classes, `self` in italic, `@property`, keys in JSON and YAML, `\n`, `\gamma` |
+| Red | Signals and references | `\section`, `\ref`, `\cite`, links, errors |
 
-Comments, braces and brackets are grey. Variables, prose and ordinary LaTeX commands such as `\frac` and `\label` keep the text colour. Bold is used for what you look for when scrolling: sections and environments in LaTeX, control keywords such as `def`, `if`, `for` and `return` in Python, and headings in Markdown.
+Comments, braces and brackets are grey. Variables, operators, prose and ordinary LaTeX commands such as `\frac` and `\label` keep the text colour. Bold marks landmarks, what you look for when scrolling: definitions and control flow in every language, `\begin`, `\end` and sections in LaTeX, and headings in Markdown. Italic marks placeholders, as variables are set in mathematics: parameters, `self` and `this`, and `#1` in LaTeX.
 
 Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order and roles in both themes. [`docs/palette.md`](docs/palette.md) has every colour with its contrast, the rule, the terminal colours and the details of what the theme covers.
-
-The neutral tones, the text, greys and comments, come from [Gruvbox](https://github.com/morhetz/gruvbox) by Pavel Pertsev.
 
 ## What it covers
 
 - The whole VS Code workbench, including diff and merge views, debugging, testing, notebooks, the command palette, settings and chat. Nothing falls back on VS Code's default blues.
 - LaTeX with LaTeX Workshop, plus four small injection grammars for what LaTeX Workshop leaves as plain text: tikz, circuitikz and tikzcd, option keys such as `[width=0.8\linewidth]`, siunitx, mhchem and file paths.
 - Python, with semantic highlighting for Pylance.
-- Markdown with maths, BibTeX, JSON, YAML, TOML, shell, diff, git commits, HTML, CSS, C and logs.
+- The same roles in TypeScript, JavaScript, Java, C#, C, C++, Go, Rust, Kotlin, Swift, PHP, Ruby, SQL, HTML and CSS, with a sample file for each in `examples/`.
+- Markdown with maths, BibTeX, JSON, YAML, TOML, shell, diff, git commits and logs.
 
 ## Repository layout
 
@@ -85,7 +86,7 @@ The neutral tones, the text, greys and comments, come from [Gruvbox](https://git
 | `vscode/` | The VS Code extension: themes, injection grammars, the status bar button, the icon, the changelog and the packaged `.vsix` |
 | `iterm/` | The iTerm presets |
 | `examples/` | One sample file per language, for checking how a change looks |
-| `docs/` | The palette in detail, and screenshots |
+| `docs/` | The colour rules, the palette in detail, and screenshots |
 
 ## Changing the colours
 
@@ -99,6 +100,10 @@ code --install-extension hoest-theme.vsix --force
 ```
 
 The files in `vscode/themes/` and `iterm/` are generated, so edit the palette rather than those files.
+
+## Credits
+
+Høst is designed by Dag-Morten and made with [Claude](https://claude.ai). Apart from the first paragraph of this page, the documentation is written with Claude. The neutral tones come from [Gruvbox](https://github.com/morhetz/gruvbox) by Pavel Pertsev.
 
 ## License
 

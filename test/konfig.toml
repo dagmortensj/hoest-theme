@@ -1,0 +1,36 @@
+# TOML: tabeller, nøkler, verdier og datoer
+tittel = "Høst-prøve"
+aktiv = true
+'nøkkel med apostrof' = 'rå tekst \n uten escape'
+"nøkkel med sitat" = "tekst med escape\t"
+
+[eier]
+navn = "Ola"
+oppdatert = 2026-10-30T17:32:00+01:00
+dag = 2026-10-30
+tid = 07:32:00
+
+[tall]
+heltall = +99
+negativt = -17
+heks = 0xDEADBEEF
+oktal = 0o755
+binaer = 0b1101
+flyt = 6.674e-11
+uendelig = inf
+ikke_tall = nan
+lesbar = 1_000_000
+
+[server.alfa]
+porter = [8000, 8001, 8002]
+innebygd = { x = 1, y = 2 }
+
+[[planet]]
+navn = "Jorda"
+maaner = ["Månen"]
+
+[[planet]]
+navn = "Mars"
+flerlinje = """
+Første linje
+andre linje"""

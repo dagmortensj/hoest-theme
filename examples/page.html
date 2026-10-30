@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="nb">
+<head>
+  <meta charset="utf-8">
+  <title>Fysikk 2 &ndash; Høst</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Eksempelfil for å se Høst-temaene på HTML -->
+</head>
+<body class="kurs" data-fag="fysikk-2">
+  <header>
+    <h1>Bevegelse i to dimensjoner</h1>
+    <nav><a href="#prosjektil">Prosjektil</a> | <a href="https://ndla.no">NDLA</a></nav>
+  </header>
+  <main id="prosjektil">
+    <p>Utgangsfarten er <strong>12,5&nbsp;m/s</strong> og vinkelen <em>35&deg;</em>.</p>
+    <img src="bane.png" alt="Banen til ballen" width="480" height="320">
+    <button type="button" onclick="start()" disabled>Start</button>
+  </main>
+  <script>
+    const v0 = 12.5;
+    function start() {
+      document.querySelector("#prosjektil").classList.add("aktiv");
+    }
+  </script>
+</body>
+</html>

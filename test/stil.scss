@@ -1,0 +1,34 @@
+// SCSS: variabler, nesting, mixins, funksjoner og løkker
+@use "sass:math";
+@use "farger" as f;
+
+$rust: #c4502b !default;
+$grunn: 8px;
+$brytepunkter: (liten: 600px, stor: 1200px);
+
+@mixin kort($skygge: true) {
+  padding: $grunn * 2;
+  @if $skygge { box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); }
+  @else { border: 1px solid f.$kant; }
+}
+
+@function rem($px) {
+  @return math.div($px, 16px) * 1rem;
+}
+
+.kort {
+  @include kort(false);
+  color: darken($rust, 10%);
+  font-size: rem(14px);
+
+  &:hover { color: $rust; }
+  &__tittel { font-weight: bold; }
+  > p + p { margin-top: #{$grunn}; }
+
+  @each $navn, $bredde in $brytepunkter {
+    @media (min-width: $bredde) { &--#{$navn} { width: $bredde; } }
+  }
+}
+
+%felles { margin: 0; }
+.liste { @extend %felles; @for $i from 1 through 3 { &-#{$i} { order: $i; } } }

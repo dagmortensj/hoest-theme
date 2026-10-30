@@ -4,6 +4,11 @@
   "injectionSelector": "L:text.tex.latex -comment -markup.raw -source -meta.embedded -string",
   "patterns": [
     {
+      "comment": "Macro parameters #1 to #9 in \\newcommand, \\def and \\NewDocumentCommand: orange italic, like parameters in code",
+      "match": "(?<!\\\\)#[1-9]",
+      "name": "variable.parameter.macro.latex"
+    },
+    {
       "comment": "File paths: \\includegraphics[...]{file}. The options are coloured by the options grammar.",
       "begin": "((\\\\)includegraphics\\*?)(?=\\s*[\\[{])",
       "beginCaptures": {

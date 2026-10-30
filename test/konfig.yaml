@@ -1,0 +1,35 @@
+# YAML: nøkler, verdier, lister, ankre og flerlinjetekst
+---
+navn: hoest-prove
+versjon: "1.2.0"
+aktiv: true
+slettet: no
+tom: null
+annen_tom: ~
+masse: 2.5
+heltall: 0x1F
+dato: 2026-10-30
+standard: &standard
+  farge: rust
+  størrelse: 14
+tema:
+  <<: *standard
+  farge: oransje
+liste:
+  - første
+  - 'andre med apostrof'
+  - "tredje med escape\t"
+  - { innebygd: objekt, tall: 3 }
+  - [a, b, c]
+beskrivelse: |
+  Flere linjer
+  med bevart linjeskift.
+foldet: >-
+  Linjer som foldes
+  sammen til én.
+egen_type: !!str 123
+jobber:
+  bygg:
+    runs-on: ubuntu-latest
+    steps:
+      - run: npm ci && npm test

@@ -1,5 +1,18 @@
 # Changelog
 
+## 3.6.0 (2026-10-30)
+
+The colours follow written rules, the same in every language, described in [docs/rules.md](https://github.com/dagmortensj/hoest-theme/blob/main/docs/rules.md). No colour in the palette changed; what changed is which words get them.
+
+- Definitions are bold in every language, as `def` and `class` already were in Python. `import`, `export`, `from`, `new` and `#include` are no longer bold.
+- Parameters in function signatures are orange and italic, and `self`, `cls` and `this` are plum and italic. Italic marks a placeholder, as variables are set in mathematics. Generic type parameters and `#1` in LaTeX macros are italic too.
+- Built-in types such as `int`, `str`, `number` and `double` are green, like built-in functions. CSS properties and HTML attributes are green as well.
+- Plum is kept for what you named yourself and for symbols: your classes and types, keys, selectors, decorators as one unit, and special characters in strings, now including placeholders such as `%d`.
+- Classes the language provides (`Error`, `Promise`, `ValueError`), special methods such as `__init__` where they are defined, and attributes in JSX are green. Rust attributes such as `#[derive(Debug)]` are plum as one unit, like decorators.
+- Logical operators written as symbols (`&&`, `||`, `!`, `??`) keep the text colour like other operators; the words `and`, `or`, `not`, `in` and `is` stay bold. `typeof`, `instanceof`, `satisfies` and `import type` are no longer bold, and constructors, `@mixin` and `@function` are.
+- Keys in TOML, attributes in XML, media features in CSS, data types in SQL, enum members in C#, decorators in TypeScript, attributes in C++ and PHP, and `self` in Swift follow the same rules as in the other languages.
+- Fixes: types in Go, C#, PHP and Java no longer appear in the keyword colour, the exponent of a number is orange, `new` in C# is no longer bold, and namespaces, package names, package paths in Java and columns in SQL keep the text colour.
+
 ## 3.5.1 (2026-10-30)
 
 - A new icon: three leaves in orange, rust and green on the Høstkveld background, drawn from the palette by `src/icon.py`.

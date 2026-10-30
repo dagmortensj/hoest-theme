@@ -1,0 +1,13 @@
+// JSON med kommentarer, som settings.json i VS Code
+{
+  /* Blokkommentar */
+  "workbench.colorTheme": "Høstkveld",
+  "editor.fontSize": 14,
+  "editor.fontFamily": "MesloLGS Nerd Font, monospace",
+  "editor.bracketPairColorization.enabled": true,
+  "editor.rulers": [80, 120],
+  "files.exclude": { "**/*.aux": true, "**/.DS_Store": true },
+  "[python]": { "editor.tabSize": 4 },
+  "editor.tokenColorCustomizations": null,
+  "terminal.integrated.env.osx": { "PATH": "${env:PATH}:/opt/homebrew/bin" }, // til slutt
+}

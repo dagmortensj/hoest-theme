@@ -1,0 +1,32 @@
+/* CSS: selektorer, egenskaper, verdier, enheter og at-regler */
+@import url("fonter.css");
+
+:root {
+  --rust: #c4502b;
+  --avstand: calc(1rem + 2px);
+}
+
+html, body { margin: 0; padding: 0 1.5em; font-family: "Meslo", monospace; }
+.kort > h2 + p ~ span { color: var(--rust); font-size: clamp(12px, 2vw, 18px); }
+#topp:hover::after { content: "→"; opacity: 0.5; transform: rotate(45deg); }
+a[href^="https"]:not(.intern) { text-decoration: underline dotted; }
+input:focus-visible { outline: 2px solid rgb(100 120 40 / 50%) !important; }
+
+@media (prefers-color-scheme: dark) and (min-width: 600px) {
+  body { background: hsl(40deg 20% 10%); }
+}
+
+@keyframes pulser {
+  from { scale: 1; }
+  50% { scale: 1.05; }
+  to { scale: 1; }
+}
+
+.rutenett {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  animation: pulser 2s ease-in-out infinite;
+  transition: color 0.3s, background-color 300ms;
+  z-index: 10;
+  width: 100%;
+}

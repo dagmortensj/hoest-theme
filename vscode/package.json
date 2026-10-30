@@ -2,7 +2,7 @@
   "name": "hoest-theme",
   "displayName": "Høst",
   "description": "Høstlys and Høstkveld: a light and a dark theme in earth tones (høst is Norwegian for autumn). Covers the whole workbench, LaTeX, Python with Pylance semantic highlighting, Markdown, BibTeX, JSON, YAML, shell and diff. Adds a status bar button that switches between light and dark.",
-  "version": "3.5.1",
+  "version": "3.6.0",
   "publisher": "dagmorten",
   "icon": "icon.png",
   "galleryBanner": {
@@ -10,9 +10,14 @@
     "theme": "dark"
   },
   "license": "MIT",
+  "pricing": "Free",
   "repository": {
     "type": "git",
     "url": "https://github.com/dagmortensj/hoest-theme"
+  },
+  "homepage": "https://github.com/dagmortensj/hoest-theme#readme",
+  "bugs": {
+    "url": "https://github.com/dagmortensj/hoest-theme/issues"
   },
   "engines": {
     "vscode": "^1.70.0"

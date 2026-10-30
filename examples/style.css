@@ -1,0 +1,31 @@
+/* Eksempelfil for å se Høst-temaene på CSS */
+@import url("https://fonts.googleapis.com/css2?family=Inter");
+
+:root {
+  --bakgrunn: #fdfcf2;
+  --tekst: #282828;
+  --rust: #99380e;
+}
+
+body.kurs {
+  margin: 0 auto;
+  max-width: 72rem;
+  font: 1rem/1.5 "Inter", system-ui, sans-serif;
+  color: var(--tekst);
+  background: var(--bakgrunn);
+}
+
+#prosjektil > p:first-child,
+a[href^="https"]:hover {
+  color: var(--rust);
+  text-decoration: underline 2px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root { --bakgrunn: #211e17; --tekst: #ebe2cb; }
+}
+
+.aktiv::after {
+  content: "\2192  i gang";
+  transition: opacity 0.3s ease-in-out !important;
+}

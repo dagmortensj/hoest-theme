@@ -24,24 +24,7 @@ Do not edit the files in `vscode/themes/` or `iterm/` by hand, since `build.py` 
 
 ## What the colours mean
 
-The templates use red sparingly: for hyperlinks, boxes around key results and separators. Structure is shown with black and bold type, and the palette colours carry the content. The themes follow the same idea. Red marks landmarks and references, rust marks structure, and the other four colours carry content.
-
-- **Red**: landmarks and references. `\section` and the other sectioning commands (bold), `\ref`, `\eqref`, `\cite`, `\url` and `\href` with their keys and addresses, links in Markdown and in the workbench, the `#` before Markdown headings, errors, and removed lines in diffs.
-- **Rust**: structure. `\begin` and `\end` (bold), the preamble (`\documentclass`, `\usepackage`, `\usetikzlibrary`, `\definecolor`), definitions (`\newcommand`, `\NewDocumentCommand`, `\newtheorem`, `\def`), `\item`, TeX conditionals such as `\ifdefined` and `\fi`, list markers in Markdown, the entry type in BibTeX (`@book`), keywords in Python, shell scripts and other languages, HTML and XML tags, and the words of a tikz path (`node`, `at`, `cycle`). In the workbench, count badges such as the one on the source control icon.
-- **Orange**: numbers and constants such as `True`, `False` and `None`. Upper-case names in Python (`M`, `G`, `LIMIT`) get the text colour like other variables, since single letters such as `M` are ordinary variables in physics code. In the workbench: the active line number, search matches, modified files and warnings.
-- **Green**: functions and environments. The environment name in `\begin{equation}` (bold), the names of new commands (`\newcommand{\dd}`), drawing commands in tikz (`\draw`, `\node`, `\addplot`), function names in Python, and added lines in diffs.
-- **Blue**: strings and mathematics. Everything inside `$...$`, `\[...\]` and maths environments, verbatim and `\texttt`, Python strings including their `f` or `r` prefix, and inline code in Markdown.
-- **Plum**: types and symbols. Greek letters and symbols such as `\gamma`, `\infty` and `\Longrightarrow`, classes and types in Python (`Planet`, `float`), `self` and `cls`, decorators, special characters in f-strings and regular expressions, built-in types in C and similar languages (`int`, `double`), `this` and `super`, HTML attributes, and keys in JSON, YAML, BibTeX and LaTeX options.
-- **Grey**: what supports the content: braces, brackets, `$`, comments and quotes.
-- **Text colour**: prose, variables, parameters, operators and ordinary LaTeX commands such as `\frac`, `\emph`, `\caption` and `\label`.
-
-## Bold type
-
-Bold is for what you look for when scrolling:
-
-- LaTeX: sectioning commands and their titles, and environments (`\begin`, `\end` and the name).
-- Python: control and logical keywords: `def`, `class`, `if`, `elif`, `else`, `for`, `while`, `return`, `break`, `continue`, `pass`, `raise`, `try`, `except`, `finally`, `with`, `yield`, `match`, `case`, `and`, `or`, `not`, `in` and `is`. `import`, `from`, `as`, `lambda` and `async` are not bold.
-- Markdown: headings.
+Each colour has one role in every language: bold rust for landmarks, rust for the grammar of the language, orange for values and input, green for tools that do something, blue for text and mathematics, plum for what you named yourself and for symbols, and red for signals and references. Bold marks landmarks and italic marks placeholders. The full rules, with examples in code and LaTeX and the cases where a grammar sets limits, are in [rules.md](rules.md).
 
 ## The LuaLaTeX templates
 
@@ -166,7 +149,7 @@ Høstkveld glows a little more in iTerm than in VS Code: lightness is 0.04 highe
 
 The workbench uses palette colours everywhere, including diff and merge views, peek, debugging, testing, Jupyter notebooks, the command palette, menus, settings and chat. No part falls back on VS Code's own blues and turquoises.
 
-Code is coloured for LaTeX (with LaTeX Workshop), BibTeX, Python, Markdown with maths, JSON, YAML, shell scripts, diffs, git commits and the logs in the Output panel. Semantic highlighting is on for Python, so Pylance can tell classes, functions, constants and `self` apart even where the grammar cannot.
+Code is coloured for LaTeX (with LaTeX Workshop), BibTeX, Python, Markdown with maths, JSON, YAML, shell scripts, diffs, git commits and the logs in the Output panel, and by the same rules for TypeScript, JavaScript, Java, C#, C, C++, Go, Rust, Kotlin, Swift, PHP, Ruby, SQL, HTML and CSS. Semantic highlighting is on, so language servers such as Pylance can tell classes, built-in types, parameters and `self` apart even where the grammar cannot.
 
 The LaTeX Workshop grammar recognises a lot, but leaves some common content as plain text. The extension therefore adds four small injection grammars in `vscode/syntaxes/`. They change only the colours, not how the rest of the file is parsed:
 

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- XML: elementer, attributter, navnerom og CDATA -->
+<!DOCTYPE planeter SYSTEM "planeter.dtd">
+<planeter xmlns="https://example.com/fysikk" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <planet id="1" navn="Jorda" aktiv="true">
+    <masse enhet="kg">5.972e24</masse>
+    <beskrivelse><![CDATA[Tekst med <tegn> & mer]]></beskrivelse>
+    <xsi:merknad>Entitet: &amp; &lt; &#x00E6;</xsi:merknad>
+  </planet>
+  <planet id="2" navn="Mars"/>
+  <?behandling instruksjon="ja"?>
+</planeter>
