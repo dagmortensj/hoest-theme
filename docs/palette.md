@@ -20,11 +20,11 @@ Every hex code lives in `src/palette.py` and nowhere else. `src/build.py` genera
 
    With a new version number it is easy to see under Extensions that the new package is in place.
 
-Do not edit the files in `vscode/themes/` or `iterm/` by hand, since `build.py` overwrites them. The `examples/` folder has one file per language, which is the quickest way to see how a change looks.
+Do not edit the files in `vscode/themes/` or `iterm/` by hand, since `build.py` overwrites them. The `test/` folder has one file per language, which is the quickest way to see how a change looks; `test/README.md` describes how to check them.
 
 ## What the colours mean
 
-Each colour has one role in every language: bold rust for landmarks, rust for the grammar of the language, orange for values and input, green for tools that do something, blue for text and mathematics, plum for what you named yourself and for symbols, and red for signals and references. Bold marks landmarks and italic marks placeholders. The full rules, with examples in code and LaTeX and the cases where a grammar sets limits, are in [rules.md](rules.md).
+Each colour has one role in every language: bold rust for landmarks, rust for the grammar of the language, orange for values and input, green for tools that do something, blue for text and mathematics, plum for classes, types and symbols, and red for signals and references. Bold marks landmarks and italic marks placeholders. The full rules, with examples in code and LaTeX and the cases where a grammar sets limits, are in [rules.md](rules.md).
 
 ## The LuaLaTeX templates
 

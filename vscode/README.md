@@ -19,7 +19,7 @@ Each colour has the same role in every language and in both themes:
 | Orange | Values and input | `3.14`, `True`, `None`, parameters in italic |
 | Green | Tools that do something | function names, `print`, built-in types such as `int` and `str`, CSS properties, `equation`, `\draw` |
 | Blue | Text and mathematics | `"text"`, everything inside `$...$` |
-| Plum | What you named yourself, and symbols | your classes, `self` in italic, `@property`, keys in JSON and YAML, `\n`, `\gamma` |
+| Plum | Classes and types, and symbols | your classes and those of libraries, `self` in italic, `@property`, keys in JSON and YAML, `\n`, `\gamma` |
 | Red | Signals and references | `\section`, `\ref`, `\cite`, links, errors |
 
 Comments, braces and brackets are grey, and variables, operators and prose keep the text colour. Bold marks landmarks such as definitions and control flow, and italic marks placeholders such as parameters and `self`. Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order and roles in both themes.

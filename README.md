@@ -60,7 +60,7 @@ Each colour has one role, in every language and in both themes. The full rules, 
 | Orange | Values and input | `3.14`, `True`, `None`, parameters in italic |
 | Green | Tools that do something | function names, `print`, built-in types such as `int` and `str`, CSS properties, `equation`, `\draw` |
 | Blue | Text and mathematics | `"text"`, everything inside `$...$` |
-| Plum | What you named yourself, and symbols | your classes, `self` in italic, `@property`, keys in JSON and YAML, `\n`, `\gamma` |
+| Plum | Classes and types, and symbols | your classes and those of libraries, `self` in italic, `@property`, keys in JSON and YAML, `\n`, `\gamma` |
 | Red | Signals and references | `\section`, `\ref`, `\cite`, links, errors |
 
 Comments, braces and brackets are grey. Variables, operators, prose and ordinary LaTeX commands such as `\frac` and `\label` keep the text colour. Bold marks landmarks, what you look for when scrolling: definitions and control flow in every language, `\begin`, `\end` and sections in LaTeX, and headings in Markdown. Italic marks placeholders, as variables are set in mathematics: parameters, `self` and `this`, and `#1` in LaTeX.
@@ -72,7 +72,7 @@ Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, 
 - The whole VS Code workbench, including diff and merge views, debugging, testing, notebooks, the command palette, settings and chat. Nothing falls back on VS Code's default blues.
 - LaTeX with LaTeX Workshop, plus four small injection grammars for what LaTeX Workshop leaves as plain text: tikz, circuitikz and tikzcd, option keys such as `[width=0.8\linewidth]`, siunitx, mhchem and file paths.
 - Python, with semantic highlighting for Pylance.
-- The same roles in TypeScript, JavaScript, Java, C#, C, C++, Go, Rust, Kotlin, Swift, PHP, Ruby, SQL, HTML and CSS, with a sample file for each in `examples/`.
+- The same roles in TypeScript, JavaScript, Java, C#, C, C++, Go, Rust, Kotlin, Swift, PHP, Ruby, SQL, HTML and CSS, with a test file for each in `test/`.
 - Markdown with maths, BibTeX, JSON, YAML, TOML, shell, diff, git commits and logs.
 
 ## Repository layout
@@ -85,7 +85,8 @@ Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, 
 | `src/icon.py` | Draws the extension icon from the palette (needs Pillow) |
 | `vscode/` | The VS Code extension: themes, injection grammars, the status bar button, the icon, the changelog and the packaged `.vsix` |
 | `iterm/` | The iTerm presets |
-| `examples/` | One sample file per language, for checking how a change looks |
+| `examples/` | Realistic sample files, used for the screenshots |
+| `test/` | One test file per language, at most 36 lines each, for checking every rule after a change |
 | `docs/` | The colour rules, the palette in detail, and screenshots |
 
 ## Changing the colours
