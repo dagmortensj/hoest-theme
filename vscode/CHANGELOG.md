@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.6.1 (2026-10-31)
+
+- The extension is now listed as **Høst Theme**, and the publisher is `dagmortensj`, the same as the GitHub user. The extension ID is therefore `dagmortensj.hoest-theme`. VS Code treats a new publisher as a new extension, so if you installed 3.5 or 3.6 from the `.vsix`, uninstall the old one first: `code --uninstall-extension dagmorten.hoest-theme`.
+- More keywords for the Marketplace search.
+
 ## 3.6.0 (2026-10-30)
 
 The colours follow written rules, the same in every language, described in [docs/rules.md](https://github.com/dagmortensj/hoest-theme/blob/main/docs/rules.md). No colour in the palette changed; what changed is which words get them.

@@ -20,14 +20,15 @@ A light and a dark theme in earth tones for VS Code and iTerm. *Høst* is Norweg
 1. Open the Extensions view (Cmd+Shift+X, or Ctrl+Shift+X on Windows and Linux), search for **Høst** and choose **Install**. From a terminal:
 
    ```zsh
-   code --install-extension dagmorten.hoest-theme
+   code --install-extension dagmortensj.hoest-theme
    ```
 
 2. Press Cmd+K Cmd+T (Ctrl+K Ctrl+T on Windows and Linux) and pick **Høstlys** or **Høstkveld**.
 
-The extension is also in this repository as [`vscode/hoest-theme.vsix`](vscode/hoest-theme.vsix). Drag the file into the Extensions view, or choose **Extensions → … → Install from VSIX…**. That is the way to install it in VSCodium and Cursor, and a new version installs over the old one in the same way. Before version 3.5 the extension was called `host-theme`, and VS Code sees the new name as a different extension, so remove the old one first:
+The extension is also in this repository as [`vscode/hoest-theme.vsix`](vscode/hoest-theme.vsix). Drag the file into the Extensions view, or choose **Extensions → … → Install from VSIX…**. That is the way to install it in VSCodium and Cursor, and a new version installs over the old one in the same way. Before version 3.6.1 the extension ID was `dagmorten.hoest-theme`, and before 3.5 `dagmorten.host-theme`. VS Code sees each as a different extension, so remove an old one first:
 
 ```zsh
+code --uninstall-extension dagmorten.hoest-theme
 code --uninstall-extension dagmorten.host-theme
 ```
 
