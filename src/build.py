@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Builds Høstlys and Høstkveld from palette.py.
 
-    python3 src/build.py           writes vscode/themes/*.json, iterm/*.itermcolors and docs/palette.svg
+    python3 src/build.py           writes vscode/themes/*.json, iterm/*.itermcolors, docs/palette.svg and docs/roles.svg
     python3 src/build.py --check   also prints the contrast of the text colours
 
 Afterwards, raise the version in vscode/package.json, add a line to vscode/CHANGELOG.md
@@ -1098,6 +1098,51 @@ def make_svg():
     (DOCS / "palette.svg").write_text(svg, encoding="utf-8")
 
 
+ROLES = [
+    # role, one line, palette colour, bold
+    ("Landmarks", "definitions and control flow, \\begin and \\end", "rust", True),
+    ("Structure", "the grammar of the language: import, const, tags, the preamble", "rust", False),
+    ("Values", "numbers, constants, parameters", "orange", False),
+    ("Tools", "functions, built-in types, environments", "green", False),
+    ("Text", "strings and mathematics", "blue", False),
+    ("Names", "your own classes and types, keys, decorators, symbols", "plum", False),
+    ("Signals", "sections, references, links, errors", "red", False),
+]
+
+
+def make_roles_svg():
+    """docs/roles.svg: one card per role, with the colour in both themes."""
+    k, l = HOESTKVELD, HOESTLYS
+    width, card, gap, pad = 760, 84, 12, 8
+    font = "Helvetica,Arial,sans-serif"
+    mono = "Menlo,monospace"
+    y, parts = pad, []
+    for role, line, name, bold in ROLES:
+        parts.append(f'<rect x="{pad}" y="{y}" width="{width - 2 * pad}" height="{card}" rx="14" fill="{k["background"]}"/>')
+        # the colour in Høstkveld, and a small chip of it in Høstlys on a light square
+        parts.append(f'<rect x="{pad + 20}" y="{y + 14}" width="56" height="56" rx="10" fill="{k[name]}"/>')
+        parts.append(f'<rect x="{pad + 20 + 56 - 22}" y="{y + 14 + 56 - 22}" width="22" height="22" rx="6" fill="{l["background"]}"/>')
+        parts.append(f'<rect x="{pad + 20 + 56 - 17}" y="{y + 14 + 56 - 17}" width="12" height="12" rx="3" fill="{l[name]}"/>')
+        weight = "700" if bold else "600"
+        tag = f'<tspan dx="10" font-size="12" font-weight="400" fill="{k["muted"]}">bold</tspan>' if bold else ""
+        parts.append(f'<text x="{pad + 98}" y="{y + 38}" font-family="{font}" font-size="22" font-weight="{weight}" fill="{k["text"]}">{role}{tag}</text>')
+        parts.append(f'<text x="{pad + 98}" y="{y + 62}" font-family="{font}" font-size="13" fill="{k["muted"]}">{line}</text>')
+        for dy, theme, colour, fill in ((38, "Høstkveld", k[name], k["text"]), (60, "Høstlys", l[name], k["muted"])):
+            parts.append(f'<text x="{width - pad - 22}" y="{y + dy}" text-anchor="end" font-family="{mono}" font-size="13" fill="{fill}" opacity="0.85">'
+                         f'<tspan font-family="{font}" font-size="11" fill="{k["muted"]}">{theme}</tspan><tspan dx="7">{colour.upper()}</tspan></text>')
+        y += card + gap
+    height = y - gap + pad
+    svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">' + "".join(parts) + "</svg>\n"
+    (DOCS / "roles.svg").write_text(svg, encoding="utf-8")
+    # The Marketplace does not allow SVG in the README, so a PNG goes next to it.
+    # rsvg-convert renders the text well; without it the PNG is left as it is.
+    import shutil, subprocess
+    if shutil.which("rsvg-convert"):
+        subprocess.run(["rsvg-convert", "-z", "2", "-o", str(DOCS / "roles.png"), str(DOCS / "roles.svg")], check=True)
+    else:
+        print("note: rsvg-convert not found, docs/roles.png not regenerated")
+
+
 def main():
     for d in (THEMES, ITERM, DOCS):
         d.mkdir(parents=True, exist_ok=True)
@@ -1110,6 +1155,7 @@ def main():
         if "--check" in sys.argv:
             check(name, p)
     make_svg()
+    make_roles_svg()
     if "--check" in sys.argv:
         gamut_report()
     for label in UNUSED_OUT_OF_GAMUT:

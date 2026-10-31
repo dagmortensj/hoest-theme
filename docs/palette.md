@@ -6,7 +6,7 @@ How the colours in Høstlys and Høstkveld were chosen, what each one means, and
 
 ## Changing the colours
 
-Every hex code lives in `src/palette.py` and nowhere else. `src/build.py` generates the two VS Code themes in `vscode/themes/`, the iTerm presets in `iterm/` and `docs/palette.svg` from it. The workflow:
+Every hex code lives in `src/palette.py` and nowhere else. `src/build.py` generates the two VS Code themes in `vscode/themes/`, the iTerm presets in `iterm/`, `docs/palette.svg` and `docs/roles.svg` from it (and `docs/roles.png` for the Marketplace, when `rsvg-convert` is installed). The workflow:
 
 1. Change a colour in `src/palette.py`, or a rule in `src/build.py`.
 2. Run `python3 src/build.py` from the repository root. With `--check` it also prints the contrast of every text colour and the colours that lie outside sRGB. If a change pushes a colour outside sRGB, the build stops and says what to add to `OUT_OF_GAMUT`.

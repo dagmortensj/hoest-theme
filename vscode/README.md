@@ -13,6 +13,8 @@
 
 Each colour has the same role in every language and in both themes:
 
+![The roles of the six colours](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/roles.png)
+
 | Colour | Role | Examples |
 |---|---|---|
 | Rust | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `\begin`, the preamble |

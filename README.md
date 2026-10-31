@@ -55,6 +55,8 @@ Høstkveld in iTerm glows a little more than in VS Code, since a terminal is use
 
 Each colour has one role, in every language and in both themes. The full rules, with bold, italic and the cases where a grammar sets limits, are in [`docs/rules.md`](docs/rules.md).
 
+![The roles of the six colours](docs/roles.svg)
+
 | Colour | Role | Examples |
 |---|---|---|
 | Rust | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `\begin`, the preamble |
@@ -81,7 +83,7 @@ Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, 
 | Path | Contents |
 |---|---|
 | `src/palette.py` | Every colour, and the rule that derives Høstkveld from Høstlys |
-| `src/build.py` | Turns the palette into the VS Code themes, the iTerm presets and `docs/palette.svg` |
+| `src/build.py` | Turns the palette into the VS Code themes, the iTerm presets, `docs/palette.svg`, `docs/roles.svg` and `docs/roles.png` |
 | `src/colorspace.py` | OKLCH conversion, the sRGB gamut and WCAG contrast |
 | `src/icon.py` | Draws the extension icon from the palette (needs Pillow) |
 | `vscode/` | The VS Code extension: themes, injection grammars, the status bar button, the icon, the changelog and the packaged `.vsix` |
