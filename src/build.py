@@ -1078,10 +1078,8 @@ def _target_distance(L, C, H, result):
 
 
 def make_svg():
-    """docs/palette.svg: the templates, Høstlys and Høstkveld, one row each."""
-    templates = ["#781414", "#b85c00", "#4a6b12", "#1e608c", "#6e3278"]
-    rows = [("LuaLaTeX templates", "#ffffff", "#282828", templates, [None] * 5),
-            ("Høstlys", HOESTLYS["background"], HOESTLYS["text"], [HOESTLYS[n] for n in COLORS], COLORS),
+    """docs/palette.svg: Høstlys and Høstkveld, one row each."""
+    rows = [("Høstlys", HOESTLYS["background"], HOESTLYS["text"], [HOESTLYS[n] for n in COLORS], COLORS),
             ("Høstkveld", HOESTKVELD["background"], HOESTKVELD["text"], [HOESTKVELD[n] for n in COLORS], COLORS)]
     b, h, gap, x0 = 96, 96, 12, 222
     width = x0 + 6 * (b + gap) + 8
@@ -1090,10 +1088,7 @@ def make_svg():
         height = h + 64
         parts.append(f'<rect x="8" y="{y}" width="{width - 16}" height="{height}" rx="14" fill="{bg}" stroke="#d8d2bf"/>')
         parts.append(f'<text x="26" y="{y + height / 2 + 6}" font-family="Helvetica,Arial,sans-serif" font-size="17" font-weight="600" fill="{fg}">{title}</text>')
-        if len(colors) == 5:  # the templates have no rust; its slot stays empty
-            slots = [x0] + [x0 + (i + 2) * (b + gap) for i in range(4)]
-        else:
-            slots = [x0 + i * (b + gap) for i in range(6)]
+        slots = [x0 + i * (b + gap) for i in range(6)]
         for x, c, r in zip(slots, colors, roles):
             parts.append(f'<rect x="{x}" y="{y + 14}" width="{b}" height="{h}" rx="10" fill="{c}"/>')
             label = f"{r} " if r else ""

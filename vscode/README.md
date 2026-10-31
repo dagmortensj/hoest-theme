@@ -3,7 +3,7 @@
 <!-- First paragraph: written by Dag-Morten in his own words. Replace the placeholder below before publishing. -->
 *[Placeholder for the first paragraph, in my own words: why I made Høst, and what it is for.]*
 
-**Høstlys** (autumn light) is a light theme and **Høstkveld** (autumn evening) a dark one, both in earth tones. *Høst* is Norwegian for autumn. The palette comes from a set of LuaLaTeX templates for teaching notes, so code in the editor and the finished PDF share the same colours.
+**Høstlys** (autumn light) is a light theme and **Høstkveld** (autumn evening) a dark one, both in earth tones. *Høst* is Norwegian for autumn. The palette is six deep autumn colours on warm, slightly rustic earth tones.
 
 ![Høstkveld](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/screenshots/hoestkveld.png)
 

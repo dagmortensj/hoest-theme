@@ -1,6 +1,6 @@
 # The Høst palette
 
-How the colours in Høstlys and Høstkveld were chosen, what each one means, and how to change them. Høstlys builds on the five colours of a set of LuaLaTeX templates and adds rust. Høstkveld is derived from Høstlys by a single rule, so the colours keep the same order and the same roles in both themes. Contrast is measured against the editor background; WCAG recommends at least 4.5 for normal text and 3 for bold or large text.
+How the colours in Høstlys and Høstkveld were chosen, what each one means, and how to change them. Høstlys is six autumn colours on a warm, light background. Høstkveld is derived from Høstlys by a single rule, so the colours keep the same order and the same roles in both themes. Contrast is measured against the editor background; WCAG recommends at least 4.5 for normal text and 3 for bold or large text.
 
 ![The Høst palette](./palette.svg)
 
@@ -26,18 +26,6 @@ Do not edit the files in `vscode/themes/` or `iterm/` by hand, since `build.py` 
 
 Each colour has one role in every language: bold rust for landmarks, rust for the grammar of the language, orange for values and input, green for tools that do something, blue for text and mathematics, plum for classes, types and symbols, and red for signals and references. Bold marks landmarks and italic marks placeholders. The full rules, with examples in code and LaTeX and the cases where a grammar sets limits, are in [rules.md](rules.md).
 
-## The LuaLaTeX templates
-
-The five colours defined in the style files of the templates:
-
-| Colour | Name in the templates | Hex |
-|---|---|---|
-| Red | `darkred` | `#781414` |
-| Orange | `darkorange` | `#B85C00` |
-| Green | `darkolive` | `#4A6B12` |
-| Blue | `darkblue` | `#1E608C` |
-| Plum | `darkplum` | `#6E3278` |
-
 ## Høstlys (light)
 
 | Role | Hex | Contrast |
@@ -56,7 +44,7 @@ The five colours defined in the style files of the templates:
 | Selection | `#E2D8BF` | |
 | Search match | `#E8CCA9` | |
 
-Red, orange, green, blue and plum are the colours of the templates. Rust sits exactly halfway between red and orange in lightness, chroma and hue, so the step from red through rust to orange is even. The text colour, the greys and the comment colour come from [Gruvbox](https://github.com/morhetz/gruvbox).
+Red, orange, green, blue and plum are the five base colours. Rust sits exactly halfway between red and orange in lightness, chroma and hue, so the step from red through rust to orange is even. The text colour, the greys and the comment colour come from [Gruvbox](https://github.com/morhetz/gruvbox).
 
 Removed lines in diffs have a rust background at low opacity, since red at low opacity turns pink on the light background.
 

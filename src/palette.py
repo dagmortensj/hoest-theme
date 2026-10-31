@@ -10,9 +10,8 @@
 #   blue    strings and mathematics
 #   plum    classes, types, Greek letters and symbols
 #
-# Høstlys is built on the colours of a set of LuaLaTeX templates. Høstkveld is derived
-# from Høstlys (see below), so a change to one of the six colours in Høstlys carries
-# over to Høstkveld.
+# Høstkveld is derived from Høstlys (see below), so a change to one of the six colours
+# in Høstlys carries over to Høstkveld.
 
 from colorspace import OutOfGamut, from_oklch, in_gamut, to_oklch
 
@@ -20,7 +19,7 @@ COLORS = ["red", "rust", "orange", "green", "blue", "plum"]
 
 HOESTLYS = {
     "type": "light",
-    # The six colours. Red, orange, green, blue and plum are those of the LuaLaTeX templates.
+    # The six colours.
     "red": "#781414",             # darkred
     "rust": "#99380e",            # halfway between red and orange in lightness, chroma and hue
     "orange": "#b85c00",          # darkorange
