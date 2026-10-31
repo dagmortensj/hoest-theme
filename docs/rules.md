@@ -55,7 +55,7 @@ Content that is read as text or as a formula.
 Classes and types that someone defined, and characters that stand for something other than themselves.
 
 - Code: keys in JSON, YAML, TOML and INI, classes and types from your own code and from libraries (`Planet`, `Legeme`, `ndarray`, `Optional`), `self`, `cls` and `this` (in italic), decorators, annotations and Rust attributes as one unit (`@property`, `@Override`, `#[derive(Debug)]`), generic type parameters (`T`, in italic), keys in object literals, CSS selectors (`.kurs`, `#prosjektil`, `:hover`, `from` and `to` in keyframes), and special characters inside strings (`\n`, `%d`, `{}` in f-strings, the special characters of a regular expression).
-- LaTeX: Greek letters and symbols (`\gamma`, `\infty`, `\Longrightarrow`), and keys in options (`width=`, `scale=`).
+- LaTeX: Greek letters and symbols that stand for a quantity or an operation on one (`\gamma`, `\infty`, `\partial`, `\nabla`, `\sum`, `\int`), and keys in options (`width=`, `scale=`).
 
 ### Red: signals and references
 
@@ -67,7 +67,7 @@ What points elsewhere or demands attention. Red is reserved, so it never appears
 ### Text colour: what you read
 
 - Code: variables, parameters where they are used, properties and fields (`self.masse`), operators, and the names of modules, namespaces and packages (`numpy`, `namespace Fysikk`, `package main`, `import Foundation`), argument labels in Swift, and the arguments of shell commands (`cat fil.txt`).
-- LaTeX: prose, and ordinary commands such as `\frac`, `\sqrt`, `\left`, `\emph`, `\caption` and `\label`. In a formula they are operators, the counterpart of `+` and `*` in code.
+- LaTeX: prose, and ordinary commands such as `\frac`, `\sqrt`, `\left`, `\emph`, `\caption` and `\label`. In a formula they are operators, the counterpart of `+` and `*` in code, and so are `=`, `<`, `>`, `|` and the operators, relations and arrows written as commands: `\cdot`, `\times`, `\pm`, `\leq`, `\neq`, `\to`, `\Rightarrow`, `\in`, `\cup`, `\ldots`.
 
 ### Grey: what supports the content
 

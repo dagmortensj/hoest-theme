@@ -29,7 +29,7 @@ Comments, braces and brackets are grey, and variables, operators and prose keep 
 ## What it covers
 
 - The whole workbench, including diff and merge views, debugging, testing, notebooks, the command palette, settings and chat.
-- LaTeX with [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop), plus four small injection grammars for what LaTeX Workshop leaves as plain text: tikz, circuitikz and tikzcd, option keys, siunitx, mhchem and file paths.
+- LaTeX with [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop), plus five small injection grammars for what LaTeX Workshop leaves as plain text or lumps together: tikz, circuitikz and tikzcd, operators and relations in maths, option keys, siunitx, mhchem and file paths.
 - Python, with semantic highlighting for Pylance.
 - The same roles in TypeScript, JavaScript, Java, C#, C, C++, Go, Rust, Kotlin, Swift, PHP, Ruby, SQL, HTML and CSS.
 - Markdown with maths, BibTeX, JSON, YAML, TOML, shell, diff, git commits and logs.

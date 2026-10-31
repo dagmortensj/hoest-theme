@@ -2,7 +2,7 @@
   "name": "hoest-theme",
   "displayName": "Høst Theme",
   "description": "Høstlys and Høstkveld: a light and a dark theme in earth tones, tuned for LaTeX and Python. Høst is Norwegian for autumn. Covers the whole workbench, LaTeX, Python with Pylance semantic highlighting, Markdown, BibTeX, JSON, YAML, shell and diff. Adds a status bar button that switches between light and dark.",
-  "version": "3.6.1",
+  "version": "3.7.0",
   "publisher": "dagmortensj",
   "icon": "icon.png",
   "galleryBanner": {
@@ -71,6 +71,13 @@
       {
         "scopeName": "latex.hoest.options.injection",
         "path": "./syntaxes/latex-hoest-options.injection.json",
+        "injectTo": [
+          "text.tex.latex"
+        ]
+      },
+      {
+        "scopeName": "latex.hoest.operators.injection",
+        "path": "./syntaxes/latex-hoest-operators.injection.json",
         "injectTo": [
           "text.tex.latex"
         ]

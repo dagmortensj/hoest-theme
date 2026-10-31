@@ -1,0 +1,17 @@
+{
+  "$comment": "Høst: operators and relations in maths, such as \\cdot, \\times, \\pm, \\leq, \\to and \\in. The LaTeX Workshop grammar gives every argumentless macro in maths the same scope as Greek letters, so they would be plum. They are the counterpart of + and = in code and keep the text colour. The same grammar marks only + - * / ^ and _ as operators, so = < > and | are added here too. Big operators such as \\sum and \\int, and \\partial, \\nabla and \\infty, stay with the Greek letters.",
+  "scopeName": "latex.hoest.operators.injection",
+  "injectionSelector": "L:text.tex.latex meta.math -comment, L:text.tex.latex support.class.math -comment",
+  "patterns": [
+    {
+      "comment": "binary operators, relations, arrows, set operators and dots",
+      "match": "(\\\\)(?:cdot|times|div|pm|mp|circ|bullet|ast|star|oplus|ominus|otimes|odot|leq|le|geq|ge|neq|ne|approx|equiv|sim|simeq|cong|propto|ll|gg|to|rightarrow|leftarrow|leftrightarrow|Rightarrow|Leftarrow|Leftrightarrow|longrightarrow|longleftarrow|longleftrightarrow|Longrightarrow|Longleftarrow|Longleftrightarrow|mapsto|longmapsto|implies|iff|in|notin|ni|subset|subseteq|supset|supseteq|cup|cap|setminus|vee|wedge|land|lor|neg|lnot|mid|nmid|parallel|perp|ldots|cdots|vdots|ddots|dots|dotsc|dotsb)(?![\\p{Alphabetic}@])",
+      "name": "punctuation.math.operator.tex"
+    },
+    {
+      "comment": "relations and bars written as characters: the grammar marks + - * / ^ _ but not these",
+      "match": "[=<>|]",
+      "name": "punctuation.math.operator.tex"
+    }
+  ]
+}

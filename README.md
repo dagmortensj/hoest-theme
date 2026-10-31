@@ -73,7 +73,7 @@ Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, 
 ## What it covers
 
 - The whole VS Code workbench, including diff and merge views, debugging, testing, notebooks, the command palette, settings and chat. Nothing falls back on VS Code's default blues.
-- LaTeX with LaTeX Workshop, plus four small injection grammars for what LaTeX Workshop leaves as plain text: tikz, circuitikz and tikzcd, option keys such as `[width=0.8\linewidth]`, siunitx, mhchem and file paths.
+- LaTeX with LaTeX Workshop, plus five small injection grammars for what LaTeX Workshop leaves as plain text or lumps together: tikz, circuitikz and tikzcd, operators and relations in maths, option keys such as `[width=0.8\linewidth]`, siunitx, mhchem and file paths.
 - Python, with semantic highlighting for Pylance.
 - The same roles in TypeScript, JavaScript, Java, C#, C, C++, Go, Rust, Kotlin, Swift, PHP, Ruby, SQL, HTML and CSS, with a test file for each in `test/`.
 - Markdown with maths, BibTeX, JSON, YAML, TOML, shell, diff, git commits and logs.
