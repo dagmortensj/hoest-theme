@@ -32,14 +32,8 @@ HOESTLYS = {
     "green": "#4a6b12",           # darkolive
     "blue": "#1e608c",            # darkblue
     "plum": "#6e3278",            # darkplum
-    # Text and neutral tones
-    "text": "#282828",
-    "muted": "#7c6f64",           # brackets, descriptions, inactive tabs
-    "comment": "#928374",
-    "inactive": "#a89984",        # inactive icons and titles, ignored files
-    "tab_inactive": "#7c6f64",
+    # Text and greys: derived from the background below. The line numbers are tan, a colour of their own.
     "line_number": "#c9a77a",
-    "placeholder": "#a89984",
     # Surfaces
     "background": "#fdfcf2",      # editor, panel, terminal
     "frame": "#f4f1e4",           # side bar, tabs, title and status bar
@@ -51,7 +45,6 @@ HOESTLYS = {
     "selection_dim": "#efe8d6",   # inactive selection, matching words
     "find": "#e8cca9",
     "find_dim": "#f1dfc6",
-    "bracket_match": "#ebdbb2",
     "guide": "#ebe5d3",           # indent guides, ruler
     "guide_active": "#d5cdb6",
     "whitespace": "#ddd5bf",
@@ -60,22 +53,19 @@ HOESTLYS = {
     "list_hover": "#efe9d6",
     "command_center": "#ebe6d4",
     "command_center_active": "#e2dcc8",
-    "scrollbar": "#3c3836",       # used with transparency
-    # Terminal: black, white and their bright variants
-    "ansi_black": "#282828",
+    # Terminal: white and bright white; black and bright black are the text colour and muted, set below
     "ansi_white": "#e2dcc8",
-    "ansi_bright_black": "#7c6f64",
     "ansi_bright_white": "#fdfcf2",
     # iTerm: the 16 ANSI colours are computed below; only the rest is listed here
     "iterm": {
         "Background Color": "#fdfcf2",
-        "Foreground Color": "#282828",
-        "Bold Color": "#282828",
-        "Cursor Color": "#282828",
+        "Foreground Color": "@text",
+        "Bold Color": "@text",
+        "Cursor Color": "@text",
         "Cursor Text Color": "#fdfcf2",
         "Cursor Guide Color": ("#f4f1e4", 0.6),
         "Selection Color": "#e2d8bf",
-        "Selected Text Color": "#282828",
+        "Selected Text Color": "@text",
         "Link Color": "#781414",
         "Badge Color": ("#99380e", 0.5),
     },
@@ -83,14 +73,7 @@ HOESTLYS = {
 
 HOESTKVELD = {
     "type": "dark",
-    # The six colours are derived from Høstlys below.
-    "text": "#ebe2cb",
-    "muted": "#a3978c",
-    "comment": "#928374",
-    "inactive": "#998c76",
-    "tab_inactive": "#aa9d87",
-    "line_number": "#7e7564",
-    "placeholder": "#7e7564",
+    # The six colours are derived from Høstlys below, and the text and greys from the background.
     "background": "#211e17",
     "frame": "#2d271d",
     "widget": "#29251d",
@@ -110,14 +93,10 @@ HOESTKVELD = {
     "list_hover": "#363022",
     "command_center": "#363022",
     "command_center_active": "#3d3426",
-    "scrollbar": "#ebe2cb",
     "ansi_black": "#38332a",
-    "ansi_white": "#ebe2cb",
-    "ansi_bright_black": "#928374",
     "ansi_bright_white": "#f7f0de",
     "iterm_black": "#38332a",
     "iterm_white": "#efe7d2",
-    "iterm_bright_black": "#a39584",
     "iterm_bright_white": "#fffaf0",
     # Høstkveld in iTerm is a little lighter and whiter, since the window is semi-transparent
     "iterm": {
@@ -200,6 +179,54 @@ def for_dark(name, light):
 
 for _name in COLORS:
     HOESTKVELD[_name] = for_dark(_name, HOESTLYS[_name])
+
+
+# ---------- The text colour and the greys are derived from the background ----------
+#
+# No grey is written as a hex code. Each comes from the background and orange, in OKLCH:
+#   text    the hue of the background, so the text carries the same faint warmth as the
+#           surface it sits on: chroma 0.015 in Høstlys (near-black with a hint of warmth)
+#           and 0.030 in Høstkveld (cream)
+#   greys   the hue halfway between orange and the background, chroma 0.030: warm and
+#           earthy without leaning towards either; the lightness is set per role below
+# The bracket-match highlight is a surface and takes the hue of the selection. The scrollbar and the terminal's black (Høstlys) and white (Høstkveld) are the
+# text colour; bright black is a grey.
+TEXT = {"Høstlys": (0.277, 0.015), "Høstkveld": (0.914, 0.030)}  # (L, C)
+GREY_CHROMA = 0.030
+GREYS = {
+    # role: lightness in (Høstlys, Høstkveld)
+    "muted": (0.550, 0.684),        # brackets, descriptions, inactive panel titles
+    "comment": (0.619, 0.619),
+    "inactive": (0.690, 0.646),     # inactive icons and titles, ignored files
+    "tab_inactive": (0.550, 0.701),
+    "placeholder": (0.690, 0.566),  # also the line numbers in Høstkveld
+}
+
+
+def _neutrals(p, theme, dark):
+    H_bg = to_oklch(p["background"])[2]
+    H_grey = (to_oklch(p["orange"])[2] + H_bg) / 2
+    L_text, C_text = TEXT[theme]
+    text = lambda L: from_oklch(L, C_text, H_bg)
+    grey = lambda L: from_oklch(L, GREY_CHROMA, H_grey)
+    p["text"] = text(L_text)
+    for role, (L_light, L_dark) in GREYS.items():
+        p[role] = grey(L_dark if dark else L_light)
+    if dark:
+        p["line_number"] = p["placeholder"]
+        p["scrollbar"] = p["text"]
+        p["ansi_white"] = p["text"]
+        p["ansi_bright_black"] = p["comment"]
+        p["iterm_bright_black"] = grey(0.677)
+    else:
+        p["bracket_match"] = from_oklch(0.894, 0.057, to_oklch(p["selection"])[2])
+        p["scrollbar"] = text(0.344)             # used with transparency
+        p["ansi_black"] = p["text"]
+        p["ansi_bright_black"] = p["muted"]
+
+
+_neutrals(HOESTLYS, "Høstlys", dark=False)
+_neutrals(HOESTKVELD, "Høstkveld", dark=True)
 
 
 # ---------- Roles built on the six colours ----------

@@ -1,9 +1,6 @@
 # Høst
 
-<!-- First paragraph: written by Dag-Morten in his own words. Replace the placeholder below before publishing. -->
-*[Placeholder for the first paragraph, in my own words: why I made Høst, and what it is for.]*
-
-![Høst: Høstkveld on the left, Høstlys on the right](docs/banner.png)
+This theme grew out of my love for nature's own colour palette in fall. The rustic earthy tones bring an almost retro vibe, in line with the autumnal feelings of nostalgia and melancholy. This theme has been designed by me and coded by Claude, and the rest of the documentation is written by Claude.
 
 A light and a dark theme in earth tones for VS Code and iTerm. *Høst* is Norwegian for autumn.
 
@@ -53,6 +50,8 @@ Høstkveld in iTerm glows a little more than in VS Code, since a terminal is use
 
 ## The palette
 
+![Høst: Høstkveld on the left, Høstlys on the right](docs/banner.png)
+
 ![The Høst palette](docs/palette.svg)
 
 Each role has one colour, in every language and in both themes. The two warm colours trade places between the themes: structure gets the stronger of them against the background, rust in Høstlys and orange in Høstkveld, and values get the other. The full rules, with bold, italic and the cases where a grammar sets limits, are in [`docs/rules.md`](docs/rules.md).
@@ -70,7 +69,7 @@ Each role has one colour, in every language and in both themes. The two warm col
 
 Comments, braces and brackets are grey. Variables, operators, prose and ordinary LaTeX commands such as `\frac` and `\label` keep the text colour. Bold marks landmarks, what you look for when scrolling: definitions and control flow in every language, `\begin`, `\end` and sections in LaTeX, and headings in Markdown. Italic marks placeholders, as variables are set in mathematics: parameters, `self` and `this`, and `#1` in LaTeX.
 
-Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order in both themes. [`docs/palette.md`](docs/palette.md) has every colour with its contrast, the rule, the terminal colours and the details of what the theme covers.
+Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order in both themes, and the text colour and the greys are derived from the background and orange. [`docs/palette.md`](docs/palette.md) has every colour with its contrast, the rule, the terminal colours and the details of what the theme covers.
 
 ## What it covers
 
@@ -110,7 +109,7 @@ The files in `vscode/themes/` and `iterm/` are generated, so edit the palette ra
 
 ## Credits
 
-Høst is designed by Dag-Morten and made with [Claude](https://claude.ai). Apart from the first paragraph of this page, the documentation is written with Claude. The neutral tones come from [Gruvbox](https://github.com/morhetz/gruvbox) by Pavel Pertsev.
+Høst is designed by Dag-Morten and made with [Claude](https://claude.ai).
 
 ## License
 

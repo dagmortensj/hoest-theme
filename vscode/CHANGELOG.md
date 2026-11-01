@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.9.0 (2026-11-01)
+
+- The text colour and the greys are derived from the palette instead of being taken from Gruvbox. The text takes the hue of the background, so it carries the same faint warmth as the surface it sits on; the greys for brackets, comments and everything inactive take the hue halfway between orange and the background, with a fixed low chroma. The lightness of every grey is unchanged, so contrast is the same to the second decimal and the look is the same; a few hex codes move by one or two steps, and the Høstlys text goes from `#282828` to `#292820`. The bracket-match highlight, the scrollbar and the terminal's black and bright black follow the same rules. Every colour in the theme now comes from the six colours, the backgrounds or a rule between them.
+- The README opens with Dag-Morten's own first paragraph, and the banner sits above the palette. New Marketplace description.
+
 ## 3.8.2 (2026-11-01)
 
 - Fix: in options spread over several lines, such as `\pgfplotsset{...}` and `\hypersetup{...}`, the first key on each line was left in the text colour, since the grammar only saw a key after `[`, `{` or `,` on the same line. A key at the start of a line is now plum like the rest, and keys may contain `/` and `.`, as in `felles/.style` and `/pgf/number format/precision`. Every number in a value such as `trim=0 10 0 0` gets the value colour, not only the first. A second LaTeX test file, `test/latex_miljoer.tex`, covers these cases.

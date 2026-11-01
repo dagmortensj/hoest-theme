@@ -206,7 +206,7 @@ def ui_extended(p):
     Checked against every colour key VS Code registers, so that nothing falls back
     on VS Code's default blues, turquoises and cool greys.
     """
-    shadow = pick(p, a("#000000", 0.45), a("#3c3836", 0.16))
+    shadow = pick(p, a("#000000", 0.45), a("scrollbar", 0.16))
     hover = a("text", pick(p, 0.10, 0.07))
     active = a("text", pick(p, 0.16, 0.11))
     drop = a("orange", 0.16)  # when something is dragged over an area

@@ -1,9 +1,6 @@
 # Høst
 
-<!-- First paragraph: written by Dag-Morten in his own words. Replace the placeholder below before publishing. -->
-*[Placeholder for the first paragraph, in my own words: why I made Høst, and what it is for.]*
-
-![Høst: Høstkveld on the left, Høstlys on the right](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/banner.png)
+This theme grew out of my love for nature's own colour palette in fall. The rustic earthy tones bring an almost retro vibe, in line with the autumnal feelings of nostalgia and melancholy. This theme has been designed by me and coded by Claude, and the rest of the documentation is written by Claude.
 
 **Høstlys** (autumn light) is a light theme and **Høstkveld** (autumn evening) a dark one, both in earth tones. *Høst* is Norwegian for autumn. The palette is six deep autumn colours on warm, slightly rustic earth tones.
 
@@ -12,6 +9,8 @@
 ![Høstlys](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/screenshots/hoestlys.png)
 
 ## Six colours, one role each
+
+![Høst: Høstkveld on the left, Høstlys on the right](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/banner.png)
 
 Each role has the same colour in every language and in both themes, with one exchange: structure gets the stronger of the two warm colours against the background, rust in Høstlys and orange in Høstkveld, and values get the other.
 
@@ -51,4 +50,4 @@ Matching iTerm presets, the full palette with contrast values, and the build scr
 
 ## Credits
 
-Høst is designed by Dag-Morten and made with [Claude](https://claude.ai). Apart from the first paragraph of this page, the documentation is written with Claude. The neutral tones come from [Gruvbox](https://github.com/morhetz/gruvbox) by Pavel Pertsev.
+Høst is designed by Dag-Morten and made with [Claude](https://claude.ai).

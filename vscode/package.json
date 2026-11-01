@@ -1,8 +1,8 @@
 {
   "name": "hoest-theme",
   "displayName": "Høst Theme",
-  "description": "Høstlys and Høstkveld: a light and a dark theme in earth tones, tuned for LaTeX and Python. Høst is Norwegian for autumn. Covers the whole workbench, LaTeX, Python with Pylance semantic highlighting, Markdown, BibTeX, JSON, YAML, shell and diff. Adds a status bar button that switches between light and dark.",
-  "version": "3.8.2",
+  "description": "Høst is the Norwegian word for autumn. It comes as a dark theme, Høstkveld (autumn evening), and a light theme, Høstlys (autumn light), both in comfortable earth tones. Covers the whole workbench, LaTeX, Python with Pylance semantic highlighting, Markdown, BibTeX, JSON, YAML, shell and diff, with the same roles in TypeScript, JavaScript, Java, C#, Go, Rust and more. Adds a status bar button that switches between light and dark.",
+  "version": "3.9.0",
   "publisher": "dagmortensj",
   "icon": "icon.png",
   "galleryBanner": {
@@ -25,7 +25,7 @@
   "categories": [
     "Themes"
   ],
-  "keywords": ["theme", "color theme", "light theme", "dark theme", "light", "dark", "autumn", "fall", "earth tones", "warm", "norwegian", "gruvbox", "latex", "python"],
+  "keywords": ["autumn", "earth tones", "warm", "light theme", "dark theme", "fall", "earthy", "brown", "rustic", "retro", "cozy", "nostalgic", "muted", "light and dark", "color theme", "latex", "latex workshop", "python", "pylance", "iterm", "terminal", "høst", "hoest", "norwegian", "gruvbox"],
   "contributes": {
     "commands": [
       {

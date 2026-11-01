@@ -36,15 +36,17 @@ Each colour has one role in every language: a structure colour for the grammar o
 | Green | `#4A6B12` | 6.0 |
 | Blue | `#1E608C` | 6.6 |
 | Plum | `#6E3278` | 8.5 |
-| Text | `#282828` | 14.3 |
-| Brackets | `#7C6F64` | 4.7 |
-| Comments | `#928374` | 3.6 |
+| Text | `#292820` | 14.4 |
+| Brackets | `#7B705E` | 4.7 |
+| Comments | `#908472` | 3.6 |
 | Editor | `#FDFCF2` | |
 | Frame | `#F4F1E4` | |
 | Selection | `#E2D8BF` | |
 | Search match | `#E8CCA9` | |
 
-Red, orange, green, blue and plum are the five base colours. Rust sits exactly halfway between red and orange in lightness, chroma and hue, so the step from red through rust to orange is even. The text colour, the greys and the comment colour come from [Gruvbox](https://github.com/morhetz/gruvbox).
+Red, orange, green, blue and plum are the five base colours. Rust sits exactly halfway between red and orange in lightness, chroma and hue, so the step from red through rust to orange is even.
+
+The text colour and the greys are not chosen by hand but derived from the background and orange, in OKLCH. The text has the hue of the background, so it carries the same faint warmth as the surface it sits on, with chroma 0.015 in Høstlys (near-black with a hint of warmth) and 0.030 in Høstkveld (cream). The greys, used for brackets, comments, descriptions and everything inactive, have the hue halfway between orange and the background and chroma 0.030, which makes them warm and earthy without leaning towards either; only their lightness is set per role. The same two rules give the greys in both themes.
 
 Removed lines in diffs have a rust background at low opacity, since red at low opacity turns pink on the light background.
 
@@ -58,9 +60,9 @@ Removed lines in diffs have a rust background at low opacity, since red at low o
 | Green | `#7CAC2F` | 6.2 |
 | Blue | `#419FDF` | 5.7 |
 | Plum | `#BB62C9` | 4.5 |
-| Text | `#EBE2CB` | 12.9 |
-| Brackets | `#A3978C` | 5.8 |
-| Comments | `#928374` | 4.5 |
+| Text | `#EBE2CD` | 12.9 |
+| Brackets | `#A69786` | 5.9 |
+| Comments | `#928373` | 4.5 |
 | Editor | `#211E17` | |
 | Frame | `#2D271D` | |
 | Selection | `#443D30` | |
@@ -88,11 +90,11 @@ The slots hold the hues, not the roles, so the terminal does not take part in th
 
 ### Høstlys (VS Code and iTerm)
 
-Background `#FDFCF2`, text `#282828`, selection `#E2D8BF`.
+Background `#FDFCF2`, text `#292820`, selection `#E2D8BF`.
 
 | Slot | Normal | Bright |
 |---|---|---|
-| Black | `#282828` | `#7C6F64` |
+| Black | `#292820` | `#7B705E` |
 | Red | `#781414` | `#8F2C28` |
 | Green | `#4A6B12` | `#5D802C` |
 | Yellow (orange) | `#B85C00` | `#D07128` |
@@ -103,18 +105,18 @@ Background `#FDFCF2`, text `#282828`, selection `#E2D8BF`.
 
 ### Høstkveld in VS Code
 
-Background `#211E17`, text `#EBE2CB`, selection `#443D30`.
+Background `#211E17`, text `#EBE2CD`, selection `#443D30`.
 
 | Slot | Normal | Bright |
 |---|---|---|
-| Black | `#38332A` | `#928374` |
+| Black | `#38332A` | `#928373` |
 | Red | `#D54444` | `#EE5C58` |
 | Green | `#7CAC2F` | `#91C349` |
 | Yellow (orange) | `#FF851B` | `#FF9C3D` |
 | Blue | `#419FDF` | `#59B5F7` |
 | Magenta (plum) | `#BB62C9` | `#D278E0` |
 | Cyan (rust) | `#F4623A` | `#FF7951` |
-| White | `#EBE2CB` | `#F7F0DE` |
+| White | `#EBE2CD` | `#F7F0DE` |
 
 ### Høstkveld in iTerm
 
@@ -124,7 +126,7 @@ Høstkveld glows a little more in iTerm than in VS Code: lightness is 0.04 highe
 
 | Slot | Normal | Bright |
 |---|---|---|
-| Black | `#38332A` | `#A39584` |
+| Black | `#38332A` | `#A49584` |
 | Red | `#EB4749` | `#FF605E` |
 | Green | `#85BA2A` | `#9AD147` |
 | Yellow (orange) | `#FF8C00` | `#FFA334` |
