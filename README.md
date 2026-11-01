@@ -2,7 +2,7 @@
 
 This theme grew out of my love for nature's own colour palette in fall. The rustic earthy tones bring an almost retro vibe, in line with the autumnal feelings of nostalgia and melancholy. This theme has been designed by me and coded by Claude, and the rest of the documentation is written by Claude.
 
-*Høst* is Norwegian for autumn. **Høstlys** (autumn light) is the light theme and **Høstkveld** (autumn evening) the dark one, for VS Code and iTerm: six deep autumn colours on warm backgrounds, tuned for LaTeX and Python and covering the rest of VS Code as well.
+A light and a dark theme in comfortable earth tones for VS Code and iTerm: **Høstlys** (autumn light) and **Høstkveld** (autumn evening). *Høst* is Norwegian for autumn. Tuned for LaTeX and Python, with the same colour roles in TypeScript, JavaScript, Java, C#, C++, Go, Rust and more, and across the whole workbench.
 
 ![Høstkveld in VS Code](docs/screenshots/hoestkveld.png)
 
