@@ -4,8 +4,8 @@
   "injectionSelector": "L:text.tex.latex -comment -markup.raw -source -meta.embedded -string -meta.math -support.class.math -meta.function.environment.latex.tikz -constant -meta.unit -meta.chemistry",
   "patterns": [
     {
-      "comment": "key= right after [ { or ,",
-      "match": "(?:(?<=[\\[{])|(,))(\\s*)([A-Za-z][\\w \\-]*?)(\\s*)(=)",
+      "comment": "key= right after [ { or , or at the start of a line; keys may contain / and . as in felles/.style and /pgf/number format/precision",
+      "match": "(?:(?<=[\\[{])|(,)|^)(\\s*)([A-Za-z/][\\w \\-/.]*?)(\\s*)(=)",
       "captures": {
         "3": {
           "name": "support.type.property-name.latex"
@@ -25,8 +25,8 @@
       }
     },
     {
-      "comment": "numbers as values: scale=1.2, width=0.8\\linewidth, ymin=0",
-      "match": "(?<==)(\\s*)(-?(?:\\d+\\.?\\d*|\\.\\d+))(pt|cm|mm|em|ex|in|bp|sp|mu|px)?(?![\\w.])",
+      "comment": "numbers as values: scale=1.2, width=0.8\\linewidth, ymin=0, and the numbers after the first in trim=0 10 0 0",
+      "match": "(?:(?<==)|(?<=\\d ))(\\s*)(-?(?:\\d+\\.?\\d*|\\.\\d+))(pt|cm|mm|em|ex|in|bp|sp|mu|px)?(?![\\w.])",
       "captures": {
         "2": {
           "name": "constant.numeric.latex"

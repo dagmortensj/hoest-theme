@@ -33,4 +33,4 @@ Without an extension, VS Code colours a language from its grammar alone. With on
 | `kotlin.kt` | Kotlin (needed for any colours at all) |
 | `swift.swift`, `julia.jl`, `r.r`, `lua.lua`, `php.php`, `ruby.rb` | optional |
 
-The other files (HTML, CSS, SCSS, JSON, JSONC, YAML, TOML, INI, XML, Markdown, LaTeX, SQL, shell, Dockerfile, Makefile, diff) use the grammar only, apart from LaTeX, which needs LaTeX Workshop.
+The other files (HTML, CSS, SCSS, JSON, JSONC, YAML, TOML, INI, XML, Markdown, LaTeX, SQL, shell, Dockerfile, Makefile, diff) use the grammar only, apart from LaTeX, which needs LaTeX Workshop. `latex.tex` covers the preamble, maths, lists and tikz; `latex_miljoer.tex` covers figures, tables, theorems, matrices, pgfplots and options spread over several lines.

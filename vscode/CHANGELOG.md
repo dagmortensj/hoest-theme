@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.8.2 (2026-11-01)
+
+- Fix: in options spread over several lines, such as `\pgfplotsset{...}` and `\hypersetup{...}`, the first key on each line was left in the text colour, since the grammar only saw a key after `[`, `{` or `,` on the same line. A key at the start of a line is now plum like the rest, and keys may contain `/` and `.`, as in `felles/.style` and `/pgf/number format/precision`. Every number in a value such as `trim=0 10 0 0` gets the value colour, not only the first. A second LaTeX test file, `test/latex_miljoer.tex`, covers these cases.
+
 ## 3.8.1 (2026-11-01)
 
 - A banner at the top of the README: Løvfall, the icon's three leaves with three smaller ones in red, blue and plum, in Høstkveld on the left and mirrored in Høstlys on the right. Every leaf keeps its hue across the seam except the two large warm ones, which trade places as structure and values do in the themes. Drawn from the palette by `src/banner.py`, which also writes `docs/loevfall.png`.
