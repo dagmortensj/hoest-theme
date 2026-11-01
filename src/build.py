@@ -570,8 +570,8 @@ def ui_extended(p):
         "debugTokenExpression.type": "plum",
         "debugTokenExpression.value": "muted",
         "debugTokenExpression.string": "blue",
-        "debugTokenExpression.number": "orange",
-        "debugTokenExpression.boolean": "orange",
+        "debugTokenExpression.number": "value",
+        "debugTokenExpression.boolean": "value",
         "debugTokenExpression.error": "red",
         "debugView.stateLabelBackground": a("muted", 0.3),
         "debugView.stateLabelForeground": "text",
@@ -651,9 +651,9 @@ def ui_extended(p):
     for name, color in {
         "class": "plum", "interface": "plum", "struct": "plum", "enumerator": "plum", "typeParameter": "plum",
         "constructor": "green", "function": "green", "method": "green",
-        "constant": "orange", "boolean": "orange", "number": "orange", "null": "orange",
-        "enumeratorMember": "orange", "event": "orange", "unit": "orange", "color": "orange",
-        "string": "blue", "key": "plum", "keyword": "rust", "operator": "text",
+        "constant": "value", "boolean": "value", "number": "value", "null": "value",
+        "enumeratorMember": "value", "event": "value", "unit": "value", "color": "value",
+        "string": "blue", "key": "plum", "keyword": "structure", "operator": "text",
         "variable": "text", "field": "text", "property": "text", "object": "text", "array": "text",
         "module": "text", "namespace": "text", "package": "text", "file": "text", "folder": "text",
         "reference": "text", "snippet": "muted", "text": "muted",
@@ -743,20 +743,20 @@ def tokens(p):
         ("Default text", ["source", "variable", "variable.parameter", "meta.function-call.arguments", "keyword.operator", "entity.name.namespace", "entity.name.module", "entity.name.label", "variable.other.readwrite", "variable.other.property", "variable.other.object"], "text", None),
         ("Operators (not bold)", ["keyword.operator", "keyword.operator.assignment", "keyword.operator.arithmetic", "keyword.operator.comparison", "keyword.operator.bitwise", "keyword.operator.pipe", "keyword.operator.redirect", "keyword.operator.expansion"], "text", ""),
         ("Comments", ["comment", "punctuation.definition.comment", "string.quoted.docstring.multi.python", "string.quoted.docstring", "string.quoted.docstring punctuation.definition.string"], "comment", "italic"),
-        ("1 Rust: keywords", ["keyword", "storage.type", "storage.modifier", "keyword.other", "keyword.operator.new", "keyword.control.import", "keyword.control.import.python", "storage.type.function.lambda.python", "storage.type.function.async.python"], "rust", ""),
-        ("1 Rust, bold: control and logical keywords", ["keyword.control", "keyword.control.flow", "keyword.control.flow.python", "keyword.control.conditional", "keyword.control.loop", "keyword.control.return", "keyword.control.trycatch", "keyword.control.exception",
+        ("1 Structure: keywords", ["keyword", "storage.type", "storage.modifier", "keyword.other", "keyword.operator.new", "keyword.control.import", "keyword.control.import.python", "storage.type.function.lambda.python", "storage.type.function.async.python"], "structure", ""),
+        ("1 Structure, bold: control and logical keywords", ["keyword.control", "keyword.control.flow", "keyword.control.flow.python", "keyword.control.conditional", "keyword.control.loop", "keyword.control.return", "keyword.control.trycatch", "keyword.control.exception",
             "keyword.operator.logical.python", "keyword.operator.expression.in", "keyword.operator.expression.is", "keyword.operator.expression.pattern.is",
-            "keyword.operator.expression.pattern.combinator", "keyword.operator.logical.and.media", "storage.type.function.python", "storage.type.class.python"], "rust", "bold"),
+            "keyword.operator.expression.pattern.combinator", "keyword.operator.logical.and.media", "storage.type.function.python", "storage.type.class.python"], "structure", "bold"),
         # The logical words and, or, not, in and is are bold (above). Logical operators written as
         # symbols (&&, ||, !, ??) are operators and keep the text colour, like + and ==.
-        ("Plain rust: other operators written as words (typeof, instanceof, of, satisfies, nameof)", [
+        ("Plain structure colour: other operators written as words (typeof, instanceof, of, satisfies, nameof)", [
             "keyword.operator.word", "keyword.operator.expression", "keyword.operator.instanceof",
             "keyword.operator.typeof", "keyword.control.operator", "keyword.control.satisfies",
             "keyword.control.type", "keyword.control.using.julia",
-        ], "rust", ""),
-        ("2 Orange: numbers and constants", ["constant.numeric", "constant.language", "constant.other", "support.constant", "variable.other.constant", "variable.other.enummember", "constant.other.color", "keyword.other.unit"], "orange", None),
+        ], "structure", ""),
+        ("2 Values: numbers and constants", ["constant.numeric", "constant.language", "constant.other", "support.constant", "variable.other.constant", "variable.other.enummember", "constant.other.color", "keyword.other.unit"], "value", None),
         ("Python: upper-case names are ordinary variables (M, G, LIMIT)", ["constant.other.caps", "constant.other.caps.python", "variable.other.constant"], "text", ""),
-        ("2 Orange: number prefixes and suffixes (0x, 1j)", ["storage.type.number", "storage.type.imaginary.number", "storage.type.number.python", "storage.type.imaginary.number.python"], "orange", ""),
+        ("2 Values: number prefixes and suffixes (0x, 1j)", ["storage.type.number", "storage.type.imaginary.number", "storage.type.number.python", "storage.type.imaginary.number.python"], "value", ""),
         ("3 Blue: strings", ["string", "punctuation.definition.string", "string.quoted", "string.interpolated", "string.template", "string.regexp", "string.other"], "blue", None),
         ("3 Blue: string prefixes (f, r, b)", ["storage.type.string.python"], "blue", ""),
         ("4 Green: functions", ["entity.name.function", "support.function", "support.function.builtin", "meta.function-call.generic", "support.function.magic", "variable.function", "entity.name.function.member", "entity.name.command"], "green", None),
@@ -778,7 +778,7 @@ def tokens(p):
         ("Markdown: ``` and language name (grey)", ["punctuation.definition.markdown", "fenced_code.block.language", "fenced_code.block.language.markdown", "fenced_code.block.language.attributes.markdown", "punctuation.definition.raw.markdown"], "muted", ""),
         ("Markdown: links (red, as in the PDF)", ["markup.underline.link", "string.other.link", "meta.link.inline.markdown", "meta.image.inline.markdown", "meta.link.reference.markdown", "constant.other.reference.link.markdown"], "red", ""),
         ("Markdown: brackets around links (grey)", ["punctuation.definition.link.title.begin.markdown", "punctuation.definition.link.title.end.markdown", "punctuation.definition.link.description.begin.markdown", "punctuation.definition.link.description.end.markdown", "punctuation.definition.metadata.markdown"], "muted", ""),
-        ("Markdown: list markers (rust)", ["punctuation.definition.list.begin.markdown", "beginning.punctuation.definition.list.markdown"], "rust", None),
+        ("Markdown: list markers (structure)", ["punctuation.definition.list.begin.markdown", "beginning.punctuation.definition.list.markdown"], "structure", None),
         ("Markdown: quotes (grey, italic)", ["markup.quote"], "muted", "italic"),
         ("Markdown: rules, table lines and emphasis markers (grey)", ["meta.separator.markdown", "punctuation.definition.table.markdown", "punctuation.separator.table.markdown", "punctuation.definition.strikethrough.markdown", "punctuation.definition.bold.markdown", "punctuation.definition.italic.markdown"], "muted", None),
         ("Markdown: mathematics (blue, commands neutral)", ["meta.embedded.math.markdown", "markup.math.inline.markdown", "markup.math.block.markdown", "meta.function.math.tex"], "blue", None),
@@ -787,20 +787,20 @@ def tokens(p):
         ("Markdown: mathematics, $ and brackets (grey)", ["punctuation.definition.math.begin.markdown", "punctuation.definition.math.end.markdown", "punctuation.math.begin.bracket.curly", "punctuation.math.end.bracket.curly", "punctuation.math.begin.bracket.round", "punctuation.math.end.bracket.round", "punctuation.definition.arguments.begin.math.tex", "punctuation.definition.arguments.end.math.tex"], "muted", None),
 
         # ===== LaTeX =====
-        ("LaTeX: structure (rust)", ["keyword.control.preamble.latex", "keyword.control.include.latex", "storage.type.function.latex", "keyword.other.item.latex", "storage.type.function.tex", "keyword.control.tex", "keyword.control.catcode.tex"], "rust", ""),
-        ("LaTeX: \\begin and \\end (rust, bold)", ["support.function.be.latex"], "rust", "bold"),
-        ("LaTeX: sectioning commands (red, bold)", ["support.function.section.latex"], "red", "bold"),
+        ("LaTeX: structure", ["keyword.control.preamble.latex", "keyword.control.include.latex", "storage.type.function.latex", "keyword.other.item.latex", "storage.type.function.tex", "keyword.control.tex", "keyword.control.catcode.tex"], "structure", ""),
+        ("LaTeX: \\begin and \\end (structure, bold)", ["support.function.be.latex"], "structure", "bold"),
+        ("LaTeX: sectioning commands (structure, bold, like \\begin)", ["support.function.section.latex"], "structure", "bold"),
         ("LaTeX: line breaks and table cells (neutral)", ["keyword.control.newline.tex", "keyword.control.equation.newline.latex", "keyword.control.table.cell.latex", "keyword.control.table.newline.latex", "keyword.control.equation.align.latex", "keyword.control.layout.latex"], "text", ""),
         ("LaTeX: section titles", ["entity.name.section.latex"], "text", "bold"),
         ("LaTeX: mathematics, variables (blue)", ["support.class.math.block.tex", "support.class.math.block.environment.latex", "meta.math.block.tex", "meta.math.block.latex"], "blue", None),
         ("LaTeX: Greek letters and symbols (plum)", ["constant.character.math.tex"], "plum", None),
-        ("LaTeX: numbers (orange)", ["constant.numeric.math.tex"], "orange", None),
+        ("LaTeX: numbers (values)", ["constant.numeric.math.tex"], "value", None),
         ("LaTeX: plain text inside maths (\\text{})", ["meta.text.normal.tex"], "text", None),
         ("LaTeX: environment names (green, bold)", ["variable.parameter.function.latex"], "green", "bold"),
         ("LaTeX: names of new commands (green)", ["meta.parameter.newcommand.latex support.function.general.latex", "entity.name.function.latex", "entity.name.function.tex"], "green", ""),
         ("LaTeX: other commands (neutral)", ["support.function.general.latex", "support.function.general.tex", "support.function.emph.latex", "support.function.textbf.latex", "support.function.textit.latex", "support.function.texttt.latex", "support.function.url.latex", "support.function.footnote.latex", "support.function.marginpar.latex", "support.function.verb.latex", "keyword.control.ref.latex", "keyword.control.label.latex", "keyword.control.cite.latex", "constant.other.general.math.tex", "constant.other.math.tex", "support.function.textcolor.latex", "support.function.textsubscript.latex", "support.function.textsuperscript.latex", "support.function.textsc.latex", "support.function.textsf.latex", "support.function.textrm.latex", "support.function.underline.latex"], "text", ""),
         ("LaTeX: commands in braces and in \\newcommand that are not environments (neutral)", ["meta.group.braces.latex support.function.be.latex", "meta.parameter.newcommand.latex support.function.be.latex", "meta.group.braces.latex variable.parameter.function.latex", "meta.parameter.newcommand.latex variable.parameter.function.latex"], "text", ""),
-        ("LaTeX: \\begin and \\end inside braces (rust, bold)", [f"{f} meta.function.environment.{m}.latex support.function.be.latex".replace(".latex.tikz.latex", ".latex.tikz") for f in ("meta.group.braces.latex", "meta.parameter.newcommand.latex") for m in ENVIRONMENTS], "rust", "bold"),
+        ("LaTeX: \\begin and \\end inside braces (structure, bold)", [f"{f} meta.function.environment.{m}.latex support.function.be.latex".replace(".latex.tikz.latex", ".latex.tikz") for f in ("meta.group.braces.latex", "meta.parameter.newcommand.latex") for m in ENVIRONMENTS], "structure", "bold"),
         ("LaTeX: environment names inside braces (green, bold)", [f"{f} meta.function.environment.{m}.latex variable.parameter.function.latex".replace(".latex.tikz.latex", ".latex.tikz") for f in ("meta.group.braces.latex", "meta.parameter.newcommand.latex") for m in ENVIRONMENTS], "green", "bold"),
         ("LaTeX: labels and keys (neutral)", ["variable.parameter.definition.label.latex", "constant.other.reference.label.latex", "constant.other.reference.citation.latex", "support.class.latex", "constant.other.citation.latex"], "text", ""),
         ("LaTeX: operators (neutral)", ["punctuation.math.operator.tex"], "text", None),
@@ -837,7 +837,7 @@ def tokens(p):
         ("LaTeX: drawing commands in tikzpicture (green)", ["meta.function.environment.latex.tikz support.function.general.latex", "meta.function.environment.latex.tikz support.function.general.tex"], "green", ""),
 
         # ===== BibTeX =====
-        ("BibTeX: entry type (@book)", ["keyword.other.entry-type.bibtex", "punctuation.definition.keyword.bibtex"], "rust", "bold"),
+        ("BibTeX: entry type (@book)", ["keyword.other.entry-type.bibtex", "punctuation.definition.keyword.bibtex"], "structure", "bold"),
         ("BibTeX: the key used in \\cite (neutral, bold)", ["entity.name.type.entry-key.bibtex"], "text", "bold"),
         ("BibTeX: field names (plum)", ["support.function.key.bibtex", "string.unquoted.key.bibtex"], "plum", ""),
         ("BibTeX: values (neutral)", ["meta.key-assignment.bibtex"], "text", None),
@@ -845,15 +845,15 @@ def tokens(p):
 
         # ===== Data and configuration (JSON, YAML, TOML, INI) =====
         ("General: keys and attributes (plum)", ["support.type.property-name", "meta.object-literal.key", "entity.other.attribute-name", "meta.mapping.key string", "support.type.property-name.toml", "keyword.other.definition.ini", "entity.name.section.group-title.ini"], "plum", ""),
-        ("General: HTML and XML tags, and CSS type selectors (rust, structure)", ["entity.name.tag"], "rust", ""),
+        ("General: HTML and XML tags, and CSS type selectors (structure)", ["entity.name.tag"], "structure", ""),
         ("General: < and > around tags (grey, like brackets)", ["punctuation.definition.tag"], "muted", ""),
         ("YAML: keys (plum, although the grammar calls them tags)", ["entity.name.tag.yaml"], "plum", ""),
         ("Green: built-in types (int, str, double) are tools of the language, like print and len", ["storage.type.built-in", "storage.type.built-in.primitive", "storage.type.primitive", "support.type.primitive", "support.type.builtin", "support.type.python", "support.type.swift", "entity.name.type.primitive", "entity.name.type.numeric"], "green", ""),
 
         # ===== The same roles in every language =====
-        # Bold rust marks what you look for when scrolling, as def and class do in Python and
-        # \begin and \end do in LaTeX: definitions and control flow. Other keywords are plain rust.
-        ("Bold rust: definitions in every language (as def and class in Python)", [
+        # The bold structure colour marks what you look for when scrolling, as def and class do in
+        # Python and \begin and \end do in LaTeX: definitions and control flow. Other keywords are plain.
+        ("Bold structure: definitions in every language (as def and class in Python)", [
             "storage.type.function.ts", "storage.type.function.js", "storage.type.class.ts", "storage.type.class.js",
             "storage.type.interface.ts", "storage.type.type.ts", "storage.type.enum.ts",
             "storage.type.function.tsx", "storage.type.class.tsx", "storage.type.interface.tsx", "storage.type.type.tsx", "storage.type.enum.tsx",
@@ -871,12 +871,12 @@ def tokens(p):
             "storage.type.function.swift", "storage.type.struct.swift", "storage.type.class.swift", "storage.type.enum.swift",
             "storage.type.protocol.swift", "storage.type.extension.swift",
             "storage.type.function.php", "storage.type.class.php", "storage.type.interface.php", "storage.type.trait.php", "storage.type.enum.php",
-        ], "rust", "bold"),
-        ("Plain rust: imports, exports, new and preprocessor lines are structure, not landmarks", [
+        ], "structure", "bold"),
+        ("Plain structure: imports, exports, new and preprocessor lines are structure, not landmarks", [
             "keyword.control.import", "keyword.control.export", "keyword.control.from", "meta.export.default keyword.control.default",
             "keyword.control.new", "keyword.operator.expression.new", "keyword.control.directive", "punctuation.definition.directive",
             "keyword.control.at-rule", "keyword.control.at-rule punctuation.definition.keyword", "keyword.control.declare.php", "meta.use.php storage.type.function.php",
-        ], "rust", ""),
+        ], "structure", ""),
         ("Green: built-in types in Go, C#, PHP and SQL", [
             "storage.type.numeric.go", "storage.type.string.go", "storage.type.boolean.go", "storage.type.error.go",
             "storage.type.byte.go", "storage.type.rune.go", "storage.type.uintptr.go",
@@ -901,8 +901,8 @@ def tokens(p):
             "storage.modifier.import.java", "storage.modifier.package.java",
             "constant.other.database-name.sql", "constant.other.table-name.sql",
         ], "text", ""),
-        ("Orange: the exponent in numbers (6.674e-11)", ["keyword.operator.exponent"], "orange", ""),
-        ("Orange: enum members in C# and the n of a BigInt", ["entity.name.variable.enum-member.cs", "storage.type.numeric.bigint"], "orange", ""),
+        ("Values: the exponent in numbers (6.674e-11)", ["keyword.operator.exponent"], "value", ""),
+        ("Values: enum members in C# and the n of a BigInt", ["entity.name.variable.enum-member.cs", "storage.type.numeric.bigint"], "value", ""),
         ("Green: built-in exceptions in Python, like other built-in classes", ["support.type.exception.python"], "green", ""),
         ("Green: attributes in XML and media features in CSS, like HTML attributes and CSS properties", [
             "entity.other.attribute-name.localname.xml", "entity.other.attribute-name.namespace.xml",
@@ -913,21 +913,21 @@ def tokens(p):
             "meta.import.swift entity.name.type.swift", "meta.parameter-clause.swift entity.name.function.swift", "string.unquoted.argument.shell",
         ], "text", ""),
         ("Comments: docstrings in Julia, like docstrings in Python", ["string.docstring.julia", "string.docstring.julia punctuation.definition.string"], "comment", "italic"),
-        # Parameters are what comes into a function: orange like other values, in italic so they
+        # Parameters are what comes into a function: the value colour like other values, in italic so they
         # are not mistaken for numbers. Coloured where they are declared, in the signature.
-        ("Orange italic: parameters in function signatures", [
+        ("Values, italic: parameters in function signatures", [
             "variable.parameter.function.language.python", "variable.parameter.ts", "variable.parameter.js",
             "variable.parameter.js.jsx", "variable.parameter.java", "entity.name.variable.parameter.cs",
             "variable.parameter.probably.c", "variable.parameter.cpp", "variable.parameter.go",
             "meta.function.definition.rust variable.other.rust", "variable.parameter.function.swift",
             "meta.function.parameter variable.other.php", "variable.parameter.function.ruby",
             "variable.parameter.tsx", "variable.parameter.r", "variable.other.block.ruby",
-        ], "orange", "italic"),
+        ], "value", "italic"),
         ("Plum italic: generic type parameters where they are declared (T in Simulering<T>)", [
             "entity.name.type.template.cpp",
             "entity.name.type.type-parameter.cs", "variable.language.generic-parameter.swift",
         ], "plum", "italic"),
-        ("Orange italic: macro parameters #1 to #9 in LaTeX", ["variable.parameter.macro.latex"], "orange", "italic"),
+        ("Values, italic: macro parameters #1 to #9 in LaTeX", ["variable.parameter.macro.latex"], "value", "italic"),
         ("Plum italic: self, cls and this", [
             "variable.parameter.function.language.special.self", "variable.language.special.self", "variable.language.swift",
             "variable.parameter.function.language.special.cls", "variable.language.special.cls",
@@ -975,6 +975,15 @@ def semantic_rules(p):
         "interface": "plum",
         "struct": "plum",
         "decorator": "plum",
+        # Pylance marks the name after @ by what it is (property and classmethod are classes,
+        # dataclass is a function) with the modifier "decorator". The modifier rules outrank
+        # class.builtin and function, so @ and name stay one plum unit once Pylance has loaded.
+        "*.decorator": "plum",
+        "class.decorator": "plum",
+        "class.builtin.decorator": "plum",
+        "function.decorator": "plum",
+        "function.builtin.decorator": "plum",
+        "method.decorator": "plum",
         "selfParameter": ("plum", "italic"),
         "clsParameter": ("plum", "italic"),
         "function": "green",
@@ -985,16 +994,16 @@ def semantic_rules(p):
         "module": "text",
         "variable": "text",
         # Pylance treats every upper-case name as a constant, including M, G and F in physics code.
-        # They get the text colour like other variables; orange is for numbers, True, False and None.
+        # They get the text colour like other variables; the value colour is for numbers, True, False and None.
         "variable.readonly": "text",
         "variable.readonly.builtin": "text",
-        "enumMember": "orange",
+        "enumMember": "value",
         "parameter": "text",
-        "parameter.declaration": ("orange", "italic"),
+        "parameter.declaration": ("value", "italic"),
         "property": "text",
         "property.readonly": "text",
-        "keyword": "rust",
-        "number": "orange",
+        "keyword": "structure",
+        "number": "value",
         "string": "blue",
         "regexp": "blue",
         "operator": "text",
@@ -1054,7 +1063,7 @@ def make_iterm(p):
 
 def check(name, p):
     print(f"\n{name}: contrast against the editor background {p['background']} (4.5 recommended for normal text, 3 for bold)")
-    for role in ["text", "red", "rust", "orange", "green", "blue", "plum", "muted", "comment", "line_number", "inactive"]:
+    for role in ["text", "structure", "value", "red", "green", "blue", "plum", "muted", "comment", "line_number", "inactive"]:
         k = round(contrast(p[role], p["background"]), 1)
         note = "" if k >= 4.5 else ("  (bold or large text only)" if k >= 3 else "  (low)")
         print(f"  {role:12s} {p[role]}  {k:4.1f}" + note)
@@ -1100,13 +1109,13 @@ def make_svg():
 
 ROLES = [
     # role, one line, palette colour, bold
-    ("Landmarks", "definitions and control flow, \\begin and \\end", "rust", True),
-    ("Structure", "the grammar of the language: import, const, tags, the preamble", "rust", False),
-    ("Values", "numbers, constants, parameters", "orange", False),
+    ("Landmarks", "definitions and control flow, \\begin, \\end and \\section", "structure", True),
+    ("Structure", "the grammar of the language: import, const, tags, the preamble", "structure", False),
+    ("Values", "numbers, constants, parameters", "value", False),
     ("Tools", "functions, built-in types, environments", "green", False),
     ("Text", "strings and mathematics", "blue", False),
     ("Names", "your own classes and types, keys, decorators, symbols", "plum", False),
-    ("Signals", "sections, references, links, errors", "red", False),
+    ("Signals", "references, links, errors", "red", False),
 ]
 
 

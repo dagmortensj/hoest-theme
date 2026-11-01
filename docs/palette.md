@@ -1,6 +1,6 @@
 # The Høst palette
 
-How the colours in Høstlys and Høstkveld were chosen, what each one means, and how to change them. Høstlys is six autumn colours on a warm, light background. Høstkveld is derived from Høstlys by a single rule, so the colours keep the same order and the same roles in both themes. Contrast is measured against the editor background; WCAG recommends at least 4.5 for normal text and 3 for bold or large text.
+How the colours in Høstlys and Høstkveld were chosen, what each one means, and how to change them. Høstlys is six autumn colours on a warm, light background. Høstkveld is derived from Høstlys by a single rule, so the colours keep the same order in both themes, and all but the two warm colours keep the same roles. Contrast is measured against the editor background; WCAG recommends at least 4.5 for normal text and 3 for bold or large text.
 
 ![The Høst palette](./palette.svg)
 
@@ -24,7 +24,7 @@ Do not edit the files in `vscode/themes/` or `iterm/` by hand, since `build.py` 
 
 ## What the colours mean
 
-Each colour has one role in every language: bold rust for landmarks, rust for the grammar of the language, orange for values and input, green for tools that do something, blue for text and mathematics, plum for classes, types and symbols, and red for signals and references. Bold marks landmarks and italic marks placeholders. The full rules, with examples in code and LaTeX and the cases where a grammar sets limits, are in [rules.md](rules.md).
+Each colour has one role in every language: a structure colour for the grammar of the language, bold for landmarks; a value colour for values and input; green for tools that do something; blue for text and mathematics; plum for classes, types and symbols; and red for signals and references. The structure colour is the stronger of the two warm colours against the background and the value colour the other, so structure is rust in Høstlys and orange in Høstkveld, and values the opposite. Bold marks landmarks and italic marks placeholders. The full rules, with examples in code and LaTeX and the cases where a grammar sets limits, are in [rules.md](rules.md).
 
 ## Høstlys (light)
 
@@ -72,7 +72,7 @@ The six colours are derived from Høstlys in the OKLCH colour space, where equal
 - **Chroma**: 1.35 times the chroma in Høstlys, the same for every colour.
 - **Hue**: the same as in Høstlys, except that red, rust and orange move 2 to 4 degrees towards red, since light colours otherwise look yellower than dark ones.
 
-Red has the lowest contrast. It is used mostly for bold headings and short references, where it reads well. The frame is lighter than the editor, and there are no border lines.
+Red has the lowest contrast. It is used only for short references, links and errors, where it reads well. The frame is lighter than the editor, and there are no border lines.
 
 ### Colours outside sRGB
 
@@ -84,7 +84,7 @@ The bright terminal colours and the stronger iTerm colours meet the same limit f
 
 A terminal has only eight colour slots (black, red, green, yellow, blue, magenta, cyan and white), plus a bright variant of each. Høst fills them with the palette: yellow is orange, magenta is plum and cyan is rust. All six colours are therefore available in the terminal, and turquoise never appears. Anything that uses the slots follows along when you switch between Høstkveld and Høstlys: the prompt, `ls`, git, fastfetch and command-line highlighting. The bright variants are the same colours, slightly lighter.
 
-The roles are the same as in the editor if you set up your shell that way: rust for keywords, orange for folders and options, green for commands, blue for quoted text, plum for variables and symlinks, and red for errors. The author's own zsh, Powerlevel10k and fastfetch configuration is in [mac-setup](https://github.com/dagmortensj/mac-setup).
+The slots hold the hues, not the roles, so the terminal does not take part in the exchange of rust and orange between the themes: the prompt, `ls` and git use the slots by their own conventions, and the prompt is part of the interface rather than of the code. With the shell set up for Høstkveld, the roles match the editor there: orange for keywords and folders, rust for options, green for commands, blue for quoted text, plum for variables and symlinks, and red for errors. The author's own zsh, Powerlevel10k and fastfetch configuration is in [mac-setup](https://github.com/dagmortensj/mac-setup).
 
 ### Høstlys (VS Code and iTerm)
 
@@ -146,4 +146,4 @@ The LaTeX Workshop grammar recognises a lot, but leaves some common content as p
 - `latex-hoest-tikz.injection.json`: the contents of tikzpicture: numbers and units, option keys and the words of a path (`node`, `at`, `cycle`, `circle`, `to`).
 - `latex-hoest-tikz-environments.injection.json`: makes `circuitikz` and `tikzcd` coloured like tikz.
 
-In siunitx the number is orange and the unit has the text colour, also in maths, where the unit would otherwise be blue like a variable. Chemical formulas are blue like maths, and file paths are blue like strings.
+In siunitx the number has the value colour and the unit has the text colour, also in maths, where the unit would otherwise be blue like a variable. Chemical formulas are blue like maths, and file paths are blue like strings.

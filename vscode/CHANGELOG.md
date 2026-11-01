@@ -1,5 +1,14 @@
 # Changelog
 
+## 3.8.0 (2026-11-01)
+
+No colour in the palette changed; two of them changed roles.
+
+- Rust and orange trade places between the themes. Structure, the keywords and landmarks, gets the stronger of the two warm colours against the background: rust in Høstlys, as before, and orange in Høstkveld, where rust was. Values, the numbers, constants and parameters, get the other. Rust is the darker of the two in both themes, so it has the most contrast on the light background and the least on the dark one. The terminal colours are unchanged: the slots hold the hues, so yellow is orange and cyan is rust in both presets.
+- `\section`, `\subsection` and the other sectioning commands are landmarks in the structure colour, bold, like `\begin` and `\end`. Red is kept for references (`\ref`, `\cite`, links) and errors.
+- Decorators stay one plum unit with Pylance. Pylance marks the name after `@` by what it is (`property` as a class, `dataclass` as a function) with the modifier *decorator*, which made the name green once Pylance had loaded; the semantic rules now follow the modifier.
+- `docs/rules.md`, `docs/palette.md` and the README describe the roles as structure and values rather than by colour name.
+
 ## 3.7.0 (2026-10-31)
 
 - Operators and relations in maths keep the text colour, like `+` and `-`: `=`, `<`, `>`, `|`, `\cdot`, `\times`, `\pm`, `\leq`, `\neq`, `\approx`, `\to`, `\Rightarrow`, `\in`, `\cup`, `\ldots` and the rest of that family. LaTeX Workshop marks only `+ - * / ^ _` as operators, so `=` had the maths colour while the same `=` in tikz options had the text colour, and it gives the commands the same scope as Greek letters, so they were plum; a fifth small injection grammar sorts both out. Greek letters, `\infty`, `\partial`, `\nabla` and the big operators `\sum`, `\prod` and `\int` stay plum, since they stand for a quantity or an operation on one, not for the glue between two.

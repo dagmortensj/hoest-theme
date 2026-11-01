@@ -53,22 +53,22 @@ Høstkveld in iTerm glows a little more than in VS Code, since a terminal is use
 
 ![The Høst palette](docs/palette.svg)
 
-Each colour has one role, in every language and in both themes. The full rules, with bold, italic and the cases where a grammar sets limits, are in [`docs/rules.md`](docs/rules.md).
+Each role has one colour, in every language and in both themes. The two warm colours trade places between the themes: structure gets the stronger of them against the background, rust in Høstlys and orange in Høstkveld, and values get the other. The full rules, with bold, italic and the cases where a grammar sets limits, are in [`docs/rules.md`](docs/rules.md).
 
 ![The roles of the six colours](docs/roles.svg)
 
 | Colour | Role | Examples |
 |---|---|---|
-| Rust | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `\begin`, the preamble |
-| Orange | Values and input | `3.14`, `True`, `None`, parameters in italic |
+| Rust in Høstlys, orange in Høstkveld | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `\begin`, `\section`, the preamble |
+| Orange in Høstlys, rust in Høstkveld | Values and input | `3.14`, `True`, `None`, parameters in italic |
 | Green | Tools that do something | function names, `print`, built-in types such as `int` and `str`, CSS properties, `equation`, `\draw` |
 | Blue | Text and mathematics | `"text"`, everything inside `$...$` |
 | Plum | Classes and types, and symbols | your classes and those of libraries, `self` in italic, `@property`, keys in JSON and YAML, `\n`, `\gamma` |
-| Red | Signals and references | `\section`, `\ref`, `\cite`, links, errors |
+| Red | Signals and references | `\ref`, `\cite`, links, errors |
 
 Comments, braces and brackets are grey. Variables, operators, prose and ordinary LaTeX commands such as `\frac` and `\label` keep the text colour. Bold marks landmarks, what you look for when scrolling: definitions and control flow in every language, `\begin`, `\end` and sections in LaTeX, and headings in Markdown. Italic marks placeholders, as variables are set in mathematics: parameters, `self` and `this`, and `#1` in LaTeX.
 
-Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order and roles in both themes. [`docs/palette.md`](docs/palette.md) has every colour with its contrast, the rule, the terminal colours and the details of what the theme covers.
+Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order in both themes. [`docs/palette.md`](docs/palette.md) has every colour with its contrast, the rule, the terminal colours and the details of what the theme covers.
 
 ## What it covers
 

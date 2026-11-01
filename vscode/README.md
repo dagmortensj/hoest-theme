@@ -11,18 +11,18 @@
 
 ## Six colours, one role each
 
-Each colour has the same role in every language and in both themes:
+Each role has the same colour in every language and in both themes, with one exchange: structure gets the stronger of the two warm colours against the background, rust in Høstlys and orange in Høstkveld, and values get the other.
 
 ![The roles of the six colours](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/roles.png)
 
 | Colour | Role | Examples |
 |---|---|---|
-| Rust | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `\begin`, the preamble |
-| Orange | Values and input | `3.14`, `True`, `None`, parameters in italic |
+| Rust in Høstlys, orange in Høstkveld | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `\begin`, `\section`, the preamble |
+| Orange in Høstlys, rust in Høstkveld | Values and input | `3.14`, `True`, `None`, parameters in italic |
 | Green | Tools that do something | function names, `print`, built-in types such as `int` and `str`, CSS properties, `equation`, `\draw` |
 | Blue | Text and mathematics | `"text"`, everything inside `$...$` |
 | Plum | Classes and types, and symbols | your classes and those of libraries, `self` in italic, `@property`, keys in JSON and YAML, `\n`, `\gamma` |
-| Red | Signals and references | `\section`, `\ref`, `\cite`, links, errors |
+| Red | Signals and references | `\ref`, `\cite`, links, errors |
 
 Comments, braces and brackets are grey, and variables, operators and prose keep the text colour. Bold marks landmarks such as definitions and control flow, and italic marks placeholders such as parameters and `self`. Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order and roles in both themes.
 

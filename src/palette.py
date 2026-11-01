@@ -2,13 +2,19 @@
 # build.py generates the VS Code themes and the iTerm presets from this file.
 # Change a colour here, run `python3 src/build.py`, and everything else follows.
 #
-# Six colours with fixed roles (see docs/palette.md):
-#   red     landmarks and references: \section, \ref, \cite, links, errors
-#   rust    structure: \begin, \end, \item, the preamble, keywords
-#   orange  numbers and constants
+# Six colours (see docs/palette.md and docs/rules.md for the roles):
+#   red     references and signals: \ref, \cite, links, errors
+#   rust    structure in Høstlys, values in Høstkveld
+#   orange  values in Høstlys, structure in Høstkveld
 #   green   functions and environment names
 #   blue    strings and mathematics
 #   plum    classes, types, Greek letters and symbols
+#
+# Structure (keywords, \begin, \end, \section, the preamble) gets the stronger of the two
+# warm colours against the background, and values (numbers, constants, parameters) the
+# other. Rust is the darker of the two in both themes, so it is the stronger one on the
+# light background and the weaker one on the dark background; the two trade places
+# between the themes. The roles are set in _roles below.
 #
 # Høstkveld is derived from Høstlys (see below), so a change to one of the six colours
 # in Høstlys carries over to Høstkveld.
@@ -200,6 +206,10 @@ for _name in COLORS:
 
 def _roles(p, theme, dark):
     hover_shift = 0.06 if dark else -0.06  # the button gets lighter in the dark theme and darker in the light one on hover
+    # Structure and values: the two warm colours trade places between the themes (see the top
+    # of this file). The terminal slots below do not follow: there yellow is always orange and
+    # cyan always rust, since the prompt, ls and git use the slots by their own conventions.
+    p["structure"], p["value"] = (p["orange"], p["rust"]) if dark else (p["rust"], p["orange"])
     p.update({
         "focus": p["orange"] if dark else p["blue"],
         "button": p["blue"],

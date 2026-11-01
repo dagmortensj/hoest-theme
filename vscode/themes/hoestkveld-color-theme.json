@@ -442,8 +442,8 @@
     "debugTokenExpression.type": "#bb62c9",
     "debugTokenExpression.value": "#a3978c",
     "debugTokenExpression.string": "#419fdf",
-    "debugTokenExpression.number": "#ff851b",
-    "debugTokenExpression.boolean": "#ff851b",
+    "debugTokenExpression.number": "#f4623a",
+    "debugTokenExpression.boolean": "#f4623a",
     "debugTokenExpression.error": "#d54444",
     "debugView.stateLabelBackground": "#a3978c4c",
     "debugView.stateLabelForeground": "#ebe2cb",
@@ -513,17 +513,17 @@
     "symbolIcon.constructorForeground": "#7cac2f",
     "symbolIcon.functionForeground": "#7cac2f",
     "symbolIcon.methodForeground": "#7cac2f",
-    "symbolIcon.constantForeground": "#ff851b",
-    "symbolIcon.booleanForeground": "#ff851b",
-    "symbolIcon.numberForeground": "#ff851b",
-    "symbolIcon.nullForeground": "#ff851b",
-    "symbolIcon.enumeratorMemberForeground": "#ff851b",
-    "symbolIcon.eventForeground": "#ff851b",
-    "symbolIcon.unitForeground": "#ff851b",
-    "symbolIcon.colorForeground": "#ff851b",
+    "symbolIcon.constantForeground": "#f4623a",
+    "symbolIcon.booleanForeground": "#f4623a",
+    "symbolIcon.numberForeground": "#f4623a",
+    "symbolIcon.nullForeground": "#f4623a",
+    "symbolIcon.enumeratorMemberForeground": "#f4623a",
+    "symbolIcon.eventForeground": "#f4623a",
+    "symbolIcon.unitForeground": "#f4623a",
+    "symbolIcon.colorForeground": "#f4623a",
     "symbolIcon.stringForeground": "#419fdf",
     "symbolIcon.keyForeground": "#bb62c9",
-    "symbolIcon.keywordForeground": "#f4623a",
+    "symbolIcon.keywordForeground": "#ff851b",
     "symbolIcon.operatorForeground": "#ebe2cb",
     "symbolIcon.variableForeground": "#ebe2cb",
     "symbolIcon.fieldForeground": "#ebe2cb",
@@ -644,7 +644,7 @@
       }
     },
     {
-      "name": "1 Rust: keywords",
+      "name": "1 Structure: keywords",
       "scope": [
         "keyword",
         "storage.type",
@@ -657,12 +657,12 @@
         "storage.type.function.async.python"
       ],
       "settings": {
-        "foreground": "#f4623a",
+        "foreground": "#ff851b",
         "fontStyle": ""
       }
     },
     {
-      "name": "1 Rust, bold: control and logical keywords",
+      "name": "1 Structure, bold: control and logical keywords",
       "scope": [
         "keyword.control",
         "keyword.control.flow",
@@ -682,12 +682,12 @@
         "storage.type.class.python"
       ],
       "settings": {
-        "foreground": "#f4623a",
+        "foreground": "#ff851b",
         "fontStyle": "bold"
       }
     },
     {
-      "name": "Plain rust: other operators written as words (typeof, instanceof, of, satisfies, nameof)",
+      "name": "Plain structure colour: other operators written as words (typeof, instanceof, of, satisfies, nameof)",
       "scope": [
         "keyword.operator.word",
         "keyword.operator.expression",
@@ -699,12 +699,12 @@
         "keyword.control.using.julia"
       ],
       "settings": {
-        "foreground": "#f4623a",
+        "foreground": "#ff851b",
         "fontStyle": ""
       }
     },
     {
-      "name": "2 Orange: numbers and constants",
+      "name": "2 Values: numbers and constants",
       "scope": [
         "constant.numeric",
         "constant.language",
@@ -716,7 +716,7 @@
         "keyword.other.unit"
       ],
       "settings": {
-        "foreground": "#ff851b"
+        "foreground": "#f4623a"
       }
     },
     {
@@ -732,7 +732,7 @@
       }
     },
     {
-      "name": "2 Orange: number prefixes and suffixes (0x, 1j)",
+      "name": "2 Values: number prefixes and suffixes (0x, 1j)",
       "scope": [
         "storage.type.number",
         "storage.type.imaginary.number",
@@ -740,7 +740,7 @@
         "storage.type.imaginary.number.python"
       ],
       "settings": {
-        "foreground": "#ff851b",
+        "foreground": "#f4623a",
         "fontStyle": ""
       }
     },
@@ -993,13 +993,13 @@
       }
     },
     {
-      "name": "Markdown: list markers (rust)",
+      "name": "Markdown: list markers (structure)",
       "scope": [
         "punctuation.definition.list.begin.markdown",
         "beginning.punctuation.definition.list.markdown"
       ],
       "settings": {
-        "foreground": "#f4623a"
+        "foreground": "#ff851b"
       }
     },
     {
@@ -1078,7 +1078,7 @@
       }
     },
     {
-      "name": "LaTeX: structure (rust)",
+      "name": "LaTeX: structure",
       "scope": [
         "keyword.control.preamble.latex",
         "keyword.control.include.latex",
@@ -1089,27 +1089,27 @@
         "keyword.control.catcode.tex"
       ],
       "settings": {
-        "foreground": "#f4623a",
+        "foreground": "#ff851b",
         "fontStyle": ""
       }
     },
     {
-      "name": "LaTeX: \\begin and \\end (rust, bold)",
+      "name": "LaTeX: \\begin and \\end (structure, bold)",
       "scope": [
         "support.function.be.latex"
       ],
       "settings": {
-        "foreground": "#f4623a",
+        "foreground": "#ff851b",
         "fontStyle": "bold"
       }
     },
     {
-      "name": "LaTeX: sectioning commands (red, bold)",
+      "name": "LaTeX: sectioning commands (structure, bold, like \\begin)",
       "scope": [
         "support.function.section.latex"
       ],
       "settings": {
-        "foreground": "#d54444",
+        "foreground": "#ff851b",
         "fontStyle": "bold"
       }
     },
@@ -1160,12 +1160,12 @@
       }
     },
     {
-      "name": "LaTeX: numbers (orange)",
+      "name": "LaTeX: numbers (values)",
       "scope": [
         "constant.numeric.math.tex"
       ],
       "settings": {
-        "foreground": "#ff851b"
+        "foreground": "#f4623a"
       }
     },
     {
@@ -1244,7 +1244,7 @@
       }
     },
     {
-      "name": "LaTeX: \\begin and \\end inside braces (rust, bold)",
+      "name": "LaTeX: \\begin and \\end inside braces (structure, bold)",
       "scope": [
         "meta.group.braces.latex meta.function.environment.general.latex support.function.be.latex",
         "meta.group.braces.latex meta.function.environment.math.latex support.function.be.latex",
@@ -1260,7 +1260,7 @@
         "meta.parameter.newcommand.latex meta.function.environment.latex.tikz support.function.be.latex"
       ],
       "settings": {
-        "foreground": "#f4623a",
+        "foreground": "#ff851b",
         "fontStyle": "bold"
       }
     },
@@ -1479,7 +1479,7 @@
         "punctuation.definition.keyword.bibtex"
       ],
       "settings": {
-        "foreground": "#f4623a",
+        "foreground": "#ff851b",
         "fontStyle": "bold"
       }
     },
@@ -1544,12 +1544,12 @@
       }
     },
     {
-      "name": "General: HTML and XML tags, and CSS type selectors (rust, structure)",
+      "name": "General: HTML and XML tags, and CSS type selectors (structure)",
       "scope": [
         "entity.name.tag"
       ],
       "settings": {
-        "foreground": "#f4623a",
+        "foreground": "#ff851b",
         "fontStyle": ""
       }
     },
@@ -1592,7 +1592,7 @@
       }
     },
     {
-      "name": "Bold rust: definitions in every language (as def and class in Python)",
+      "name": "Bold structure: definitions in every language (as def and class in Python)",
       "scope": [
         "storage.type.function.ts",
         "storage.type.function.js",
@@ -1650,12 +1650,12 @@
         "storage.type.enum.php"
       ],
       "settings": {
-        "foreground": "#f4623a",
+        "foreground": "#ff851b",
         "fontStyle": "bold"
       }
     },
     {
-      "name": "Plain rust: imports, exports, new and preprocessor lines are structure, not landmarks",
+      "name": "Plain structure: imports, exports, new and preprocessor lines are structure, not landmarks",
       "scope": [
         "keyword.control.import",
         "keyword.control.export",
@@ -1671,7 +1671,7 @@
         "meta.use.php storage.type.function.php"
       ],
       "settings": {
-        "foreground": "#f4623a",
+        "foreground": "#ff851b",
         "fontStyle": ""
       }
     },
@@ -1813,23 +1813,23 @@
       }
     },
     {
-      "name": "Orange: the exponent in numbers (6.674e-11)",
+      "name": "Values: the exponent in numbers (6.674e-11)",
       "scope": [
         "keyword.operator.exponent"
       ],
       "settings": {
-        "foreground": "#ff851b",
+        "foreground": "#f4623a",
         "fontStyle": ""
       }
     },
     {
-      "name": "Orange: enum members in C# and the n of a BigInt",
+      "name": "Values: enum members in C# and the n of a BigInt",
       "scope": [
         "entity.name.variable.enum-member.cs",
         "storage.type.numeric.bigint"
       ],
       "settings": {
-        "foreground": "#ff851b",
+        "foreground": "#f4623a",
         "fontStyle": ""
       }
     },
@@ -1892,7 +1892,7 @@
       }
     },
     {
-      "name": "Orange italic: parameters in function signatures",
+      "name": "Values, italic: parameters in function signatures",
       "scope": [
         "variable.parameter.function.language.python",
         "variable.parameter.ts",
@@ -1912,7 +1912,7 @@
         "variable.other.block.ruby"
       ],
       "settings": {
-        "foreground": "#ff851b",
+        "foreground": "#f4623a",
         "fontStyle": "italic"
       }
     },
@@ -1929,12 +1929,12 @@
       }
     },
     {
-      "name": "Orange italic: macro parameters #1 to #9 in LaTeX",
+      "name": "Values, italic: macro parameters #1 to #9 in LaTeX",
       "scope": [
         "variable.parameter.macro.latex"
       ],
       "settings": {
-        "foreground": "#ff851b",
+        "foreground": "#f4623a",
         "fontStyle": "italic"
       }
     },
@@ -2166,6 +2166,12 @@
     "interface": "#bb62c9",
     "struct": "#bb62c9",
     "decorator": "#bb62c9",
+    "*.decorator": "#bb62c9",
+    "class.decorator": "#bb62c9",
+    "class.builtin.decorator": "#bb62c9",
+    "function.decorator": "#bb62c9",
+    "function.builtin.decorator": "#bb62c9",
+    "method.decorator": "#bb62c9",
     "selfParameter": {
       "foreground": "#bb62c9",
       "italic": true
@@ -2183,16 +2189,16 @@
     "variable": "#ebe2cb",
     "variable.readonly": "#ebe2cb",
     "variable.readonly.builtin": "#ebe2cb",
-    "enumMember": "#ff851b",
+    "enumMember": "#f4623a",
     "parameter": "#ebe2cb",
     "parameter.declaration": {
-      "foreground": "#ff851b",
+      "foreground": "#f4623a",
       "italic": true
     },
     "property": "#ebe2cb",
     "property.readonly": "#ebe2cb",
-    "keyword": "#f4623a",
-    "number": "#ff851b",
+    "keyword": "#ff851b",
+    "number": "#f4623a",
     "string": "#419fdf",
     "regexp": "#419fdf",
     "operator": "#ebe2cb",
