@@ -141,11 +141,12 @@ The workbench uses palette colours everywhere, including diff and merge views, p
 
 Code is coloured for LaTeX (with LaTeX Workshop), BibTeX, Python, Markdown with maths, JSON, YAML, shell scripts, diffs, git commits and the logs in the Output panel, and by the same rules for TypeScript, JavaScript, Java, C#, C, C++, Go, Rust, Kotlin, Swift, PHP, Ruby, SQL, HTML and CSS. Semantic highlighting is on, so language servers such as Pylance can tell classes, built-in types, parameters and `self` apart even where the grammar cannot.
 
-The LaTeX Workshop grammar recognises a lot, but leaves some common content as plain text. The extension therefore adds four small injection grammars in `vscode/syntaxes/`. They change only the colours, not how the rest of the file is parsed:
+The LaTeX Workshop grammar recognises a lot, but leaves some common content as plain text. The extension therefore adds five small injection grammars in `vscode/syntaxes/`. They change only the colours, not how the rest of the file is parsed:
 
 - `latex-hoest.injection.json`: definitions and the preamble (`\NewDocumentCommand`, `\DeclareMathOperator`, `\newtheorem`, `\definecolor`, `\usetikzlibrary` and similar get the same role as `\newcommand` and `\usepackage`), numbers and units in siunitx (`\qty`, `\num`, `\unit`), chemistry in mhchem (`\ce`) and file paths (`\includegraphics`, `\addbibresource`, `\graphicspath`).
 - `latex-hoest-options.injection.json`: keys and values in options, such as `[width=0.8\linewidth]`, `[label=\alph*)]` and `\hypersetup{colorlinks=true}`, and lengths such as `2mm` and `11pt`.
 - `latex-hoest-tikz.injection.json`: the contents of tikzpicture: numbers and units, option keys and the words of a path (`node`, `at`, `cycle`, `circle`, `to`).
 - `latex-hoest-tikz-environments.injection.json`: makes `circuitikz` and `tikzcd` coloured like tikz.
+- `latex-hoest-operators.injection.json`: operators and relations in maths, both the symbols `=`, `<`, `>` and `|` and the commands `\cdot`, `\times`, `\pm`, `\leq`, `\neq`, `\to`, `\in` and the rest of that family, so they keep the text colour like `+` and `-` instead of the colour of maths or of Greek letters.
 
 In siunitx the number has the value colour and the unit has the text colour, also in maths, where the unit would otherwise be blue like a variable. Chemical formulas are blue like maths, and file paths are blue like strings.

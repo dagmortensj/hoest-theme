@@ -6,7 +6,7 @@ Every role in Høst has one colour, and the role is the same in every language a
 
 Colour is for what the eye looks for. The text colour is for what you read.
 
-Names you read, such as variables, properties and prose, keep the text colour. What marks where something begins, what kind of thing a word is, or what the language provides gets a colour. The more often something occurs, the less a colour on it tells you, so the most frequent tokens stay neutral. This is the same rule the LaTeX colours were built on: `\section` and `\begin` are coloured, while `\frac`, `\label` and `\emph` keep the text colour.
+Names you read, such as variables, properties and prose, keep the text colour. What marks where something begins, what kind of thing a word is, or what the language provides gets a colour. The more often something occurs, the less a colour on it tells you, so the most frequent tokens stay neutral. The LaTeX colouring follows the same rule: `\section` and `\begin` are coloured, while `\frac`, `\label` and `\emph` keep the text colour.
 
 ## The two warm colours
 

@@ -29,7 +29,7 @@ code --uninstall-extension dagmorten.hoest-theme
 code --uninstall-extension dagmorten.host-theme
 ```
 
-While Høstlys or Høstkveld is active, a button at the right of the status bar switches between them. The same command is in the command palette as **Høst: Switch between Høstlys and Høstkveld**. It works as it is. If you also want VS Code's own light/dark switching, for example when it follows the system appearance, set the pair in your settings:
+While Høstlys or Høstkveld is active, a button at the right of the status bar switches between them. The same command is in the command palette as **Høst: Switch between Høstlys and Høstkveld**, and nothing needs to be set up for it. If you also want VS Code's own light/dark switching, for example when it follows the system appearance, set the pair in your settings:
 
 ```jsonc
 "workbench.preferredLightColorTheme": "Høstlys",
@@ -107,7 +107,7 @@ The files in `vscode/themes/` and `iterm/` are generated, so edit the palette ra
 
 ## Credits
 
-Høst is designed by Dag-Morten and made with [Claude](https://claude.ai).
+Høst is designed by Dag-Morten Sjøstrøm and made with [Claude](https://claude.ai).
 
 ## License
 

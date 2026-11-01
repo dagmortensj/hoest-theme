@@ -48,4 +48,4 @@ Matching iTerm presets, the full palette with contrast values, and the build scr
 
 ## Credits
 
-Høst is designed by Dag-Morten and made with [Claude](https://claude.ai).
+Høst is designed by Dag-Morten Sjøstrøm and made with [Claude](https://claude.ai).
