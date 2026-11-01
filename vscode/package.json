@@ -1,7 +1,7 @@
 {
   "name": "hoest-theme",
   "displayName": "Høst Theme",
-  "description": "Høst is the Norwegian word for autumn. It comes as a dark theme, Høstkveld (autumn evening), and a light theme, Høstlys (autumn light), both in comfortable earth tones. Covers the whole workbench, LaTeX, Python with Pylance semantic highlighting, Markdown, BibTeX, JSON, YAML, shell and diff, with the same roles in TypeScript, JavaScript, Java, C#, Go, Rust and more. Adds a status bar button that switches between light and dark.",
+  "description": "A light and a dark theme in comfortable earth tones: Høstlys (autumn light) and Høstkveld (autumn evening). Høst is Norwegian for autumn. Tuned for LaTeX and Python, with the same colour roles in TypeScript, JavaScript, Java, C#, C++, Go, Rust and the whole workbench. A status bar button switches between light and dark.",
   "version": "3.9.0",
   "publisher": "dagmortensj",
   "icon": "icon.png",

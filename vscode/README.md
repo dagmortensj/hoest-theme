@@ -2,8 +2,6 @@
 
 This theme grew out of my love for nature's own colour palette in fall. The rustic earthy tones bring an almost retro vibe, in line with the autumnal feelings of nostalgia and melancholy. This theme has been designed by me and coded by Claude, and the rest of the documentation is written by Claude.
 
-**Høstlys** (autumn light) is a light theme and **Høstkveld** (autumn evening) a dark one, both in earth tones. *Høst* is Norwegian for autumn. The palette is six deep autumn colours on warm, slightly rustic earth tones.
-
 ![Høstkveld](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/screenshots/hoestkveld.png)
 
 ![Høstlys](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/screenshots/hoestlys.png)
