@@ -1109,8 +1109,7 @@ def make_svg():
 
 ROLES = [
     # role, one line, palette colour, bold
-    ("Landmarks", "definitions and control flow, \\begin, \\end and \\section", "structure", True),
-    ("Structure", "the grammar of the language: import, const, tags, the preamble", "structure", False),
+    ("Structure", "the grammar of the language; definitions, control flow, \\begin, \\end and \\section in bold", "structure", True),
     ("Values", "numbers, constants, parameters", "value", False),
     ("Tools", "functions, built-in types, environments", "green", False),
     ("Text", "strings and mathematics", "blue", False),
@@ -1133,7 +1132,7 @@ def make_roles_svg():
         parts.append(f'<rect x="{pad + 20 + 56 - 22}" y="{y + 14 + 56 - 22}" width="22" height="22" rx="6" fill="{l["background"]}"/>')
         parts.append(f'<rect x="{pad + 20 + 56 - 17}" y="{y + 14 + 56 - 17}" width="12" height="12" rx="3" fill="{l[name]}"/>')
         weight = "700" if bold else "600"
-        tag = f'<tspan dx="10" font-size="12" font-weight="400" fill="{k["muted"]}">bold</tspan>' if bold else ""
+        tag = f'<tspan dx="10" font-size="12" font-weight="400" fill="{k["muted"]}">landmarks in bold</tspan>' if bold else ""
         parts.append(f'<text x="{pad + 98}" y="{y + 38}" font-family="{font}" font-size="22" font-weight="{weight}" fill="{k["text"]}">{role}{tag}</text>')
         parts.append(f'<text x="{pad + 98}" y="{y + 62}" font-family="{font}" font-size="13" fill="{k["muted"]}">{line}</text>')
         for dy, theme, colour, fill in ((38, "Høstkveld", k[name], k["text"]), (60, "Høstlys", l[name], k["muted"])):

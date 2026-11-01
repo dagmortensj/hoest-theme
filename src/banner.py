@@ -25,11 +25,12 @@ from pathlib import Path
 
 sys.dont_write_bytecode = True
 from PIL import Image, ImageDraw
-from icon import LEAF, LEAVES, RADIUS, SCALE, SIZE, STALK, VEIN, bezier, stroke
+from icon import LEAF, LEAVES, RADIUS, SIZE, STALK, VEIN, bezier, stroke
 from palette import HOESTKVELD, HOESTLYS
 
 DOCS = Path(__file__).resolve().parent.parent / "docs"
-BANNER_SCALE = 2              # the banner is written at 1024 × 512, twice the icon size
+SCALE = 8                     # drawn eight times larger and scaled down, for smooth edges
+BANNER_SCALE = 4              # the banner is written at 2048 × 1024, four times the icon size, for Retina screens
 EDGE = 1                      # the edge of the banner, in icon pixels: 2 px at 1024 × 512
 
 # The three small leaves, as in the icon list: x, y, rotation in degrees (clockwise), size, colour
