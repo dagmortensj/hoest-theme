@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.8.1 (2026-11-01)
+
+- A banner at the top of the README: Løvfall, the icon's three leaves with three smaller ones in red, blue and plum, in Høstkveld on the left and mirrored in Høstlys on the right. Every leaf keeps its hue across the seam except the two large warm ones, which trade places as structure and values do in the themes. Drawn from the palette by `src/banner.py`, which also writes `docs/loevfall.png`.
+- The roles card and the README wording follow 3.8.0 everywhere.
+
 ## 3.8.0 (2026-11-01)
 
 No colour in the palette changed; two of them changed roles.

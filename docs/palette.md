@@ -28,7 +28,7 @@ Each colour has one role in every language: a structure colour for the grammar o
 
 ## Høstlys (light)
 
-| Role | Hex | Contrast |
+| Colour | Hex | Contrast |
 |---|---|---|
 | Red | `#781414` | 10.7 |
 | Rust | `#99380E` | 7.0 |
@@ -50,7 +50,7 @@ Removed lines in diffs have a rust background at low opacity, since red at low o
 
 ## Høstkveld (dark)
 
-| Role | Hex | Contrast |
+| Colour | Hex | Contrast |
 |---|---|---|
 | Red | `#D54444` | 3.8 |
 | Rust | `#F4623A` | 5.3 |

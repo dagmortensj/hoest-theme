@@ -3,6 +3,8 @@
 <!-- First paragraph: written by Dag-Morten in his own words. Replace the placeholder below before publishing. -->
 *[Placeholder for the first paragraph, in my own words: why I made Høst, and what it is for.]*
 
+![Høst: Høstkveld on the left, Høstlys on the right](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/banner.png)
+
 **Høstlys** (autumn light) is a light theme and **Høstkveld** (autumn evening) a dark one, both in earth tones. *Høst* is Norwegian for autumn. The palette is six deep autumn colours on warm, slightly rustic earth tones.
 
 ![Høstkveld](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/screenshots/hoestkveld.png)
@@ -24,7 +26,7 @@ Each role has the same colour in every language and in both themes, with one exc
 | Plum | Classes and types, and symbols | your classes and those of libraries, `self` in italic, `@property`, keys in JSON and YAML, `\n`, `\gamma` |
 | Red | Signals and references | `\ref`, `\cite`, links, errors |
 
-Comments, braces and brackets are grey, and variables, operators and prose keep the text colour. Bold marks landmarks such as definitions and control flow, and italic marks placeholders such as parameters and `self`. Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order and roles in both themes.
+Comments, braces and brackets are grey, and variables, operators and prose keep the text colour. Bold marks landmarks such as definitions and control flow, and italic marks placeholders such as parameters and `self`. Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order in both themes.
 
 ## What it covers
 

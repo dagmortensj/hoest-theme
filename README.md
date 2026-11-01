@@ -3,6 +3,8 @@
 <!-- First paragraph: written by Dag-Morten in his own words. Replace the placeholder below before publishing. -->
 *[Placeholder for the first paragraph, in my own words: why I made Høst, and what it is for.]*
 
+![Høst: Høstkveld on the left, Høstlys on the right](docs/banner.png)
+
 A light and a dark theme in earth tones for VS Code and iTerm. *Høst* is Norwegian for autumn.
 
 **Høstlys** (autumn light) is the light theme and **Høstkveld** (autumn evening) the dark one. The palette is six deep autumn colours on warm, slightly rustic earth tones. The themes are tuned for LaTeX and Python, and cover the rest of VS Code as well.
@@ -86,6 +88,7 @@ Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, 
 | `src/build.py` | Turns the palette into the VS Code themes, the iTerm presets, `docs/palette.svg`, `docs/roles.svg` and `docs/roles.png` |
 | `src/colorspace.py` | OKLCH conversion, the sRGB gamut and WCAG contrast |
 | `src/icon.py` | Draws the extension icon from the palette (needs Pillow) |
+| `src/banner.py` | Draws `docs/loevfall.png` and the banner `docs/banner.png` from the palette, with the icon's leaves (needs Pillow) |
 | `vscode/` | The VS Code extension: themes, injection grammars, the status bar button, the icon, the changelog and the packaged `.vsix` |
 | `iterm/` | The iTerm presets |
 | `examples/` | Realistic sample files, used for the screenshots |
