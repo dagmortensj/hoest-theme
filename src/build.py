@@ -1143,10 +1143,11 @@ def make_roles_svg():
     svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">' + "".join(parts) + "</svg>\n"
     (DOCS / "roles.svg").write_text(svg, encoding="utf-8")
     # The Marketplace does not allow SVG in the README, so a PNG goes next to it.
-    # rsvg-convert renders the text well; without it the PNG is left as it is.
+    # rsvg-convert renders the text well; without it the PNG is left as it is. 4× so it stays sharp
+    # on a Retina display even when the extension view stretches it (the README shows it at width 760).
     import shutil, subprocess
     if shutil.which("rsvg-convert"):
-        subprocess.run(["rsvg-convert", "-z", "2", "-o", str(DOCS / "roles.png"), str(DOCS / "roles.svg")], check=True)
+        subprocess.run(["rsvg-convert", "-z", "4", "-o", str(DOCS / "roles.png"), str(DOCS / "roles.svg")], check=True)
     else:
         print("note: rsvg-convert not found, docs/roles.png not regenerated")
 

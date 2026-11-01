@@ -15,7 +15,7 @@
 
 Each role has the same colour in every language and in both themes, with one exchange: structure gets the stronger of the two warm colours against the background, rust in Høstlys and orange in Høstkveld, and values get the other.
 
-![The roles of the six colours](https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/roles.png)
+<img src="https://raw.githubusercontent.com/dagmortensj/hoest-theme/main/docs/roles.png" width="760" alt="The roles of the six colours">
 
 | Colour | Role | Examples |
 |---|---|---|
