@@ -2,7 +2,7 @@
   "name": "hoest-theme",
   "displayName": "Høst Theme",
   "description": "A light and a dark theme in comfortable earth tones: Høstlys (autumn light) and Høstkveld (autumn evening). Høst is Norwegian for autumn. Tuned for LaTeX and Python, with the same colour roles in TypeScript, JavaScript, Java, C#, C++, Go, Rust and the whole workbench. A status bar button switches between light and dark.",
-  "version": "3.9.0",
+  "version": "3.10.0",
   "publisher": "dagmortensj",
   "author": { "name": "Dag-Morten Sjøstrøm" },
   "icon": "icon.png",

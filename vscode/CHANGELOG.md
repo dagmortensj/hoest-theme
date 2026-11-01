@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.10.0 (2026-11-01)
+
+- The Høstlys background is cream instead of near-white: `#FDF6E6`, OKLCH lightness 0.975 with a faint warmth, on the same hue as the Høstkveld background, so the two themes share one neutral axis. The old background was the greenest surface in the theme and harder on the eye than the rest of it. Every other Høstlys surface (frame, current line, selection, guides, lists, search) is now a step down from the background in `palette.py` rather than a hex code, and moves with it. The greys follow, since they are derived from the background. On cream, the frame and the editor differ less in hue than before, so the frame is a slightly larger step down (0.042, the same as in Høstkveld), and brackets and comments are a little darker for the same reason. The Høstkveld surfaces are expressed the same way, as steps up from its background; they were already on this hue, so they move by at most one step in one channel.
+- Orange in Høstlys is `#B25900`, the darkest orange that keeps a contrast of 4.5 against the new background, and rust moves to the new midpoint between red and orange, `#96370D`. In Høstkveld this moves orange and rust by one or two hex steps (`#FF831E`, `#F16239`), below what the eye can tell apart. Høstkveld is otherwise unchanged.
+
 ## 3.9.0 (2026-11-01)
 
 - The text colour and the greys are derived from the palette instead of being taken from Gruvbox. The text takes the hue of the background, so it carries the same faint warmth as the surface it sits on; the greys for brackets, comments and everything inactive take the hue halfway between orange and the background, with a fixed low chroma. The lightness of every grey is unchanged, so contrast is the same to the second decimal and the look is the same; a few hex codes move by one or two steps, and the Høstlys text goes from `#282828` to `#292820`. The bracket-match highlight, the scrollbar and the terminal's black and bright black follow the same rules. Every colour in the theme now comes from the six colours, the backgrounds or a rule between them.

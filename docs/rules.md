@@ -10,7 +10,7 @@ Names you read, such as variables, properties and prose, keep the text colour. W
 
 ## The two warm colours
 
-Structure, the keywords and landmarks of a language, is what the eye looks for most often, so it gets the stronger of the two warm colours against the background. Values get the other. Rust is the darker of the two in both themes, since Høstkveld is derived from Høstlys with the order of lightness kept. Against the light background the darker colour has the most contrast (rust 7.0, orange 4.5), and against the dark background the lighter one has (orange 6.8, rust 5.3). Structure is therefore rust in Høstlys and orange in Høstkveld, and values are orange in Høstlys and rust in Høstkveld. Below, *structure colour* and *value colour* mean whichever of the two the theme gives the role.
+Structure, the keywords and landmarks of a language, is what the eye looks for most often, so it gets the stronger of the two warm colours against the background. Values get the other. Rust is the darker of the two in both themes, since Høstkveld is derived from Høstlys with the order of lightness kept. Against the light background the darker colour has the most contrast (rust 6.8, orange 4.5), and against the dark background the lighter one has (orange 6.7, rust 5.2). Structure is therefore rust in Høstlys and orange in Høstkveld, and values are orange in Høstlys and rust in Høstkveld. Below, *structure colour* and *value colour* mean whichever of the two the theme gives the role.
 
 The terminal does not follow. Its colour slots hold the hues, the same in both presets: yellow is orange and cyan is rust, since the prompt, `ls` and git use the slots by their own conventions, and the prompt is part of the interface rather than of the code.
 

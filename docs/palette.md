@@ -30,21 +30,23 @@ Each colour has one role in every language: a structure colour for the grammar o
 
 | Colour | Hex | Contrast |
 |---|---|---|
-| Red | `#781414` | 10.7 |
-| Rust | `#99380E` | 7.0 |
-| Orange | `#B85C00` | 4.5 |
-| Green | `#4A6B12` | 6.0 |
-| Blue | `#1E608C` | 6.6 |
-| Plum | `#6E3278` | 8.5 |
-| Text | `#292820` | 14.4 |
-| Brackets | `#7B705E` | 4.7 |
-| Comments | `#908472` | 3.6 |
-| Editor | `#FDFCF2` | |
-| Frame | `#F4F1E4` | |
-| Selection | `#E2D8BF` | |
-| Search match | `#E8CCA9` | |
+| Red | `#781414` | 10.2 |
+| Rust | `#96370D` | 6.8 |
+| Orange | `#B25900` | 4.5 |
+| Green | `#4A6B12` | 5.7 |
+| Blue | `#1E608C` | 6.3 |
+| Plum | `#6E3278` | 8.2 |
+| Text | `#2B2820` | 13.7 |
+| Brackets | `#796B5B` | 4.8 |
+| Comments | `#8C7E6D` | 3.7 |
+| Editor | `#FDF6E6` | |
+| Frame | `#F1E8D4` | |
+| Selection | `#E0D3B4` | |
+| Search match | `#E8C69E` | |
 
-Red, orange, green, blue and plum are the five base colours. Rust sits exactly halfway between red and orange in lightness, chroma and hue, so the step from red through rust to orange is even.
+Red, orange, green, blue and plum are the five base colours. Orange is the darkest orange that keeps a contrast of 4.5 against the background. Rust sits exactly halfway between red and orange in lightness, chroma and hue, so the step from red through rust to orange is even.
+
+The background is cream rather than near-white: OKLCH lightness 0.975 with a faint warmth (chroma 0.022), on the same hue as the Høstkveld background (88°), so the two themes share one neutral axis. Every other surface in both themes, the frame, the current line, the selection, the guides and the lists, is a step away from its background in lightness (down in Høstlys, up in Høstkveld) with its own chroma, on the same hue; the frame sits about 0.04 from the editor in both. The steps are listed in `SURFACES` in `src/palette.py`, and a change to a background moves every surface with it. The search highlights take the hue of the greys, so they read as a tint rather than a shade.
 
 The text colour and the greys are not chosen by hand but derived from the background and orange, in OKLCH. The text has the hue of the background, so it carries the same faint warmth as the surface it sits on, with chroma 0.015 in Høstlys (near-black with a hint of warmth) and 0.030 in Høstkveld (cream). The greys, used for brackets, comments, descriptions and everything inactive, have the hue halfway between orange and the background and chroma 0.030, which makes them warm and earthy without leaning towards either; only their lightness is set per role. The same two rules give the greys in both themes.
 
@@ -55,8 +57,8 @@ Removed lines in diffs have a rust background at low opacity, since red at low o
 | Colour | Hex | Contrast |
 |---|---|---|
 | Red | `#D54444` | 3.8 |
-| Rust | `#F4623A` | 5.3 |
-| Orange | `#FF851B` | 6.8 |
+| Rust | `#F16239` | 5.2 |
+| Orange | `#FF831E` | 6.7 |
 | Green | `#7CAC2F` | 6.2 |
 | Blue | `#419FDF` | 5.7 |
 | Plum | `#BB62C9` | 4.5 |
@@ -64,9 +66,9 @@ Removed lines in diffs have a rust background at low opacity, since red at low o
 | Brackets | `#A69786` | 5.9 |
 | Comments | `#928373` | 4.5 |
 | Editor | `#211E17` | |
-| Frame | `#2D271D` | |
-| Selection | `#443D30` | |
-| Search match | `#5C4220` | |
+| Frame | `#2C271D` | |
+| Selection | `#433D30` | |
+| Search match | `#5D4220` | |
 
 The six colours are derived from Høstlys in the OKLCH colour space, where equal numeric steps look roughly equally large:
 
@@ -78,7 +80,7 @@ Red has the lowest contrast. It is used only for short references, links and err
 
 ### Colours outside sRGB
 
-A hex code can only describe colours in sRGB, the colour space of a standard screen. For orange the rule asks for a colour that sRGB does not contain: OKLCH (0.762, 0.195, 49.8) would need 116 % red. The colour is therefore clipped, which means that each channel is cut at 255. That gives `#FF851B`, OKLCH (0.740, 0.179, 53.5), slightly darker and less saturated than the target, with the hue close to that of orange in Høstlys. This result was chosen by eye. The alternative, keeping lightness and hue and lowering the chroma until the colour fits, gives `#FF904D`, a paler apricot. A Display P3 screen could show the target itself, but VS Code themes and iTerm presets are written in sRGB.
+A hex code can only describe colours in sRGB, the colour space of a standard screen. For orange the rule asks for a colour that sRGB does not contain: OKLCH (0.751, 0.190, 50.0) would need 110 % red. The colour is therefore clipped, which means that each channel is cut at 255. That gives `#FF831E`, OKLCH (0.737, 0.180, 52.3), slightly darker and less saturated than the target, with the hue close to that of orange in Høstlys. This result was chosen by eye. The alternative, keeping lightness and hue and lowering the chroma until the colour fits, gives `#FF8A3F`, a paler apricot. A Display P3 screen could show the target itself, but VS Code themes and iTerm presets are written in sRGB.
 
 The bright terminal colours and the stronger iTerm colours meet the same limit for orange, rust, bright red and bright blue. Every colour outside sRGB is listed in `OUT_OF_GAMUT` in `src/palette.py` with the choice made for it, either `clip` or `chroma`. If a change to the palette pushes a new colour outside sRGB, the build stops and names it. `python3 src/build.py --check` lists all of them with the target, the result and the distance between them.
 
@@ -90,50 +92,50 @@ The slots hold the hues, not the roles, so the terminal does not take part in th
 
 ### Høstlys (VS Code and iTerm)
 
-Background `#FDFCF2`, text `#292820`, selection `#E2D8BF`.
+Background `#FDF6E6`, text `#2B2820`, selection `#E0D3B4`.
 
 | Slot | Normal | Bright |
 |---|---|---|
-| Black | `#292820` | `#7B705E` |
+| Black | `#2B2820` | `#796B5B` |
 | Red | `#781414` | `#8F2C28` |
 | Green | `#4A6B12` | `#5D802C` |
-| Yellow (orange) | `#B85C00` | `#D07128` |
+| Yellow (orange) | `#B25900` | `#C96E27` |
 | Blue | `#1E608C` | `#3575A2` |
 | Magenta (plum) | `#6E3278` | `#83468D` |
-| Cyan (rust) | `#99380E` | `#B04D28` |
-| White | `#E2DCC8` | `#FDFCF2` |
+| Cyan (rust) | `#96370D` | `#AD4C27` |
+| White | `#E2D7BC` | `#FDF6E6` |
 
 ### Høstkveld in VS Code
 
-Background `#211E17`, text `#EBE2CD`, selection `#443D30`.
+Background `#211E17`, text `#EBE2CD`, selection `#433D30`.
 
 | Slot | Normal | Bright |
 |---|---|---|
-| Black | `#38332A` | `#928373` |
+| Black | `#37332A` | `#928373` |
 | Red | `#D54444` | `#EE5C58` |
 | Green | `#7CAC2F` | `#91C349` |
-| Yellow (orange) | `#FF851B` | `#FF9C3D` |
+| Yellow (orange) | `#FF831E` | `#FF9A3F` |
 | Blue | `#419FDF` | `#59B5F7` |
 | Magenta (plum) | `#BB62C9` | `#D278E0` |
-| Cyan (rust) | `#F4623A` | `#FF7951` |
+| Cyan (rust) | `#F16239` | `#FF7950` |
 | White | `#EBE2CD` | `#F7F0DE` |
 
 ### Høstkveld in iTerm
 
-Background `#211E17`, text `#F3ECDA`, selection `#4D4535`, bold text `#FFFAF0`.
+Background `#211E17`, text `#F3ECDA`, selection `#4C4535`, bold text `#FEFAF0`.
 
 Høstkveld glows a little more in iTerm than in VS Code: lightness is 0.04 higher and chroma 1.10 times larger. A terminal is used in short sessions, and an iTerm window is often semi-transparent, so the colours can be stronger. Orange, rust and the bright red and blue reach the edge of sRGB here, and are clipped as described under [Colours outside sRGB](#colours-outside-srgb).
 
 | Slot | Normal | Bright |
 |---|---|---|
-| Black | `#38332A` | `#A49584` |
+| Black | `#37332A` | `#A49584` |
 | Red | `#EB4749` | `#FF605E` |
 | Green | `#85BA2A` | `#9AD147` |
-| Yellow (orange) | `#FF8C00` | `#FFA334` |
+| Yellow (orange) | `#FF8A05` | `#FFA137` |
 | Blue | `#41ACF4` | `#5AC3FF` |
 | Magenta (plum) | `#CC69DC` | `#E47FF4` |
-| Cyan (rust) | `#FF6739` | `#FF7E52` |
-| White | `#EFE7D2` | `#FFFAF0` |
+| Cyan (rust) | `#FF6738` | `#FF7F51` |
+| White | `#F0E7D2` | `#FEFAF0` |
 
 ## What the theme covers
 

@@ -27,87 +27,37 @@ HOESTLYS = {
     "type": "light",
     # The six colours.
     "red": "#781414",             # darkred
-    "rust": "#99380e",            # halfway between red and orange in lightness, chroma and hue
-    "orange": "#b85c00",          # darkorange
+    "rust": "#96370d",            # halfway between red and orange in lightness, chroma and hue
+    "orange": "#b25900",          # darkorange; the darkest orange that keeps 4.5 against the background
     "green": "#4a6b12",           # darkolive
     "blue": "#1e608c",            # darkblue
     "plum": "#6e3278",            # darkplum
     # Text and greys: derived from the background below. The line numbers are tan, a colour of their own.
     "line_number": "#c9a77a",
-    # Surfaces
-    "background": "#fdfcf2",      # editor, panel, terminal
-    "frame": "#f4f1e4",           # side bar, tabs, title and status bar
-    "widget": "#f4f1e4",          # hover, suggestions, find widget in the editor
-    "widget_border": "#e2dcc8",
-    "input": "#fdfcf2",           # text fields and dropdowns
-    "current_line": "#f6f2e2",
-    "selection": "#e2d8bf",
-    "selection_dim": "#efe8d6",   # inactive selection, matching words
-    "find": "#e8cca9",
-    "find_dim": "#f1dfc6",
-    "guide": "#ebe5d3",           # indent guides, ruler
-    "guide_active": "#d5cdb6",
-    "whitespace": "#ddd5bf",
-    "list_active": "#e2d8bf",
-    "list_inactive": "#efe8d6",
-    "list_hover": "#efe9d6",
-    "command_center": "#ebe6d4",
-    "command_center_active": "#e2dcc8",
-    # Terminal: white and bright white; black and bright black are the text colour and muted, set below
-    "ansi_white": "#e2dcc8",
-    "ansi_bright_white": "#fdfcf2",
+    # Surfaces: the background is set in BACKGROUND below, and every other surface is a step
+    # down from it (SURFACES), so no surface is written as a hex code here.
     # iTerm: the 16 ANSI colours are computed below; only the rest is listed here
     "iterm": {
-        "Background Color": "#fdfcf2",
+        "Background Color": "@background",
         "Foreground Color": "@text",
         "Bold Color": "@text",
         "Cursor Color": "@text",
-        "Cursor Text Color": "#fdfcf2",
-        "Cursor Guide Color": ("#f4f1e4", 0.6),
-        "Selection Color": "#e2d8bf",
+        "Cursor Text Color": "@background",
+        "Cursor Guide Color": ("@frame", 0.6),
+        "Selection Color": "@selection",
         "Selected Text Color": "@text",
-        "Link Color": "#781414",
-        "Badge Color": ("#99380e", 0.5),
+        "Link Color": "@red",
+        "Badge Color": ("@rust", 0.5),
     },
 }
 
 HOESTKVELD = {
     "type": "dark",
-    # The six colours are derived from Høstlys below, and the text and greys from the background.
-    "background": "#211e17",
-    "frame": "#2d271d",
-    "widget": "#29251d",
-    "widget_border": "#38332a",
-    "input": "#363022",
-    "current_line": "#29251d",
-    "selection": "#443d30",
-    "selection_dim": "#38332a",
-    "find": "#5c4220",
-    "find_dim": "#3f2f1a",
-    "bracket_match": "#443d30",
-    "guide": "#38332a",
-    "guide_active": "#544c3e",
-    "whitespace": "#38332a",
-    "list_active": "#3d3426",
-    "list_inactive": "#363022",
-    "list_hover": "#363022",
-    "command_center": "#363022",
-    "command_center_active": "#3d3426",
-    "ansi_black": "#38332a",
-    "ansi_bright_white": "#f7f0de",
-    "iterm_black": "#38332a",
-    "iterm_white": "#efe7d2",
-    "iterm_bright_white": "#fffaf0",
-    # Høstkveld in iTerm is a little lighter and whiter, since the window is semi-transparent
+    # The six colours are derived from Høstlys below, the surfaces from BACKGROUND and
+    # SURFACES, and the text and greys from the background. Nothing is a hex code here.
+    # Høstkveld in iTerm is a little lighter and whiter, since the window is semi-transparent;
+    # the colours that are not "@" references are filled in by _surfaces below.
     "iterm": {
-        "Background Color": "#211e17",
-        "Foreground Color": "#f3ecda",
-        "Bold Color": "#fffaf0",
-        "Cursor Color": "#f3ecda",
-        "Cursor Text Color": "#211e17",
-        "Cursor Guide Color": ("#29251d", 0.6),
-        "Selection Color": "#4d4535",
-        "Selected Text Color": "#fffaf0",
         "Link Color": "@red",
         "Badge Color": ("@rust", 0.5),
     },
@@ -126,7 +76,7 @@ HOESTKVELD = {
 # `python3 src/build.py --check` lists each one with its target, the result and the
 # distance between them.
 OUT_OF_GAMUT = {
-    "Høstkveld orange": "clip",                   # #ff851b
+    "Høstkveld orange": "clip",                   # #ff831e
     "Høstkveld terminal bright orange": "clip",
     "Høstkveld terminal bright rust": "clip",
     "Høstkveld iTerm orange": "clip",
@@ -181,6 +131,81 @@ for _name in COLORS:
     HOESTKVELD[_name] = for_dark(_name, HOESTLYS[_name])
 
 
+# ---------- The surfaces are a ladder from the background ----------
+#
+# Both backgrounds lie on one hue, 88°, so the two themes share a neutral axis. Høstlys is
+# cream rather than near-white, lightness 0.975 with a faint warmth; Høstkveld is a dark
+# brown at 0.236. Every other surface has the background's hue and is a step away from it
+# in lightness (down in Høstlys, up in Høstkveld) with its own chroma, from the table
+# below. The search highlights take the hue of the greys (halfway between orange and the
+# background), so they read as a tint rather than a shade. The whites of the Høstkveld
+# terminal are on the background's hue too, like the text.
+BACKGROUND = {"Høstlys": (0.975, 0.022, 88.0), "Høstkveld": (0.236, 0.014, 88.0)}  # (L, C, H)
+SURFACES = {
+    # role: ((distance from the background in lightness, chroma) in Høstlys, the same in Høstkveld)
+    "frame": ((0.042, 0.029), (0.040, 0.020)),                  # side bar, tabs, title and status bar
+    "widget": ((0.042, 0.029), (0.030, 0.015)),                 # hover, suggestions, find widget in the editor
+    "widget_border": ((0.095, 0.037), (0.087, 0.017)),
+    "input": ((0.000, 0.022), (0.075, 0.025)),                  # text fields and dropdowns; the background in Høstlys
+    "current_line": ((0.029, 0.031), (0.030, 0.015)),
+    "selection": ((0.105, 0.044), (0.127, 0.023)),
+    "selection_dim": ((0.057, 0.034), (0.087, 0.017)),          # inactive selection, matching words
+    "find": ((0.129, 0.065), (0.164, 0.061)),                   # on the grey hue
+    "find_dim": ((0.077, 0.048), (0.082, 0.041)),               # on the grey hue
+    "bracket_match": ((0.095, 0.066), (0.127, 0.023)),
+    "guide": ((0.067, 0.034), (0.087, 0.017)),                  # indent guides, ruler
+    "guide_active": ((0.140, 0.041), (0.184, 0.025)),
+    "whitespace": ((0.115, 0.040), (0.087, 0.017)),
+    "list_active": ((0.105, 0.044), (0.094, 0.027)),
+    "list_inactive": ((0.057, 0.034), (0.075, 0.025)),
+    "list_hover": ((0.055, 0.035), (0.075, 0.025)),
+    "command_center": ((0.065, 0.034), (0.075, 0.025)),
+    "command_center_active": ((0.095, 0.037), (0.094, 0.027)),
+    # Terminal: Høstlys has a white and a bright white (the background), Høstkveld a black
+    "ansi_white": ((0.095, 0.037), None),
+    "ansi_bright_white": ((0.000, 0.022), None),
+    "ansi_black": (None, (0.087, 0.017)),
+    "iterm_black": (None, (0.087, 0.017)),
+    "iterm_selection": (None, (0.158, 0.028)),                  # iTerm selection, a little lighter than in VS Code
+}
+# Høstkveld's whites: the text colour's rule (the background's hue) at their own lightness and chroma
+WHITES = {
+    "ansi_bright_white": (0.956, 0.025),
+    "iterm_white": (0.929, 0.029),
+    "iterm_bright_white": (0.986, 0.014),
+    "iterm_text": (0.944, 0.025),
+}
+
+
+def _surfaces(p, theme, dark):
+    L, C, H = BACKGROUND[theme]
+    H_grey = (to_oklch(p["orange"])[2] + H) / 2
+    p["background"] = from_oklch(L, C, H)     # editor, panel, terminal
+    for role, steps in SURFACES.items():
+        step = steps[1] if dark else steps[0]
+        if step is None:
+            continue
+        dL, c = step
+        p[role] = from_oklch(L + dL if dark else L - dL, c, H_grey if role.startswith("find") else H)
+    if dark:
+        for role, (l, c) in WHITES.items():
+            p[role] = from_oklch(l, c, H)
+        p["iterm"].update({
+            "Background Color": p["background"],
+            "Foreground Color": p["iterm_text"],
+            "Bold Color": p["iterm_bright_white"],
+            "Cursor Color": p["iterm_text"],
+            "Cursor Text Color": p["background"],
+            "Cursor Guide Color": (p["widget"], 0.6),
+            "Selection Color": p["iterm_selection"],
+            "Selected Text Color": p["iterm_bright_white"],
+        })
+
+
+_surfaces(HOESTLYS, "Høstlys", dark=False)
+_surfaces(HOESTKVELD, "Høstkveld", dark=True)
+
+
 # ---------- The text colour and the greys are derived from the background ----------
 #
 # No grey is written as a hex code. Each comes from the background and orange, in OKLCH:
@@ -189,16 +214,16 @@ for _name in COLORS:
 #           and 0.030 in Høstkveld (cream)
 #   greys   the hue halfway between orange and the background, chroma 0.030: warm and
 #           earthy without leaning towards either; the lightness is set per role below
-# The bracket-match highlight is a surface and takes the hue of the selection. The scrollbar and the terminal's black (Høstlys) and white (Høstkveld) are the
-# text colour; bright black is a grey.
+# The scrollbar and the terminal's black (Høstlys) and white (Høstkveld) are the text
+# colour; bright black is a grey.
 TEXT = {"Høstlys": (0.277, 0.015), "Høstkveld": (0.914, 0.030)}  # (L, C)
 GREY_CHROMA = 0.030
 GREYS = {
     # role: lightness in (Høstlys, Høstkveld)
-    "muted": (0.550, 0.684),        # brackets, descriptions, inactive panel titles
-    "comment": (0.619, 0.619),
+    "muted": (0.535, 0.684),        # brackets, descriptions, inactive panel titles
+    "comment": (0.600, 0.619),
     "inactive": (0.690, 0.646),     # inactive icons and titles, ignored files
-    "tab_inactive": (0.550, 0.701),
+    "tab_inactive": (0.535, 0.701),
     "placeholder": (0.690, 0.566),  # also the line numbers in Høstkveld
 }
 
@@ -219,7 +244,6 @@ def _neutrals(p, theme, dark):
         p["ansi_bright_black"] = p["comment"]
         p["iterm_bright_black"] = grey(0.677)
     else:
-        p["bracket_match"] = from_oklch(0.894, 0.057, to_oklch(p["selection"])[2])
         p["scrollbar"] = text(0.344)             # used with transparency
         p["ansi_black"] = p["text"]
         p["ansi_bright_black"] = p["muted"]
