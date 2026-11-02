@@ -14,7 +14,7 @@ A light and a dark theme in comfortable earth tones for VS Code and iTerm: **Hø
 
 ### VS Code
 
-1. Open the Extensions view (Cmd+Shift+X, or Ctrl+Shift+X on Windows and Linux), search for **Høst** and choose **Install**. From a terminal:
+1. Install [**Høst Theme**](https://marketplace.visualstudio.com/items?itemName=dagmortensj.hoest-theme) from the Marketplace: open the Extensions view (Cmd+Shift+X, or Ctrl+Shift+X on Windows and Linux), search for **Høst** and choose **Install**. From a terminal:
 
    ```zsh
    code --install-extension dagmortensj.hoest-theme
@@ -40,7 +40,7 @@ For the LaTeX colours, install [LaTeX Workshop](https://marketplace.visualstudio
 
 ### iTerm
 
-1. Download [`iterm/Høstkveld.itermcolors`](iterm/Høstkveld.itermcolors) and [`iterm/Høstlys.itermcolors`](iterm/Høstlys.itermcolors).
+1. Download [`iterm/Høstkveld.itermcolors`](iterm/Høstkveld.itermcolors) and [`iterm/Høstlys.itermcolors`](iterm/Høstlys.itermcolors): open each file on GitHub and choose **Download raw file**, or clone the repository.
 2. Double-click each file to import it.
 3. Pick the preset under **Settings → Profiles → Colors → Color Presets**.
 
