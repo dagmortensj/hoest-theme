@@ -4,6 +4,8 @@
 
 - Fix: operators in Lua follow the rule. The grammar gives every operator one scope, `=` included, so `+`, `==`, `..` and `#` kept the text colour along with `=`. A small injection grammar gives the operators that compute their own scopes, so they get the structure colour, and `=` keeps the text colour. The varargs `...` keep the text colour like `...` in other languages, instead of the value colour the grammar gave them as a constant.
 - Labels in Lua (`goto videre`, `::videre::`) keep the text colour like labels in other languages, instead of blue; the grammar marks them as string tags.
+- Fix: operators in Swift follow the rule too. The grammar's own classification of operators does not take effect, so every operator came out as a custom infix operator and kept the text colour. An injection grammar gives the operators that compute their own scopes: binary operators between whitespace, which Swift requires, so `<` and `>` in `Array<Int>` stay generics; prefix `-`, `!` and `~` before a name or a number. `=`, `? :`, `->`, the optional marks `?` and `!`, and the ranges `...` and `..<` keep the text colour.
+- Fix: `this` before a private field (`this.#masse`) in JavaScript and TypeScript is plum and italic like `this` elsewhere; the grammar left it as a plain variable.
 
 ## 3.11.2 (2026-11-04)
 

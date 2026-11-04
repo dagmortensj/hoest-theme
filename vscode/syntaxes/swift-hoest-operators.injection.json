@@ -1,0 +1,37 @@
+{
+  "$comment": "Høst: operators in Swift. The grammar's operator rule leaves every operator as keyword.operator.custom.infix.swift, = included, so the theme could not tell + from =. The operators that compute get their own scopes here and so the structure colour, while = keeps the text colour. Swift requires whitespace on both sides of a binary operator (or on neither), so a binary operator is matched only between whitespace; that keeps < and > in Array<Int> and T: Legeme> as generics, and & in &x as inout. A prefix operator (-x, !x, ~x) is matched before a name, a number, a bracket or a dot. ? and ! as optional marks, ... and ..< as ranges, -> and the ternary ? : are left alone. Applies outside strings and comments, so operators inside \\( ) in a string keep the string colour.",
+  "scopeName": "swift.hoest.operators.injection",
+  "injectionSelector": "L:source.swift -string -comment",
+  "patterns": [
+    {
+      "comment": "compound assignments, including the overflow forms &+=",
+      "match": "(?<=\\s)(?:<<=|>>=|&\\+=|&-=|&\\*=|\\+=|-=|\\*=|/=|%=|&&=|\\|\\|=|\\?\\?=|&=|\\|=|\\^=)(?=\\s)",
+      "name": "keyword.operator.assignment.compound.swift"
+    },
+    {
+      "comment": "comparison and pattern match",
+      "match": "(?<=\\s)(?:===|!==|==|!=|<=|>=|~=|<|>)(?=\\s)",
+      "name": "keyword.operator.comparison.swift"
+    },
+    {
+      "comment": "logical and nil-coalescing",
+      "match": "(?<=\\s)(?:&&|\\|\\||\\?\\?)(?=\\s)",
+      "name": "keyword.operator.logical.swift"
+    },
+    {
+      "comment": "shifts and bitwise",
+      "match": "(?<=\\s)(?:<<|>>|&|\\||\\^)(?=\\s)",
+      "name": "keyword.operator.bitwise.swift"
+    },
+    {
+      "comment": "arithmetic, including the overflow forms &+",
+      "match": "(?<=\\s)(?:&\\+|&-|&\\*|[-+*/%])(?=\\s)",
+      "name": "keyword.operator.arithmetic.swift"
+    },
+    {
+      "comment": "prefix minus, not and bitwise not",
+      "match": "(?<=[\\s(\\[{,:;])[-!~](?=[\\w(\\[.])",
+      "name": "keyword.operator.arithmetic.unary.swift"
+    }
+  ]
+}

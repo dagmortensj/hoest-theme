@@ -112,6 +112,13 @@
         ]
       },
       {
+        "scopeName": "swift.hoest.operators.injection",
+        "path": "./syntaxes/swift-hoest-operators.injection.json",
+        "injectTo": [
+          "source.swift"
+        ]
+      },
+      {
         "scopeName": "julia.hoest.operators.injection",
         "path": "./syntaxes/julia-hoest-operators.injection.json",
         "injectTo": [
