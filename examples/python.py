@@ -1,9 +1,11 @@
 """Eksempelfil for å se Høst-temaene på Python."""
 from __future__ import annotations
 
+import asyncio
 import re
 from dataclasses import dataclass, field
 from typing import Callable, Optional
+from urllib.request import urlopen
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -49,13 +51,13 @@ def euler(f: Callable[[float, float], float], y0: float, t: np.ndarray) -> list[
 
 async def hent(url: str, tidsavbrudd: Optional[int] = None) -> dict[str, int]:
     try:
-        svar = await last_ned(url, timeout=tidsavbrudd or 10)
+        svar = await asyncio.to_thread(urlopen, url, timeout=tidsavbrudd or 10)
     except (TimeoutError, ConnectionError) as feil:
         print(f"Feil: {feil}\n\tPrøv igjen", end="")
         return {}
     finally:
         pass
-    return {"status": 200, "lengde": len(svar)}
+    return {"status": svar.status, "lengde": len(svar.read())}
 
 
 def tolk(linje: str) -> str | None:
