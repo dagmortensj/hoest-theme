@@ -21,7 +21,7 @@ final class Planet implements Legeme
     public function __construct(
         private readonly string $navn,
         protected float $masse = 1.0,
-    ) { self::$antall++; }
+    ) { self::$antall += 1; $tekst = 'Planet'; $tekst .= $navn; }
 
     public function masse(): float { return $this->masse; }
 

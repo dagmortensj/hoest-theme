@@ -28,7 +28,7 @@ kvadrater = [x**2 for x in range(10) if x in {1, 2}]
 data = {"masse": 2.0, 'fart': -3, "liste": list(), "par": tuple()}
 kvadrat = lambda x: x * x
 try:
-    tilfeldig(1, 6) / 0
+    h /= tilfeldig(0, 6); h **= 2
 except ZeroDivisionError as feil:
     raise ValueError("deling på null") from feil
 finally:

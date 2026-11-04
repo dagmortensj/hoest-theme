@@ -30,7 +30,7 @@ func (l *Legeme) Kraft(annen Legeme, r float64) (float64, error) {
 
 func main() {
 	jord := &Legeme{Navn: "Jorda", Masse: 5.972e24}
-	kanal := make(chan int, 3)
+	kanal, n := make(chan int, 3), 1; n <<= 2; n &^= 1
 	go func() { defer close(kanal); for i := range 3 { kanal <- i } }()
-	for v := range kanal { fmt.Printf("%s: %v %d\n", jord.Navn, true, v) }
+	for v := range kanal { fmt.Printf("%s: %v %d\n", jord.Navn, true, v+n) }
 }

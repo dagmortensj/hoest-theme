@@ -25,7 +25,7 @@ final class Simulering<T extends Legeme> extends Base implements Iterable<T> {
     @SuppressWarnings("unchecked")
     public synchronized <R> R kart(Function<? super T, R> f, int... ekstra) {
         if (legemer.isEmpty()) throw new IllegalStateException("tom");
-        for (T l : legemer) { teller++; }
+        for (T l : legemer) { teller++; teller ^= 0x1F; teller >>>= 1; }
         var tekst = """
             Tekstblokk med %d legemer\n""".formatted(legemer.size());
         Kraft k = (a, b) -> G * a * b / sqrt(2.0);

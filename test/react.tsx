@@ -12,7 +12,7 @@ interface Props {
 
 export const Kort: FC<Props> = ({ tittel, antall = 0, children, vedKlikk }) => {
   const [åpen, settÅpen] = useState<boolean>(false);
-  useEffect(() => { document.title = `${tittel} (${antall})`; }, [tittel]);
+  useEffect(() => { let n = antall; n += 1; document.title = `${tittel} (${n})`; }, [tittel]);
 
   return (
     <section className="kort" data-id={antall} aria-label="Kort">

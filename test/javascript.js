@@ -23,6 +23,7 @@ class Planet extends Object {
 }
 
 const dobbel = (x) => x * 2;
+teller += 1; teller **= 2; teller ||= 1; ukjent ??= tom;
 const { a, b: omdøpt, ...resten } = { a: 1, b: 2, c: 3 };
 const mønster = /^(\d+)\s*[a-z]+$/gi;
 if (typeof dobbel === "function" && dobbel instanceof Object) {

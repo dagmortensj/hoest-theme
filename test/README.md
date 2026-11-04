@@ -1,6 +1,6 @@
 # Syntax test files
 
-One file per language, each at most 36 lines, so that a whole file fits in one screenshot of the editor. Together they cover the roles in [docs/rules.md](../docs/rules.md): definitions and control flow, other keywords, numbers and constants, parameters, functions, built-in and user-defined types, strings and their special characters, decorators and attributes, keys, comments, and the constructs that are special to each language.
+One file per language, each at most 36 lines, so that a whole file fits in one screenshot of the editor. Together they cover the roles in [docs/rules.md](../docs/rules.md): definitions and control flow, other keywords, numbers and constants, parameters, operators and compound assignments, functions, built-in and user-defined types, strings and their special characters, decorators and attributes, keys, comments, and the constructs that are special to each language.
 
 The files are not meant to run. Some refer to names that are not defined, so a language server may underline them.
 

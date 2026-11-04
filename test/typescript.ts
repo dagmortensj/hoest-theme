@@ -28,7 +28,8 @@ declare const globalt: Record<string, unknown>;
 namespace Fysikk { export const c = 299_792_458; }
 const verdi = globalt["x"] as unknown as number;
 const tekst = `${Fysikk.c} m/s` satisfies string;
-let v: Kanskje<Vektor> = null;
+let v: Kanskje<Vektor> = null; v ??= [0, 0];
+let n = 1; n **= 2; n <<= 3; n >>>= 1;
 const f = async <U,>(x: U): Promise<U> => await Promise.resolve(x);
 function erTall(x: unknown): x is number { return typeof x === "number"; }
 const kart = new Map<string, Array<boolean>>([["a", [true]]]);
