@@ -1934,6 +1934,16 @@
       }
     },
     {
+      "name": "Text: labels in Lua (goto videre, ::videre::), which the grammar calls string tags",
+      "scope": [
+        "string.tag.lua"
+      ],
+      "settings": {
+        "foreground": "#2b2820",
+        "fontStyle": ""
+      }
+    },
+    {
       "name": "Comments: docstrings in Julia, like docstrings in Python",
       "scope": [
         "string.docstring.julia",

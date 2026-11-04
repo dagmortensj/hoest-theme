@@ -932,6 +932,7 @@ def tokens(p):
         ("Text: module names in Swift imports, argument labels in Swift, and arguments of shell commands", [
             "meta.import.swift entity.name.type.swift", "meta.parameter-clause.swift entity.name.function.swift", "string.unquoted.argument.shell",
         ], "text", ""),
+        ("Text: labels in Lua (goto videre, ::videre::), which the grammar calls string tags", ["string.tag.lua"], "text", ""),
         ("Comments: docstrings in Julia, like docstrings in Python", ["string.docstring.julia", "string.docstring.julia punctuation.definition.string"], "comment", "italic"),
         # Parameters are names you read, like variables, so they keep the text colour; italic marks them
         # as placeholders, in the signature, in the body (through semantic highlighting) and as keyword arguments.

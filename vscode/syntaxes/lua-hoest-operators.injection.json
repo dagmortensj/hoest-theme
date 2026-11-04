@@ -1,0 +1,42 @@
+{
+  "$comment": "Høst: operators in Lua. The grammar gives every operator one scope, keyword.operator.lua, = included, so the theme could not tell + from = and all of them kept the text colour. The operators that compute get their own scopes here and so the structure colour, while = keeps the text colour. The varargs ... are a name, not a value, and keep the text colour too; the grammar calls them a constant. An injection matches before the grammar at the same position, so <const> and <close> are matched here with the grammar's own scope, or < would be taken for a comparison; - and # leave comments and the shebang line alone. Applies outside strings and comments.",
+  "scopeName": "lua.hoest.operators.injection",
+  "injectionSelector": "L:source.lua -string -comment",
+  "patterns": [
+    {
+      "comment": "attributes, with the grammar's scope",
+      "match": "<\\s*(?:const|close)\\s*>",
+      "name": "storage.type.attribute.lua"
+    },
+    {
+      "comment": "varargs",
+      "match": "(?<!\\.)\\.{3}(?!\\.)",
+      "name": "keyword.operator.varargs.lua"
+    },
+    {
+      "comment": "concatenation",
+      "match": "(?<!\\.)\\.{2}(?!\\.)",
+      "name": "keyword.operator.concatenator.lua"
+    },
+    {
+      "comment": "shifts, before < and > are read as comparisons",
+      "match": "<<|>>",
+      "name": "keyword.operator.bitwise.lua"
+    },
+    {
+      "comment": "comparison",
+      "match": "==|~=|<=|>=|<|>",
+      "name": "keyword.operator.comparison.lua"
+    },
+    {
+      "comment": "bitwise and, or, xor and not",
+      "match": "&|\\||~",
+      "name": "keyword.operator.bitwise.lua"
+    },
+    {
+      "comment": "arithmetic, floor division and length; -- starts a comment and #! the shebang line",
+      "match": "//|-(?!-)|#(?!!)|[+*/%^]",
+      "name": "keyword.operator.arithmetic.lua"
+    }
+  ]
+}

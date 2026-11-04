@@ -1,5 +1,10 @@
 # Changelog
 
+## 3.11.3 (2026-11-04)
+
+- Fix: operators in Lua follow the rule. The grammar gives every operator one scope, `=` included, so `+`, `==`, `..` and `#` kept the text colour along with `=`. A small injection grammar gives the operators that compute their own scopes, so they get the structure colour, and `=` keeps the text colour. The varargs `...` keep the text colour like `...` in other languages, instead of the value colour the grammar gave them as a constant.
+- Labels in Lua (`goto videre`, `::videre::`) keep the text colour like labels in other languages, instead of blue; the grammar marks them as string tags.
+
 ## 3.11.2 (2026-11-04)
 
 - Fix: in Python, a variable that holds a function, such as `norm = np.linalg.norm`, and numpy functions such as `np.sqrt`, turned from green to the text colour once Pylance had loaded. Pylance marks them as variables with the modifier *callable*, and they are now green like other functions, also where the variable is assigned.
