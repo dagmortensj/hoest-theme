@@ -20,7 +20,7 @@ The terminal does not follow. Its colour slots hold the hues, the same in both p
 
 Where something begins or changes direction, the things you look for when scrolling.
 
-- Code: definitions (`def`, `class`, `function`, `interface`, `type`, `fn`, `struct`, `enum`, `func`, `fun`) and control flow (`if`, `else`, `for`, `while`, `return`, `break`, `try`, `except`, `throw`, `await`, `yield`, `match`), plus the logical words `and`, `or`, `not`, `in` and `is`. Logical operators written as symbols (`&&`, `||`, `!`, `??`) are operators and keep the text colour.
+- Code: definitions (`def`, `class`, `function`, `interface`, `type`, `fn`, `struct`, `enum`, `func`, `fun`) and control flow (`if`, `else`, `for`, `while`, `return`, `break`, `try`, `except`, `throw`, `await`, `yield`, `match`), plus the logical words `and`, `or`, `not`, `in` and `is`. Logical operators written as symbols (`&&`, `||`, `!`, `??`) are operators that compute and get the structure colour without bold (below).
 - LaTeX: `\begin` and `\end`, and the sectioning commands `\section`, `\subsection` and the rest. A section is where something begins, like a definition in code.
 - Also bold: constructors (`constructor`, `init`), and `@mixin` and `@function` in SCSS.
 - Not bold: `import`, `export`, `from`, `new`, `import type`, preprocessor lines such as `#include`, and CSS at-rules such as `@media`. They are structure, but not landmarks.
@@ -30,14 +30,14 @@ Where something begins or changes direction, the things you look for when scroll
 The remaining keywords, the words that hold the code together.
 
 - Code: `const`, `let`, `var`, `val`, `public`, `private`, `static`, `final`, `readonly`, `async`, `import`, `export`, `from`, `as`, `use`, `package`, `namespace`, `new`, `#include`, `lambda`, `=>` and `->`, operators written as words (`typeof`, `instanceof`, `satisfies`, `nameof`), HTML and XML tags, and SQL keywords.
-- LaTeX: the preamble (`\documentclass`, `\usepackage`), definitions (`\newcommand`, `\def`), `\item`, TeX conditionals, and the words of a tikz path (`node`, `at`, `circle`).
+- Operators that compute a value: arithmetic (`+`, `-`, `*`, `/`, `**`, `%`), comparison (`==`, `!=`, `<`, `>=`), bitwise and logical symbols (`&`, `<<`, `&&`, `||`, `!`, `??`), increments (`++`, `--`), and compound assignments (`+=`, `*=`), which compute before they assign. Plain assignment `=` keeps the text colour, also in keyword arguments and default values.
+- LaTeX: the preamble (`\documentclass`, `\usepackage`), definitions (`\newcommand`, `\def`), `\item`, TeX conditionals, and the words of a tikz path (`node`, `at`, `circle`). Operators in maths keep the text colour (see below).
 
 ### Value colour: values and input
 
-What comes into the code: literal values, and the parameters that will hold the values a function is given.
+What comes into the code as it is written: literal values.
 
 - Code: numbers, including prefixes, suffixes and exponents (`0x1F`, `1j`, `6.674e-11`), the language constants `True`, `False`, `None`, `null`, `nil`, enum members, and CSS values and units.
-- Parameters in function signatures, in italic (see below).
 - LaTeX: numbers and units, and macro parameters `#1` to `#9`, in italic.
 - Not the value colour: upper-case names such as `G`, `M` or `MAKS_STEG`. In physics code they are ordinary variables and keep the text colour.
 
@@ -49,7 +49,7 @@ What you use to get work done, whether you wrote it or the language provides it.
 - CSS properties and HTML attributes (`margin`, `color`, `href`, `class`), attributes in JSX and XML (`className`, `key`, `id`), and media features in CSS (`min-width`): the fixed vocabulary of the language.
 - LaTeX: environment names (`equation`, `tikzpicture`), the names of new commands (`\newcommand{\dd}`), and drawing commands in tikz (`\draw`, `\node`, `\fill`), which are the calls of a drawing.
 
-### Blue: text and mathematics
+### Blue: strings, and maths in LaTeX
 
 Content that is read as text or as a formula.
 
@@ -72,8 +72,8 @@ What points elsewhere or demands attention. Red is reserved, so it never appears
 
 ### Text colour: what you read
 
-- Code: variables, parameters where they are used, properties and fields (`self.masse`), operators, and the names of modules, namespaces and packages (`numpy`, `namespace Fysikk`, `package main`, `import Foundation`), argument labels in Swift, and the arguments of shell commands (`cat fil.txt`).
-- LaTeX: prose, and ordinary commands such as `\frac`, `\sqrt`, `\left`, `\emph`, `\caption` and `\label`. In a formula they are operators, the counterpart of `+` and `*` in code, and so are `=`, `<`, `>`, `|` and the operators, relations and arrows written as commands: `\cdot`, `\times`, `\pm`, `\leq`, `\neq`, `\to`, `\Rightarrow`, `\in`, `\cup`, `\ldots`.
+- Code: variables, parameters in italic (see below), properties and fields (`self.masse`), `=` and the other operators that do not compute a value (`.`, `...`, `|` in a type), and the names of modules, namespaces and packages (`numpy`, `namespace Fysikk`, `package main`, `import Foundation`), argument labels in Swift, and the arguments of shell commands (`cat fil.txt`).
+- LaTeX: prose, and ordinary commands such as `\frac`, `\sqrt`, `\left`, `\emph`, `\caption` and `\label`. In a formula they are operators, and so are `=`, `<`, `>`, `|` and the operators, relations and arrows written as commands: `\cdot`, `\times`, `\pm`, `\leq`, `\neq`, `\to`, `\Rightarrow`, `\in`, `\cup`, `\ldots`. Unlike operators in code, they keep the text colour.
 
 ### Grey: what supports the content
 
@@ -87,7 +87,7 @@ Bold marks landmarks only: definitions and control flow in code, `\begin`, `\end
 
 Italic marks a placeholder, a name that stands for a value that is only known later. It is the convention of mathematical typesetting, where a variable is set in italic and a fixed function such as sin is set upright.
 
-- Parameters in function signatures, in the value colour.
+- Parameters, in the text colour: in the signature, where they are used in the body, and as keyword arguments (`end` in `print(..., end="")`). In the body this needs semantic highlighting, since only a language server such as Pylance knows which names are parameters.
 - `self`, `cls` and `this`, in plum.
 - Generic type parameters such as `T` in `Simulering<T>`, in plum.
 - Macro parameters `#1` to `#9` in LaTeX, in the value colour.
@@ -105,7 +105,12 @@ The rules describe roles, but a colour can only follow a role that the grammar m
 - Ruby: class names and constants share a scope, so a constant such as `G` is plum as well.
 - C++: types from the standard library (`std::string`) are only recognised by the language server, through semantic highlighting.
 - TypeScript: the grammar does not tell a built-in class (`Error`, `Promise`) from your own, or a generic parameter `T` from its constraint in `<T extends Legeme>`. The language server does, so these follow the rules once semantic highlighting has loaded.
-- Ruby and Lua: `and`, `or` and `not` share their scope with `&&` and `||`, so they keep the text colour.
+- Ruby: `and`, `or` and `not` share their scope with `&&` and `||`, so they get the structure colour without bold.
+- Python, Go, PHP and Julia: compound assignments (`+=`) share their scope with `=`, so they keep the text colour.
+- Swift and Lua: the grammars do not mark operators in ordinary expressions, so they keep the text colour. In Lua, `..` shares its scope with commas and colons and keeps it too.
+- C: `*` and `&` in pointer declarations share their scope with multiplication and bitwise and, so they get the structure colour as well.
+- Rust: the bars around closure parameters share their scope with `|` and `||`, so they get the structure colour, like `=>` and `lambda` in other languages.
+- SQL: `=` is marked as a comparison everywhere, also after `SET`, so it gets the structure colour.
 - Java: `enum` shares its scope with `public` inside the enum, so it cannot be bold.
 - C: the names of a `typedef`, `enum` or `union` and the members of an `enum` are not marked by the grammar, so they keep the text colour. The C/C++ extension colours them through semantic highlighting.
 - Rust: enum variants (`Some`, `Ok`, your own) share a scope with types, so they are plum.
@@ -117,6 +122,6 @@ The rules describe roles, but a colour can only follow a role that the grammar m
 
 ## Compared with Dracula and Monokai
 
-Høst agrees with both themes on green function names, green HTML and CSS attribute names, italic parameters in the colour of other values, and HTML tags in the keyword colour. Like them, it gives built-in types the colour of built-in functions, though Høst uses green for every tool where they use a separate colour for what the language provides.
+Høst agrees with both themes on green function names, green HTML and CSS attribute names, italic parameters, operators in the keyword colour, and HTML tags in the keyword colour. Like them, it gives built-in types the colour of built-in functions, though Høst uses green for every tool where they use a separate colour for what the language provides.
 
-Høst differs deliberately in three places. Landmarks are bold, which neither theme does. Operators keep the text colour, where both themes give them the keyword colour, which makes code calmer. Numbers and parameters share the value colour, told apart by italic, where both themes use separate colours.
+Høst differs deliberately in three places. Landmarks are bold, which neither theme does. Assignment with `=` keeps the text colour, where both themes give it the keyword colour along with the other operators. Parameters keep the text colour, marked by italic alone, where both themes give them a colour of their own.

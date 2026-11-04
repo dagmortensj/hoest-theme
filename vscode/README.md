@@ -16,14 +16,14 @@ Each role has the same colour in every language and in both themes, with one exc
 
 | Colour | Role | Examples |
 |---|---|---|
-| Rust in Høstlys, orange in Høstkveld | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `\begin`, `\section`, the preamble |
-| Orange in Høstlys, rust in Høstkveld | Values and input | `3.14`, `True`, `None`, parameters in italic |
+| Rust in Høstlys, orange in Høstkveld | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `+` and `==`, `\begin`, `\section`, the preamble |
+| Orange in Høstlys, rust in Høstkveld | Values and input | `3.14`, `True`, `None` |
 | Green | Tools that do something | function names, `print`, built-in types such as `int` and `str`, CSS properties, `equation`, `\draw` |
-| Blue | Text and mathematics | `"text"`, everything inside `$...$` |
+| Blue | Strings, and maths in LaTeX | `"text"`, everything inside `$...$` |
 | Plum | Classes and types, and symbols | your classes and those of libraries, `self` in italic, `@property`, keys in JSON and YAML, `\n`, `\gamma` |
 | Red | Signals and references | `\ref`, `\cite`, links, errors |
 
-Comments, braces and brackets are grey, and variables, operators and prose keep the text colour. Bold marks landmarks such as definitions and control flow, and italic marks placeholders such as parameters and `self`. Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order in both themes.
+Comments, braces and brackets are grey, and variables, parameters, `=` and prose keep the text colour. Bold marks landmarks such as definitions and control flow, and italic marks placeholders such as parameters and `self`. Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order in both themes.
 
 ## What it covers
 

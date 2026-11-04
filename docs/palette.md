@@ -24,7 +24,7 @@ Do not edit the files in `vscode/themes/` or `iterm/` by hand, since `build.py` 
 
 ## What the colours mean
 
-Each colour has one role in every language: a structure colour for the grammar of the language, bold for landmarks; a value colour for values and input; green for tools that do something; blue for text and mathematics; plum for classes, types and symbols; and red for signals and references. The structure colour is the stronger of the two warm colours against the background and the value colour the other, so structure is rust in Høstlys and orange in Høstkveld, and values the opposite. Bold marks landmarks and italic marks placeholders. The full rules, with examples in code and LaTeX and the cases where a grammar sets limits, are in [rules.md](rules.md).
+Each colour has one role in every language: a structure colour for keywords and the operators that compute, bold for landmarks; a value colour for literal values; green for tools that do something; blue for strings and for maths in LaTeX; plum for classes, types and symbols; and red for signals and references. The structure colour is the stronger of the two warm colours against the background and the value colour the other, so structure is rust in Høstlys and orange in Høstkveld, and values the opposite. Bold marks landmarks and italic marks placeholders. The full rules, with examples in code and LaTeX and the cases where a grammar sets limits, are in [rules.md](rules.md).
 
 ## Høstlys (light)
 

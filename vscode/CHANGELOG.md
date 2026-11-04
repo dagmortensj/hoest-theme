@@ -1,5 +1,12 @@
 # Changelog
 
+## 3.11.0 (2026-11-04)
+
+- Operators that compute get the structure colour, without bold: arithmetic, comparison, bitwise and logical symbols (`+`, `*`, `==`, `<`, `&&`, `??`), increments, and compound assignments such as `+=`. Plain assignment `=` keeps the text colour everywhere, also in keyword arguments and default values. Operators in LaTeX maths are unchanged. Where a grammar gives `+=` the same scope as `=` (Python, Go, PHP, Julia) or marks no operators at all (Swift, Lua), they keep the text colour; `docs/rules.md` lists these cases.
+- Parameters keep the text colour, in italic, in the signature, as keyword arguments (`end=` in Python) and, with semantic highlighting, where they are used in the body. The value colour is now for literal values only.
+- `and`, `or` and `not` in Lua are bold like in the other languages.
+- The roles card describes blue as strings and maths in LaTeX, since maths is only coloured in LaTeX.
+
 ## 3.10.0 (2026-11-01)
 
 - The Høstlys background is cream instead of near-white: `#FDF6E6`, OKLCH lightness 0.975 with a faint warmth, on the same hue as the Høstkveld background, so the two themes share one neutral axis. The old background was the greenest surface in the theme and harder on the eye than the rest of it. Every other Høstlys surface (frame, current line, selection, guides, lists, search) is now a step down from the background in `palette.py` rather than a hex code, and moves with it. The greys follow, since they are derived from the background. On cream, the frame and the editor differ less in hue than before, so the frame is a slightly larger step down (0.042, the same as in Høstkveld), and brackets and comments are a little darker for the same reason. The Høstkveld surfaces are expressed the same way, as steps up from its background; they were already on this hue, so they move by at most one step in one channel.

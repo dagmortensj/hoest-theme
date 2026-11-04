@@ -58,14 +58,14 @@ Each role has one colour, in every language and in both themes. The two warm col
 
 | Colour | Role | Examples |
 |---|---|---|
-| Rust in Høstlys, orange in Høstkveld | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `\begin`, `\section`, the preamble |
-| Orange in Høstlys, rust in Høstkveld | Values and input | `3.14`, `True`, `None`, parameters in italic |
+| Rust in Høstlys, orange in Høstkveld | Structure and keywords, landmarks in bold | `def`, `class`, `if`, `return` in bold, `import`, `const`, `+` and `==`, `\begin`, `\section`, the preamble |
+| Orange in Høstlys, rust in Høstkveld | Values and input | `3.14`, `True`, `None` |
 | Green | Tools that do something | function names, `print`, built-in types such as `int` and `str`, CSS properties, `equation`, `\draw` |
-| Blue | Text and mathematics | `"text"`, everything inside `$...$` |
+| Blue | Strings, and maths in LaTeX | `"text"`, everything inside `$...$` |
 | Plum | Classes and types, and symbols | your classes and those of libraries, `self` in italic, `@property`, keys in JSON and YAML, `\n`, `\gamma` |
 | Red | Signals and references | `\ref`, `\cite`, links, errors |
 
-Comments, braces and brackets are grey. Variables, operators, prose and ordinary LaTeX commands such as `\frac` and `\label` keep the text colour. Bold marks landmarks, what you look for when scrolling: definitions and control flow in every language, `\begin`, `\end` and sections in LaTeX, and headings in Markdown. Italic marks placeholders, as variables are set in mathematics: parameters, `self` and `this`, and `#1` in LaTeX.
+Comments, braces and brackets are grey. Variables, parameters, `=`, prose and ordinary LaTeX commands such as `\frac` and `\label` keep the text colour. Bold marks landmarks, what you look for when scrolling: definitions and control flow in every language, `\begin`, `\end` and sections in LaTeX, and headings in Markdown. Italic marks placeholders, as variables are set in mathematics: parameters, `self` and `this`, and `#1` in LaTeX.
 
 Høstkveld is derived from Høstlys by a single rule in the OKLCH colour space, so the colours keep their order in both themes, and the text colour and the greys are derived from the background and orange. [`docs/palette.md`](docs/palette.md) has every colour with its contrast, the rule, the terminal colours and the details of what the theme covers.
 

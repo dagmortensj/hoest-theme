@@ -741,14 +741,31 @@ def tokens(p):
     return [
         # ===== All languages =====
         ("Default text", ["source", "variable", "variable.parameter", "meta.function-call.arguments", "keyword.operator", "entity.name.namespace", "entity.name.module", "entity.name.label", "variable.other.readwrite", "variable.other.property", "variable.other.object"], "text", None),
-        ("Operators (not bold)", ["keyword.operator", "keyword.operator.assignment", "keyword.operator.arithmetic", "keyword.operator.comparison", "keyword.operator.bitwise", "keyword.operator.pipe", "keyword.operator.redirect", "keyword.operator.expansion"], "text", ""),
+        ("Operators that do not compute keep the text colour (=, ., ..., ?:, |)", ["keyword.operator", "keyword.operator.assignment", "keyword.operator.pipe", "keyword.operator.redirect", "keyword.operator.expansion"], "text", ""),
+        # Operators that compute a value from others get the structure colour, not bold: arithmetic,
+        # comparison, bitwise and logical symbols, and compound assignments (+=), which compute
+        # before they assign. Plain assignment (=) keeps the text colour, also in keyword arguments.
+        ("Structure colour: operators that compute (+, *, ==, <, &&, +=)", [
+            "keyword.operator.arithmetic", "keyword.operator.math", "keyword.operator.comparison",
+            "keyword.operator.relational", "keyword.operator.relation", "keyword.operator.bitwise",
+            "keyword.operator.shift", "keyword.operator.logical", "keyword.operator.boolean",
+            "keyword.operator.null-coalescing", "keyword.operator.coalescing", "keyword.operator.concatenator",
+            "keyword.operator.increment", "keyword.operator.decrement", "keyword.operator.increment-decrement",
+            "keyword.operator.increment-or-decrement", "keyword.operator.assignment.compound",
+            "keyword.operator.assignment.arithmetic", "keyword.operator.assignment.bitwise",
+            "keyword.operator.assignment.augmented", "keyword.operator.assignment.rust",
+            "keyword.operator.c",
+        ], "structure", ""),
+        ("Text: operators that do not compute where the grammar puts them with those that do (&& between shell commands, <: in Julia)", [
+            "keyword.operator.logical.shell", "keyword.operator.relation.types",
+        ], "text", ""),
         ("Comments", ["comment", "punctuation.definition.comment", "string.quoted.docstring.multi.python", "string.quoted.docstring", "string.quoted.docstring punctuation.definition.string"], "comment", "italic"),
         ("1 Structure: keywords", ["keyword", "storage.type", "storage.modifier", "keyword.other", "keyword.operator.new", "keyword.control.import", "keyword.control.import.python", "storage.type.function.lambda.python", "storage.type.function.async.python"], "structure", ""),
         ("1 Structure, bold: control and logical keywords", ["keyword.control", "keyword.control.flow", "keyword.control.flow.python", "keyword.control.conditional", "keyword.control.loop", "keyword.control.return", "keyword.control.trycatch", "keyword.control.exception",
             "keyword.operator.logical.python", "keyword.operator.expression.in", "keyword.operator.expression.is", "keyword.operator.expression.pattern.is",
-            "keyword.operator.expression.pattern.combinator", "keyword.operator.logical.and.media", "storage.type.function.python", "storage.type.class.python"], "structure", "bold"),
+            "keyword.operator.expression.pattern.combinator", "keyword.operator.logical.and.media", "keyword.operator.logical.lua", "storage.type.function.python", "storage.type.class.python"], "structure", "bold"),
         # The logical words and, or, not, in and is are bold (above). Logical operators written as
-        # symbols (&&, ||, !, ??) are operators and keep the text colour, like + and ==.
+        # symbols (&&, ||, !, ??) are operators that compute, in the structure colour without bold, like + and ==.
         ("Plain structure colour: other operators written as words (typeof, instanceof, of, satisfies, nameof)", [
             "keyword.operator.word", "keyword.operator.expression", "keyword.operator.instanceof",
             "keyword.operator.typeof", "keyword.control.operator", "keyword.control.satisfies",
@@ -913,16 +930,17 @@ def tokens(p):
             "meta.import.swift entity.name.type.swift", "meta.parameter-clause.swift entity.name.function.swift", "string.unquoted.argument.shell",
         ], "text", ""),
         ("Comments: docstrings in Julia, like docstrings in Python", ["string.docstring.julia", "string.docstring.julia punctuation.definition.string"], "comment", "italic"),
-        # Parameters are what comes into a function: the value colour like other values, in italic so they
-        # are not mistaken for numbers. Coloured where they are declared, in the signature.
-        ("Values, italic: parameters in function signatures", [
+        # Parameters are names you read, like variables, so they keep the text colour; italic marks them
+        # as placeholders, in the signature, in the body (through semantic highlighting) and as keyword arguments.
+        ("Text, italic: parameters in function signatures and keyword arguments", [
             "variable.parameter.function.language.python", "variable.parameter.ts", "variable.parameter.js",
             "variable.parameter.js.jsx", "variable.parameter.java", "entity.name.variable.parameter.cs",
             "variable.parameter.probably.c", "variable.parameter.cpp", "variable.parameter.go",
             "meta.function.definition.rust variable.other.rust", "variable.parameter.function.swift",
             "meta.function.parameter variable.other.php", "variable.parameter.function.ruby",
             "variable.parameter.tsx", "variable.parameter.r", "variable.other.block.ruby",
-        ], "value", "italic"),
+            "variable.parameter.function-call.python",
+        ], "text", "italic"),
         ("Plum italic: generic type parameters where they are declared (T in Simulering<T>)", [
             "entity.name.type.template.cpp",
             "entity.name.type.type-parameter.cs", "variable.language.generic-parameter.swift",
@@ -998,8 +1016,8 @@ def semantic_rules(p):
         "variable.readonly": "text",
         "variable.readonly.builtin": "text",
         "enumMember": "value",
-        "parameter": "text",
-        "parameter.declaration": ("value", "italic"),
+        "parameter": ("text", "italic"),
+        "parameter.declaration": ("text", "italic"),
         "property": "text",
         "property.readonly": "text",
         "keyword": "structure",
@@ -1109,10 +1127,10 @@ def make_svg():
 
 ROLES = [
     # role, one line, palette colour, bold
-    ("Structure", "the grammar of the language; definitions, control flow, \\begin, \\end and \\section in bold", "structure", True),
-    ("Values", "numbers, constants, parameters", "value", False),
+    ("Structure", "keywords and operators; definitions, control flow, \\begin, \\end and \\section in bold", "structure", True),
+    ("Values", "numbers and constants such as True and None", "value", False),
     ("Tools", "functions, built-in types, environments", "green", False),
-    ("Text", "strings and mathematics", "blue", False),
+    ("Text", "strings, and maths in LaTeX", "blue", False),
     ("Names", "your own classes and types, keys, decorators, symbols", "plum", False),
     ("Signals", "references, links, errors", "red", False),
 ]

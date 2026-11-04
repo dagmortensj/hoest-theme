@@ -613,16 +613,55 @@
       }
     },
     {
-      "name": "Operators (not bold)",
+      "name": "Operators that do not compute keep the text colour (=, ., ..., ?:, |)",
       "scope": [
         "keyword.operator",
         "keyword.operator.assignment",
-        "keyword.operator.arithmetic",
-        "keyword.operator.comparison",
-        "keyword.operator.bitwise",
         "keyword.operator.pipe",
         "keyword.operator.redirect",
         "keyword.operator.expansion"
+      ],
+      "settings": {
+        "foreground": "#2b2820",
+        "fontStyle": ""
+      }
+    },
+    {
+      "name": "Structure colour: operators that compute (+, *, ==, <, &&, +=)",
+      "scope": [
+        "keyword.operator.arithmetic",
+        "keyword.operator.math",
+        "keyword.operator.comparison",
+        "keyword.operator.relational",
+        "keyword.operator.relation",
+        "keyword.operator.bitwise",
+        "keyword.operator.shift",
+        "keyword.operator.logical",
+        "keyword.operator.boolean",
+        "keyword.operator.null-coalescing",
+        "keyword.operator.coalescing",
+        "keyword.operator.concatenator",
+        "keyword.operator.increment",
+        "keyword.operator.decrement",
+        "keyword.operator.increment-decrement",
+        "keyword.operator.increment-or-decrement",
+        "keyword.operator.assignment.compound",
+        "keyword.operator.assignment.arithmetic",
+        "keyword.operator.assignment.bitwise",
+        "keyword.operator.assignment.augmented",
+        "keyword.operator.assignment.rust",
+        "keyword.operator.c"
+      ],
+      "settings": {
+        "foreground": "#96370d",
+        "fontStyle": ""
+      }
+    },
+    {
+      "name": "Text: operators that do not compute where the grammar puts them with those that do (&& between shell commands, <: in Julia)",
+      "scope": [
+        "keyword.operator.logical.shell",
+        "keyword.operator.relation.types"
       ],
       "settings": {
         "foreground": "#2b2820",
@@ -678,6 +717,7 @@
         "keyword.operator.expression.pattern.is",
         "keyword.operator.expression.pattern.combinator",
         "keyword.operator.logical.and.media",
+        "keyword.operator.logical.lua",
         "storage.type.function.python",
         "storage.type.class.python"
       ],
@@ -1892,7 +1932,7 @@
       }
     },
     {
-      "name": "Values, italic: parameters in function signatures",
+      "name": "Text, italic: parameters in function signatures and keyword arguments",
       "scope": [
         "variable.parameter.function.language.python",
         "variable.parameter.ts",
@@ -1909,10 +1949,11 @@
         "variable.parameter.function.ruby",
         "variable.parameter.tsx",
         "variable.parameter.r",
-        "variable.other.block.ruby"
+        "variable.other.block.ruby",
+        "variable.parameter.function-call.python"
       ],
       "settings": {
-        "foreground": "#b25900",
+        "foreground": "#2b2820",
         "fontStyle": "italic"
       }
     },
@@ -2190,9 +2231,12 @@
     "variable.readonly": "#2b2820",
     "variable.readonly.builtin": "#2b2820",
     "enumMember": "#b25900",
-    "parameter": "#2b2820",
+    "parameter": {
+      "foreground": "#2b2820",
+      "italic": true
+    },
     "parameter.declaration": {
-      "foreground": "#b25900",
+      "foreground": "#2b2820",
       "italic": true
     },
     "property": "#2b2820",
