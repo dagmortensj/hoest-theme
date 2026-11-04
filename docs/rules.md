@@ -114,6 +114,7 @@ The rules describe roles, but a colour can only follow a role that the grammar m
 - Lua: the grammar gives every operator one scope, `=` included. A small injection grammar gives the operators that compute (`+`, `==`, `..`, `#`, `//`, `&`) their own scopes, so they follow the rule, and `=` keeps the text colour. The varargs `...` keep the text colour, like `...` in other languages.
 - C: `*` and `&` in pointer declarations share their scope with multiplication and bitwise and, so they get the structure colour as well.
 - Rust: the bars around closure parameters share their scope with `|` and `||`, so they get the structure colour, like `=>` and `lambda` in other languages.
+- JavaScript and TypeScript: a static block in a class (`static { ... }`) followed by more code on the same line leaves the rest of that line uncoloured, since the grammar takes it as one token. On lines of its own the block is fine.
 - SQL: `=` is marked as a comparison everywhere, also after `SET`, so it gets the structure colour.
 - Ruby: `?` in `a ? b : c` is marked as a comparison, so it gets the structure colour while `:` keeps the text colour.
 - Rust: `&` as bitwise and shares its scope with a borrow (`&x`), so it keeps the text colour.
