@@ -1022,6 +1022,10 @@ def semantic_rules(p):
         # They get the text colour like other variables; the value colour is for numbers, True, False and None.
         "variable.readonly": "text",
         "variable.readonly.builtin": "text",
+        # Pylance marks a variable that holds a function (norm = np.linalg.norm, and numpy's ufuncs such
+        # as np.sqrt) with the modifier "callable". It is a tool like a function, so it is green.
+        "variable.callable": "green",
+        "variable.readonly.callable": "green",
         "enumMember": "value",
         "parameter": ("text", "italic"),
         "parameter.declaration": ("text", "italic"),

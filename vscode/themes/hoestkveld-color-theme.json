@@ -2243,6 +2243,8 @@
     "variable": "#ebe2cd",
     "variable.readonly": "#ebe2cd",
     "variable.readonly.builtin": "#ebe2cd",
+    "variable.callable": "#7cac2f",
+    "variable.readonly.callable": "#7cac2f",
     "enumMember": "#f16239",
     "parameter": {
       "foreground": "#ebe2cd",

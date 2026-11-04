@@ -123,6 +123,7 @@ The rules describe roles, but a colour can only follow a role that the grammar m
 - Rust: enum variants (`Some`, `Ok`, your own) share a scope with types, so they are plum.
 - Kotlin and Julia: the grammars mark neither parameters nor enum members, and Julia does not tell built-in types from your own, so `Float64` is plum.
 - SQL: the grammar does not mark `TRUE`, `FALSE` or numbers with an exponent, so they keep the text colour.
+- Python: a variable that holds a function, such as `norm = np.linalg.norm` or numpy's `np.sqrt`, is green like a function. Pylance marks it with the modifier *callable*; without Pylance the grammar only sees it as a function where it is called.
 - Python: a method decorated with `@property` is read like a field (`bane.er_tung`), and Pylance marks it as a property, so it keeps the text colour.
 - Python: Pylance marks the name after `@` by what it is, `property` and `classmethod` as built-in classes and `dataclass` as a function, with the modifier *decorator*. The theme gives every token with that modifier the plum of the `@`, so the decorator stays one unit once Pylance has loaded.
 - Language servers such as Pylance add semantic tokens on top of the grammar. The semantic colours in `src/build.py` follow the same rules.

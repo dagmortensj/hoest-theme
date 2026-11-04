@@ -1,5 +1,9 @@
 # Changelog
 
+## 3.11.2 (2026-11-04)
+
+- Fix: in Python, a variable that holds a function, such as `norm = np.linalg.norm`, and numpy functions such as `np.sqrt`, turned from green to the text colour once Pylance had loaded. Pylance marks them as variables with the modifier *callable*, and they are now green like other functions, also where the variable is assigned.
+
 ## 3.11.1 (2026-11-04)
 
 - Fix: in Python, operators on numpy arrays and other classes that overload them lost the structure colour once Pylance had loaded. Pylance marks such an operator as a semantic token with the modifier *overridden*, and the semantic rule for operators gave it the text colour. Those operators now keep the structure colour, so `v + a*dt` looks the same as `t + dt`. The same goes for `in` on a container that defines `__contains__`, which stays bold.
