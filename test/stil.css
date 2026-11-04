@@ -30,3 +30,18 @@ input:focus-visible { outline: 2px solid rgb(100 120 40 / 50%) !important; }
   z-index: 10;
   width: 100%;
 }
+
+/* Vanskelige tilfeller: nesting, lag, container-spørringer, funksjoner og uvanlige selektorer */
+@layer base, komponenter;
+@layer base { *, *::before, *::after { box-sizing: border-box; } }
+@container kort (inline-size > 30em) { .kort { padding: clamp(0.5rem, 1vw + 0.25rem, 2rem); } }
+@supports (display: grid) and (not (display: inline-grid)) { .rutenett { gap: 1rem 2rem; } }
+@font-face { font-family: "Meslo"; src: url("meslo.woff2") format("woff2"), local("MesloLGS"); font-display: swap; }
+@property --vinkel { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+.kort { &:is(:hover, :focus-within) > .tittel { color: color-mix(in oklch, var(--rust) 80%, white); } .barn & { margin: -1px; } }
+li:nth-child(2n + 1):not(:last-of-type)::marker, a[target="_blank" i]::after, p:has(> img) { content: "a + b == c"; }
+.bredde { width: calc(100% - (2 * var(--avstand, 1rem)) + 0.5em); aspect-ratio: 16 / 9; inset: 0 auto auto 0; }
+.farger { background: linear-gradient(45deg, #c4502b 0%, rgb(255 133 27 / 0.5) 50%, hsl(from var(--rust) h s calc(l + 10%))); }
+.tekst { font: italic small-caps bold condensed 16px/2 cursive; text-shadow: 1px 1px 2px #0003, -1px 0 red; }
+.rutenett > :where(.a, .b) { grid-area: 1 / 2 / span 2 / -1; translate: 10px -5px; rotate: 0.5turn; }
+@media screen and (min-resolution: 2dppx), print and (orientation: landscape) { html { font-size: 112.5%; } }

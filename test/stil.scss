@@ -32,3 +32,15 @@ $brytepunkter: (liten: 600px, stor: 1200px);
 
 %felles { margin: 0; }
 .liste { @extend %felles; @for $i from 1 through 3 { &-#{$i} { order: $i; } } }
+
+// Vanskelige tilfeller: kart, kontrollflyt, interpolasjon, plassholdere og operatorer
+@use "sass:map";
+$tema: (lys: (bakgrunn: #fdf6e6, tekst: #2b2820), mørk: (bakgrunn: #211e17, tekst: #ebe2cd));
+@function hent($navn, $nøkkel: bakgrunn) { @return map.get(map.get($tema, $navn), $nøkkel); }
+@mixin tema($navn) { .tema-#{$navn} & { background: hent($navn); color: hent($navn, tekst); @content; } }
+@each $navn, $verdier in $tema { .#{$navn} { @include tema($navn) { border-color: hent($navn, tekst); } } }
+$bredde: 100% - 2 * $grunn; $halv: math.div($bredde, 2) + 1px; $tekst: "a + b == c" + " #{$grunn}";
+.kort { width: if($bredde > 50%, $bredde, auto); margin: -$grunn auto 0; padding: $grunn / 2 $grunn * 2; }
+@while $grunn < 32px { $grunn: $grunn * 2; .m-#{$grunn} { margin: $grunn !important; } }
+.a { @extend .kort; &.b:not(.c) > &__d { @debug "bredde: #{$bredde}"; @warn "advarsel"; } }
+@media #{"(min-width: 600px)"} and (max-width: map.get($brytepunkter, stor) - 1px) { .kort { display: none; } }

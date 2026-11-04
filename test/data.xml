@@ -9,4 +9,10 @@
   </planet>
   <planet id="2" navn="Mars"/>
   <?behandling instruksjon="ja"?>
+  <!-- Vanskelige tilfeller: navnerom, attributter med apostrof, tomme elementer og blandet innhold -->
+  <xsi:gruppe xsi:type="liste" data-x='verdi med "sitat"' tom="">
+    <planet id="3" navn="Venus" aktiv="false"><masse enhet="kg">4.867e24</masse><radius/></planet>
+    <tekst>Blandet <b>innhold</b> med a + b == c og <![CDATA[<x>]]></tekst>
+    <ns2:element xmlns:ns2="urn:test" ns2:attr="1">&#230;&#x1F342;</ns2:element>
+  </xsi:gruppe>
 </planeter>

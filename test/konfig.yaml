@@ -33,3 +33,33 @@ jobber:
     runs-on: ubuntu-latest
     steps:
       - run: npm ci && npm test
+# Vanskelige tilfeller: flerdokument, sammensatte nøkler, tagger, ankre i lister og spesialverdier
+---
+? [sammensatt, nøkkel]
+: verdi
+"nøkkel med sitat": 'verdi med ''apostrof'''
+nøkkel.med.punktum: a + b == c
+tall: [0o17, 1_000, 6.674e-11, .inf, -.Inf, .NaN, 1e3]
+tidspunkt: 2026-11-04T12:00:00+01:00
+sann: [true, True, TRUE, yes, on, y]
+tom_streng: ""
+flerlinje_sitert: "første linje
+  andre linje"
+liste_av_lister:
+  - - a
+    - b
+  - - c
+objekt_i_liste:
+  - navn: Jorda
+    masse: 5.972e24
+    måner: [Månen]
+  - navn: &mars Mars
+    beskrivelse: >+
+      Bevart avsluttende linjeskift.
+
+    alias: *mars
+binær: !!binary R0lGODlhDAAMAIQAAP
+egendefinert: !punkt { x: 1, y: 2 }
+skript: |-
+  if [[ $x -gt 1 ]]; then echo "a + b"; fi
+...

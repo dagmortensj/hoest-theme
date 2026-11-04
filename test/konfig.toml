@@ -34,3 +34,28 @@ navn = "Mars"
 flerlinje = """
 Første linje
 andre linje"""
+
+# Vanskelige tilfeller: punktnøkler, innebygde tabeller, flerlinjestrenger og uvanlige verdier
+[vanskelig]
+a.b.c = "punktnøkkel"
+"a + b" = "operatorer i nøkkel"
+'bokstavelig' = 'C:\sti\uten\escape'
+flerlinje_bokstavelig = '''
+Linje med "sitat" og \n
+'''
+flerlinje_med_escape = """
+Første \
+  fortsatt samme linje\t
+"""
+unicode = "\u00e6\U0001F342"
+blandet = [1, "to", 3.0, [4, 5], { x = 1 }]
+flerlinjeliste = [
+  "første",  # kommentar i lista
+  "andre",
+]
+tidspunkt_lokalt = 2026-11-04 12:00:00
+brøkdel = 2026-11-04T12:00:00.123Z
+negativ_eksponent = -6.674E-11
+pluss_uendelig = +inf
+[vanskelig.under."sitert.nøkkel"]
+verdi = true

@@ -32,3 +32,15 @@ if (typeof dobbel === "function" && dobbel instanceof Object) {
 try { JSON.parse("{}"); } catch (e) { console.error(e.message); }
 fs.readFile(sti(".", "a.txt"), (feil, data) => void feil ?? data?.length);
 export default Planet;
+
+// Vanskelige tilfeller: regulære uttrykk, maler, operatorer og objekter
+const re = /(\d+)\.(\d*)(?:e[-+]?\d+)?|\/=/g; const del = 1 / 2 / 3; const gen = function* () { yield* [1]; };
+let n = 0; n += 1; n **= 2; n >>>= 1; n &&= 3; n ??= 4; n ||= 5; n = n++ + --n - -n;
+const t = `a + b == ${n * 2 > 1 ? "ja" : `nei ${n}`} \` \${escape}`; const s = "x = y" + 'z' + "\u00e6\n";
+const o = { "nøkkel med mellomrom": 1, 2: "to", [Symbol.iterator]: null, async *gen() {}, får: this?.x ?? 0 };
+const p = o?.["nøkkel med mellomrom"] ?? o.får; const q = typeof p === "number" && p instanceof Number;
+ytre: while (true) { for (const [k, v] of Object.entries(o)) { if (k in o && !(v === void 0)) break ytre; } }
+class Stjerne extends Planet { static { Planet.antall = 0; } #masse = 1; get masse() { return this.#masse; }
+  static lag(...args) { return new this(...args); } #privat() { return super.beskrivelse; } }
+new Promise((løs, avvis) => setTimeout(løs, 1_000)).then((r) => r, (e) => { throw e; }).finally(() => {});
+delete o[2]; export { Stjerne, re, t, o }; export * as alt from "./annen.js";

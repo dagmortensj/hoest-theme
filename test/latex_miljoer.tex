@@ -33,4 +33,28 @@
     \addlegendentry{Ellipse}
   \end{axis}
 \end{tikzpicture}
+% Vanskelige tilfeller: bevis, underfigurer, tabularx med kolonnetyper, kodelisting, tcolorbox og matriser
+\begin{proof}[Bevis for \cref{thm:areal}]
+  Siden $\vec{r} \times \vec{F} = \vec{0}$ er $\dot{\vec{L}} = \vec{0}$, altså $|\vec{L}| = \text{konst} > 0$. \qedhere
+\end{proof}
+\begin{figure*}[!t]
+  \begin{subfigure}[b]{0.48\textwidth}
+    \includegraphics[height=3cm, angle=90, origin=c]{a}\caption{Første}\label{fig:a}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[b]{0.48\textwidth}\caption{Andre}\label{fig:b}\end{subfigure}
+\end{figure*}
+\begin{tabularx}{\linewidth}{@{}>{\bfseries}l X<{\,m} S[table-format=2.1]@{}} \toprule
+  Legeme & Beskrivelse med $a + b$ & {Masse} \\ \midrule
+  \multicolumn{2}{c}{\multirow{2}{*}{Sammenslått}} & 1.0 \\ \cmidrule(lr){1-2} & & 2.5 \\ \bottomrule
+\end{tabularx}
+\begin{lstlisting}[language=Python, caption={Kode med x += 1}, label=lst:kode]
+def f(x): return x**2 + 1
+\end{lstlisting}
+\begin{tcolorbox}[colback=rust!5, colframe=rust, title=Merk, breakable]
+  $\mathrm{d}E = \delta Q - p\,\mathrm{d}V$ med $p = \SI{1.013e5}{\pascal}$ og $T = \qty{293.15}{\kelvin}$.
+\end{tcolorbox}
+\begin{equation*}
+  \mathbf{M} = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}, \quad \det\mathbf{M} = -1, \quad \mathbf{M}^{-1} = \mathbf{M}^{\mathsf{T}}
+\end{equation*}
 \end{document}

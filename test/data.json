@@ -22,5 +22,15 @@
   "planeter": [
     { "navn": "Jorda", "masse": 5.972e24, "måner": 1 },
     { "navn": "Mars", "masse": 6.417e23, "måner": 2 }
-  ]
+  ],
+  "vanskelige tilfeller": {
+    "": "tom nøkkel",
+    "a + b == c": "operatorer i nøkkel",
+    "unicode": "\u00e6\u00f8\u00e5 \ud83c\udf42",
+    "escape": "\\ \/ \b \f \r \t",
+    "tall": [0, -0, 1E+2, 1e-2, 0.0001, 123456789012345678],
+    "blandet": [true, false, null, "null", "true", 0, ""],
+    "nestet": [[[[["dypt"]]]]],
+    "url": "https://example.com/sti?x=1&y=2#anker"
+  }
 }

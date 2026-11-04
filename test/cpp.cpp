@@ -34,3 +34,27 @@ int main() {
     try { throw std::runtime_error("feil"); } catch (const std::exception& e) {}
     return tung(*jord) ? 0 : 1;
 }
+
+// Vanskelige tilfeller: operatoroverlasting, maler, lambdaer, strenger og bitoperasjoner
+namespace fysikk {
+template <Tall T, std::size_t N>
+constexpr Vektor<T, N> operator+(const Vektor<T, N>& a, const Vektor<T, N>&) noexcept { return a; }
+template <typename T> concept Legemeaktig = requires(T t) { { t.masse } -> std::convertible_to<double>; };
+struct Punkt {
+    double x{}, y{};
+    auto operator<=>(const Punkt&) const = default;
+    Punkt& operator+=(const Punkt& p) { x += p.x; y += p.y; return *this; }
+    Punkt operator-() const { return {-x, -y}; }
+};
+template <auto V> inline constexpr auto verdi = V;
+}  // namespace fysikk
+int vanskelig(int argc, char** argv) {
+    using namespace std::string_literals; using fysikk::Punkt;
+    auto s = "a + b == c"s + R"(rå \n streng)" + "\t\"" + '\n'; auto tall = 0b1010 | 0x0F & ~0 ^ 1 << 2; tall >>= 1;
+    Punkt p{1.0, 2.0}, q = -p; p += q; bool lik = p == q && (p <=> q) == 0 && !(p != q);
+    auto f = [tall, &p](auto x) mutable -> decltype(x) { tall++; p.x *= x; return x * 2 + tall; };
+    int* ptr = &argc; int& ref = *ptr; ref = ref++ + --ref; std::cout << f(1.5) << " " << (ptr ? *ptr : -1) << '\n';
+    std::vector<int> v(3, 0); for (auto& e : v) e = e % 2 == 0 ? e / 2 : e * 3 + 1;
+    try { throw std::out_of_range{"feil"}; } catch (...) { return static_cast<int>(sizeof v); }
+    goto slutt; slutt: return fysikk::verdi<42> + lik + (argv != nullptr);
+}

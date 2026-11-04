@@ -34,3 +34,26 @@ final class Simulering<T extends Legeme> extends Base implements Iterable<T> {
 
     public static void main(String[] args) { System.out.println(args.length > 0); }
 }
+
+// Vanskelige tilfeller: operatorer, generiske typer, lambdaer, tekstblokker og annotasjoner
+class Vanskelig<K extends Comparable<? super K>, V> {
+    private static final Map<String, List<Integer>> KART = new HashMap<>();
+    int teller = 0b1010 | 0x0F & ~0; long lang = 1_000_000L; double d = 1.5e-3d; float f = .5f; char c = '\u00e6';
+    @Deprecated(since = "1.2", forRemoval = true) @SafeVarargs
+    static <T> boolean test(T... verdier) { return verdier.length > 0 && verdier[0] != null; }
+    String beskriv(Object o) {
+        teller += 1; teller <<= 2; teller >>>= 1; teller ^= 0xF; teller |= 1; teller &= ~2; teller %= 7;
+        var tekst = "a + b == c" + " ikke operatorer " + (teller > 1 ? "stor" : "liten") + 'x' + "\t\"";
+        return switch (o) {
+            case Legeme l when l.masse() > 1e24 -> "tung %s".formatted(l.navn());
+            case Integer i -> String.valueOf(i * 2 + -i);
+            case null, default -> tekst;
+        };
+    }
+    void løkke() {
+        ytre: for (int i = 0, j = 10; i < j; i++, j--) { if (i % 3 == 0) continue ytre; else break ytre; }
+        Runnable r = () -> { synchronized (this) { teller++; } };
+        Function<Integer, Function<Integer, Integer>> add = a -> b -> a + b;
+        assert add.apply(1).apply(2) == 3 : "feil"; Object o = r instanceof Runnable rr ? rr : null;
+    }
+}

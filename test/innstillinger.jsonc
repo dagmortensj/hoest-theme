@@ -9,5 +9,12 @@
   "files.exclude": { "**/*.aux": true, "**/.DS_Store": true },
   "[python]": { "editor.tabSize": 4 },
   "editor.tokenColorCustomizations": null,
+  // Vanskelige tilfeller
+  "workbench.colorCustomizations": { "[Høstkveld]": { "editor.background": "#211e17" } },
+  "editor.semanticTokenColorCustomizations": { "[Høstkveld]": { "rules": { "parameter": { "italic": true } } } },
+  "files.associations": { "*.tex": "latex", "**/.p10k.zsh": "shellscript" },
+  "latex-workshop.latex.tools": [{ "name": "latexmk", "command": "latexmk", "args": ["-lualatex", "-interaction=nonstopmode", "%DOC%"] }],
+  "terminal.integrated.fontSize": 13.5, "window.zoomLevel": -0.5, "editor.wordWrapColumn": 1e2,
+  /* "utkommentert": "a + b == c", */ "tekst": "a + b == c // ikke kommentar",
   "terminal.integrated.env.osx": { "PATH": "${env:PATH}:/opt/homebrew/bin" }, // til slutt
 }
