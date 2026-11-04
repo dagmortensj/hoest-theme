@@ -30,7 +30,7 @@ Comments, braces and brackets are grey, and variables, parameters, `=` and prose
 - The whole workbench, including diff and merge views, debugging, testing, notebooks, the command palette, settings and chat.
 - LaTeX with [LaTeX Workshop](https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop), plus five small injection grammars for what LaTeX Workshop leaves as plain text or lumps together: tikz, circuitikz and tikzcd, operators and relations in maths, option keys, siunitx, mhchem and file paths.
 - Python, with semantic highlighting for Pylance.
-- The same roles in TypeScript, JavaScript, Java, C#, C, C++, Go, Rust, Kotlin, Swift, PHP, Ruby, SQL, HTML and CSS.
+- The same roles in TypeScript, JavaScript, Java, C#, C, C++, Go, Rust, Kotlin, Swift, PHP, Ruby, SQL, HTML and CSS, with small injection grammars that tell compound assignments such as `+=` from `=` where the grammar does not.
 - Markdown with maths, BibTeX, JSON, YAML, TOML, shell, diff, git commits and logs.
 
 ## Switching between light and dark

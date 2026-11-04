@@ -1,0 +1,12 @@
+{
+  "$comment": "Høst: compound assignments such as += and >>>= in Go, Java, C++, PHP, TypeScript and JavaScript. Some of these grammars give them the same scope as =, others split them in two (^ and = in Java, &&= and ??= in TypeScript), so they would keep the text colour or be half coloured. They compute before they assign and get the structure colour like + and *, while = keeps the text colour. /= must follow a name, a number or a closing bracket, so that a regular expression such as /=/ is left alone. Applies outside strings, comments and JSX text.",
+  "scopeName": "hoest.operators.injection",
+  "injectionSelector": "L:source.go -string -comment, L:source.java -string -comment, L:source.cpp -string -comment, L:source.php -string -comment, L:source.ts -string -comment, L:source.tsx -string -comment -meta.jsx.children, L:source.js -string -comment -meta.jsx.children, L:source.js.jsx -string -comment -meta.jsx.children",
+  "patterns": [
+    {
+      "comment": "compound assignments, longest first; .= is string concatenation in PHP",
+      "match": ">>>=|<<=|>>=|\\*\\*=|&&=|\\|\\|=|\\?\\?=|&\\^=|\\+=|-=|\\*=|%=|\\^=|&=|\\|=|\\.=|(?:(?<=[\\w\\)\\]])|(?<=[\\w\\)\\]]\\s))/=",
+      "name": "keyword.operator.assignment.compound.hoest"
+    }
+  ]
+}

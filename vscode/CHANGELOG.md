@@ -1,5 +1,13 @@
 # Changelog
 
+## 3.11.1 (2026-11-04)
+
+- Fix: in Python, operators on numpy arrays and other classes that overload them lost the structure colour once Pylance had loaded. Pylance marks such an operator as a semantic token with the modifier *overridden*, and the semantic rule for operators gave it the text colour. Those operators now keep the structure colour, so `v + a*dt` looks the same as `t + dt`. The same goes for `in` on a container that defines `__contains__`, which stays bold.
+- Other language servers that send semantic tokens for operators no longer undo the operator colours where the token says what kind of operator it is: overloaded operators with the C/C++ extension, rust-analyzer's operator types when its operator specialization is on, and operators in Swift with sourcekit-lsp. Overloaded operators in C# keep the text colour like the other C# operators instead of turning green. rust-analyzer by default, Roslyn and clangd send `=` and `+` as the same token, so there all operators keep the text colour; `docs/rules.md` lists these cases and the rust-analyzer setting.
+- Compound assignments get the structure colour whole in every language that has them. The grammars for Python, Go, PHP and Julia give `+=` the same scope as `=`, and those for Java, C++ and TypeScript split some of them in two, so `^=`, `<<=`, `&&=` and `??=` were half coloured. Three small injection grammars (`python-hoest-operators`, `julia-hoest-operators` and `hoest-operators` for Go, Java, C++, PHP, TypeScript and JavaScript) give them their own scope. `=` keeps the text colour.
+- String concatenation with `.` and `.=` in PHP, and `|` and `>>` in Ruby, get the structure colour like the other operators that compute.
+- The conditional operator `? :` keeps the text colour in Java too, where it was bold in the structure colour because the grammar marks it as control flow. Most grammars do not mark it at all.
+
 ## 3.11.0 (2026-11-04)
 
 - Operators that compute get the structure colour, without bold: arithmetic, comparison, bitwise and logical symbols (`+`, `*`, `==`, `<`, `&&`, `??`), increments, and compound assignments such as `+=`. Plain assignment `=` keeps the text colour everywhere, also in keyword arguments and default values. Operators in LaTeX maths are unchanged. Where a grammar gives `+=` the same scope as `=` (Python, Go, PHP, Julia) or marks no operators at all (Swift, Lua), they keep the text colour; `docs/rules.md` lists these cases.

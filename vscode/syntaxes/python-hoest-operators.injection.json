@@ -1,0 +1,12 @@
+{
+  "$comment": "Høst: compound assignments in Python, such as += and *=. The Python grammar gives them the same scope as =, so they would keep the text colour. They compute before they assign and get the structure colour like + and *, while = keeps the text colour. Applies outside strings and comments.",
+  "scopeName": "python.hoest.operators.injection",
+  "injectionSelector": "L:source.python -string -comment",
+  "patterns": [
+    {
+      "comment": "compound assignments, longest first",
+      "match": "<<=|>>=|//=|\\*\\*=|\\+=|-=|/=|@=|\\*=|%=|\\^=|&=|\\|=",
+      "name": "keyword.operator.assignment.compound.python"
+    }
+  ]
+}

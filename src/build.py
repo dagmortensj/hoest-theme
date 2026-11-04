@@ -754,11 +754,14 @@ def tokens(p):
             "keyword.operator.increment-or-decrement", "keyword.operator.assignment.compound",
             "keyword.operator.assignment.arithmetic", "keyword.operator.assignment.bitwise",
             "keyword.operator.assignment.augmented", "keyword.operator.assignment.rust",
-            "keyword.operator.c",
+            "keyword.operator.c", "keyword.operator.string.php", "keyword.operator.other.ruby",
         ], "structure", ""),
         ("Text: operators that do not compute where the grammar puts them with those that do (&& between shell commands, <: in Julia)", [
             "keyword.operator.logical.shell", "keyword.operator.relation.types",
         ], "text", ""),
+        # The conditional operator ? : keeps the text colour. Most grammars do not mark it, and Java
+        # marks it as control flow, which would make it bold.
+        ("Text: the conditional operator ? : (Java marks it as control flow)", ["keyword.control.ternary", "keyword.operator.ternary"], "text", ""),
         ("Comments", ["comment", "punctuation.definition.comment", "string.quoted.docstring.multi.python", "string.quoted.docstring", "string.quoted.docstring punctuation.definition.string"], "comment", "italic"),
         ("1 Structure: keywords", ["keyword", "storage.type", "storage.modifier", "keyword.other", "keyword.operator.new", "keyword.control.import", "keyword.control.import.python", "storage.type.function.lambda.python", "storage.type.function.async.python"], "structure", ""),
         ("1 Structure, bold: control and logical keywords", ["keyword.control", "keyword.control.flow", "keyword.control.flow.python", "keyword.control.conditional", "keyword.control.loop", "keyword.control.return", "keyword.control.trycatch", "keyword.control.exception",
@@ -979,6 +982,10 @@ def tokens(p):
 
 def semantic_rules(p):
     """Semantic highlighting (Pylance and other language servers): token type -> palette name and style."""
+    def plain(name):
+        # A colour with every style set to off, so that nothing is inherited from a modifier's fallback
+        # (rust-analyzer gives += the modifier "mutable", which falls back on an underline).
+        return {"foreground": resolve(p, name), "bold": False, "italic": False, "underline": False}
     return {
         "class": "plum",
         "class.builtin": "green",
@@ -1024,7 +1031,31 @@ def semantic_rules(p):
         "number": "value",
         "string": "blue",
         "regexp": "blue",
-        "operator": "text",
+        # Operators. The grammar rules give the operators that compute the structure colour and = the text
+        # colour. Several language servers send a semantic token for operators, which overrides the grammar.
+        # Where the token says what kind of operator it is, the rules below keep the structure colour; where
+        # = and + arrive as the same token (rust-analyzer by default, Roslyn, clangd, gopls), all of them
+        # keep the text colour.
+        "operator": plain("text"),
+        # Pylance: an operator that a class overloads (+ and > on numpy arrays) has the modifier "overridden",
+        # and so does `in` on a container that defines __contains__, which is bold like the other logical words.
+        # = cannot be overloaded and never gets this token.
+        "operator.overridden": plain("structure"),
+        "keyword.overridden": ("structure", "bold"),
+        # rust-analyzer with operator specialization on: the operators that compute get their own types
+        # (+= is arithmetic.mutable), while = stays a plain operator.
+        "arithmetic": plain("structure"),
+        "bitwise": plain("structure"),
+        "comparison": plain("structure"),
+        "logical": plain("structure"),
+        # C/C++ extension: only overloaded operators get tokens, and the built-in ones keep the grammar's colour.
+        "operatorOverload": plain("structure"),
+        "memberOperatorOverload": plain("structure"),
+        # C#: Roslyn sends every operator, = and . included, as one kind, so they keep the text colour, and an
+        # overloaded operator does the same instead of turning green through its fallback scope.
+        "operatorOverloaded": plain("text"),
+        # Swift: sourcekit-lsp sends operator tokens only for operators that are functions, which = is not.
+        "operator:swift": plain("structure"),
         "comment": ("comment", "italic"),
         "*.deprecated": {"strikethrough": True},
     }

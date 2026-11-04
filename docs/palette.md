@@ -151,4 +151,6 @@ The LaTeX Workshop grammar recognises a lot, but leaves some common content as p
 - `latex-hoest-tikz-environments.injection.json`: makes `circuitikz` and `tikzcd` coloured like tikz.
 - `latex-hoest-operators.injection.json`: operators and relations in maths, both the symbols `=`, `<`, `>` and `|` and the commands `\cdot`, `\times`, `\pm`, `\leq`, `\neq`, `\to`, `\in` and the rest of that family, so they keep the text colour like `+` and `-` instead of the colour of maths or of Greek letters.
 
+Three more inject into code: `python-hoest-operators.injection.json`, `julia-hoest-operators.injection.json`, and `hoest-operators.injection.json` for Go, Java, C++, PHP, TypeScript and JavaScript. These grammars give compound assignments such as `+=` the same scope as `=`, or split some of them in two (`^` and `=`), and the injections give them their own scope, so they get the structure colour of operators that compute while `=` keeps the text colour.
+
 In siunitx the number has the value colour and the unit has the text colour, also in maths, where the unit would otherwise be blue like a variable. Chemical formulas are blue like maths, and file paths are blue like strings.

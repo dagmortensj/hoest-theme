@@ -650,7 +650,9 @@
         "keyword.operator.assignment.bitwise",
         "keyword.operator.assignment.augmented",
         "keyword.operator.assignment.rust",
-        "keyword.operator.c"
+        "keyword.operator.c",
+        "keyword.operator.string.php",
+        "keyword.operator.other.ruby"
       ],
       "settings": {
         "foreground": "#ff831e",
@@ -662,6 +664,17 @@
       "scope": [
         "keyword.operator.logical.shell",
         "keyword.operator.relation.types"
+      ],
+      "settings": {
+        "foreground": "#ebe2cd",
+        "fontStyle": ""
+      }
+    },
+    {
+      "name": "Text: the conditional operator ? : (Java marks it as control flow)",
+      "scope": [
+        "keyword.control.ternary",
+        "keyword.operator.ternary"
       ],
       "settings": {
         "foreground": "#ebe2cd",
@@ -2245,7 +2258,70 @@
     "number": "#f16239",
     "string": "#419fdf",
     "regexp": "#419fdf",
-    "operator": "#ebe2cd",
+    "operator": {
+      "foreground": "#ebe2cd",
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
+    "operator.overridden": {
+      "foreground": "#ff831e",
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
+    "keyword.overridden": {
+      "foreground": "#ff831e",
+      "bold": true
+    },
+    "arithmetic": {
+      "foreground": "#ff831e",
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
+    "bitwise": {
+      "foreground": "#ff831e",
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
+    "comparison": {
+      "foreground": "#ff831e",
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
+    "logical": {
+      "foreground": "#ff831e",
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
+    "operatorOverload": {
+      "foreground": "#ff831e",
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
+    "memberOperatorOverload": {
+      "foreground": "#ff831e",
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
+    "operatorOverloaded": {
+      "foreground": "#ebe2cd",
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
+    "operator:swift": {
+      "foreground": "#ff831e",
+      "bold": false,
+      "italic": false,
+      "underline": false
+    },
     "comment": {
       "foreground": "#928373",
       "italic": true

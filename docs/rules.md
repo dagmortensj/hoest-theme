@@ -30,7 +30,7 @@ Where something begins or changes direction, the things you look for when scroll
 The remaining keywords, the words that hold the code together.
 
 - Code: `const`, `let`, `var`, `val`, `public`, `private`, `static`, `final`, `readonly`, `async`, `import`, `export`, `from`, `as`, `use`, `package`, `namespace`, `new`, `#include`, `lambda`, `=>` and `->`, operators written as words (`typeof`, `instanceof`, `satisfies`, `nameof`), HTML and XML tags, and SQL keywords.
-- Operators that compute a value: arithmetic (`+`, `-`, `*`, `/`, `**`, `%`), comparison (`==`, `!=`, `<`, `>=`), bitwise and logical symbols (`&`, `<<`, `&&`, `||`, `!`, `??`), increments (`++`, `--`), and compound assignments (`+=`, `*=`), which compute before they assign. Plain assignment `=` keeps the text colour, also in keyword arguments and default values.
+- Operators that compute a value: arithmetic (`+`, `-`, `*`, `/`, `**`, `%`), string concatenation (`.` in PHP, `||` in SQL), comparison (`==`, `!=`, `<`, `>=`), bitwise and logical symbols (`&`, `<<`, `&&`, `||`, `!`, `??`), increments (`++`, `--`), and compound assignments (`+=`, `*=`), which compute before they assign. Plain assignment `=` keeps the text colour, also in keyword arguments and default values.
 - LaTeX: the preamble (`\documentclass`, `\usepackage`), definitions (`\newcommand`, `\def`), `\item`, TeX conditionals, and the words of a tikz path (`node`, `at`, `circle`). Operators in maths keep the text colour (see below).
 
 ### Value colour: values and input
@@ -72,7 +72,7 @@ What points elsewhere or demands attention. Red is reserved, so it never appears
 
 ### Text colour: what you read
 
-- Code: variables, parameters in italic (see below), properties and fields (`self.masse`), `=` and the other operators that do not compute a value (`.`, `...`, `|` in a type), and the names of modules, namespaces and packages (`numpy`, `namespace Fysikk`, `package main`, `import Foundation`), argument labels in Swift, and the arguments of shell commands (`cat fil.txt`).
+- Code: variables, parameters in italic (see below), properties and fields (`self.masse`), `=`, the conditional operator `? :`, and the operators that do not compute a value (`.`, `...`, `|` in a type), and the names of modules, namespaces and packages (`numpy`, `namespace Fysikk`, `package main`, `import Foundation`), argument labels in Swift, and the arguments of shell commands (`cat fil.txt`).
 - LaTeX: prose, and ordinary commands such as `\frac`, `\sqrt`, `\left`, `\emph`, `\caption` and `\label`. In a formula they are operators, and so are `=`, `<`, `>`, `|` and the operators, relations and arrows written as commands: `\cdot`, `\times`, `\pm`, `\leq`, `\neq`, `\to`, `\Rightarrow`, `\in`, `\cup`, `\ldots`. Unlike operators in code, they keep the text colour.
 
 ### Grey: what supports the content
@@ -106,11 +106,18 @@ The rules describe roles, but a colour can only follow a role that the grammar m
 - C++: types from the standard library (`std::string`) are only recognised by the language server, through semantic highlighting.
 - TypeScript: the grammar does not tell a built-in class (`Error`, `Promise`) from your own, or a generic parameter `T` from its constraint in `<T extends Legeme>`. The language server does, so these follow the rules once semantic highlighting has loaded.
 - Ruby: `and`, `or` and `not` share their scope with `&&` and `||`, so they get the structure colour without bold.
-- Python, Go, PHP and Julia: compound assignments (`+=`) share their scope with `=`, so they keep the text colour.
-- Swift and Lua: the grammars do not mark operators in ordinary expressions, so they keep the text colour. In Lua, `..` shares its scope with commas and colons and keeps it too.
+- Python, Go, PHP and Julia: the grammars give compound assignments (`+=`) the same scope as `=`, and the Java, C++ and TypeScript grammars split some of them in two (`^` and `=`, `??` and `=`). Three small injection grammars give them their own scope in these languages, so they get the structure colour whole.
+- Python: Pylance marks an operator that a class overloads (`+` and `>` on numpy arrays, `in` on a container) with the modifier *overridden*. The theme gives it the structure colour, the same as the grammar does, and `in` stays bold.
+- Rust with rust-analyzer, C# with the C# extension, and C and C++ with clangd: the language server sends every operator, `=` included, as the same kind of token, so once it has loaded, all operators keep the text colour. rust-analyzer tells them apart when `rust-analyzer.semanticHighlighting.operator.specialization.enable` is on, and then they follow the rule. Go and Lua behave the same way if semantic tokens are turned on in gopls or the Lua language server.
+- C and C++ with the C/C++ extension: the language server marks only overloaded operators (`<<` on `std::cout`), and they keep the structure colour.
+- Swift and Lua: the grammars do not mark operators in ordinary expressions, so they keep the text colour. In Swift, sourcekit-lsp marks the operators that are functions, which `=` is not, and where it does they get the structure colour. In Lua, `..` shares its scope with commas and colons and keeps it too.
 - C: `*` and `&` in pointer declarations share their scope with multiplication and bitwise and, so they get the structure colour as well.
 - Rust: the bars around closure parameters share their scope with `|` and `||`, so they get the structure colour, like `=>` and `lambda` in other languages.
 - SQL: `=` is marked as a comparison everywhere, also after `SET`, so it gets the structure colour.
+- Ruby: `?` in `a ? b : c` is marked as a comparison, so it gets the structure colour while `:` keeps the text colour.
+- Rust: `&` as bitwise and shares its scope with a borrow (`&x`), so it keeps the text colour.
+- Shell: arithmetic inside `$(( ))` is not marked by the grammar and keeps the text colour; inside `(( ))` it is coloured.
+- C++: outside a function body, the angle brackets of a variable template (`is_arithmetic_v<T>`) are marked as comparisons.
 - Java: `enum` shares its scope with `public` inside the enum, so it cannot be bold.
 - C: the names of a `typedef`, `enum` or `union` and the members of an `enum` are not marked by the grammar, so they keep the text colour. The C/C++ extension colours them through semantic highlighting.
 - Rust: enum variants (`Some`, `Ok`, your own) share a scope with types, so they are plum.

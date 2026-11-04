@@ -1,0 +1,12 @@
+{
+  "$comment": "Høst: compound assignments in Julia, such as += and the broadcast form .+=. The Julia grammar gives them the same scope as =, so they would keep the text colour. They compute before they assign and get the structure colour like + and *, while = and .= keep the text colour. Applies outside strings and comments.",
+  "scopeName": "julia.hoest.operators.injection",
+  "injectionSelector": "L:source.julia -string -comment",
+  "patterns": [
+    {
+      "comment": "compound assignments, with or without the broadcast dot",
+      "match": "\\.?(?:>>>|<<|>>|//|\\+|-|\\*|/|\\\\|\\^|%|÷|&|\\||⊻)=",
+      "name": "keyword.operator.assignment.compound.julia"
+    }
+  ]
+}
